@@ -1,0 +1,15 @@
+Title : Lattices of compatibly embedded finite fields
+
+Abstract : 
+
+In this talk, we will discuss the problem of compatibility between
+finite fields embeddings. Given two finites fields k = GF(p^m) and K =
+GF(p^n), we know that k can be embedded into K if and only if m divides n. When
+m = n, this is called the isomorphism problem and we will first give ways
+of solving this problem. Then, given finite fields k_1, k_2, ..., k_r, we want
+to be able to create embeddings between them that are compatible. It means that
+given three finite fields embeddings fA_B from A to B, fB_C from B to C and fA_C
+from A to (with A, B, C some fields), we want the composition of fA_B and
+fB_C to be equal to fA_C. We will give a solution by Bosma, Cannon, and Steel, and
+implemented in the computer algebra software MAGMA, and we will discuss the
+possible improvements of their method.
