@@ -52,6 +52,7 @@ to the data used to compute these algorithms, such as the solutions of Hilbert
 $90$ instances, or the roots involved.
 
 \section{The easy case}
+\label{sec:easy}
 
 We first assume that $\partial(K_2)\,|\,p-1$, where $p$ is the caracteristic of
 our finite fields. We denote $m=\partial(K_1)$ and $n=\partial(K_2)$, hence we
@@ -119,4 +120,24 @@ $e^{n/m}=c^{-1}d$. With these choices of $\beta_2, \beta_3, e$ we have that
   \embed{K_2}{K_3}:\beta_2\mapsto e\beta_3
 \]
 is compatible with the already existing embeddings.
+\section{An other case}
+Assume now that $\partial(K_1)$ does not divide $p-1$, \ie we do not have
+primitive $n$-th roots of unity in the prime field $\mathbb{F}_p$. We also
+assume that $\partial(K_1)$ and $\partial(K_2)$ are coprime with $p$, meaning we
+do not use Artin-Schreier theory either. What we wrote in
+Section~\ref{sec:easy} is essentially still true in that case. Here the
+embeddings are given by
+\[
+  \embed{K_1}{K_2}:[\alpha_1]_0\mapsto[c\alpha_2]_0
+\]
+\[
+  \embed{K_1}{K_3}:[\alpha_1]_0\mapsto[d\alpha_3]_0
+\]
+where $[\gamma]_0$ means the $0$-th coefficient of $\gamma$ in the basis
+$(1\otimes\zeta^j)_{0\leq j\leq r-1}$ (with
+$r=[\mathbb{F}_p(\zeta):\mathbb{F}_p]$), in other words if 
+\[
+  \gamma=\sum_{j=0}^{r-1}g_j\otimes\zeta^j
+\]
+then $[\gamma]_0=g_0$.
 \end{document}
