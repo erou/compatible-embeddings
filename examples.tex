@@ -23,6 +23,24 @@
 
 %\clearpage
 
+In this document, we investigate compatibility questions in concrete examples.
+We set a prime finite field $k=\mathbb{F}_p$ and we look at the tower of
+$\ell$-adic extensions 
+\[
+  \mathbb{F}_p \emb \mathbb{F}_{p^\ell} \emb \mathbb{F}_{p^{\ell^2}}\emb \cdots
+\]
+wandering if we can compute compatible embeddings between the fields in this
+tower. By compatibility, we mean that we want to find solutions $\alpha_i$ of
+Hilbert 90 in $\mathbb{F}_{p^{\ell^i}}\otimes\mathbb{F}_p(\zeta_i)$, where
+$\zeta_i$ is a primitive $i$-th root of unity, and such that for all $j<i$, we
+have that 
+\[
+  \alpha_i^{\ell^{i-j}}=\alpha_j.
+\]
+We see in Section~\ref{sec:p5l2} that it seems to be possible when the roots
+$\zeta_i$ are in the prime field $\mathbb{F}_p$. But Section~\ref{sec:p3l2}
+shows that this does not hold in the general case.
+
 \section{Case $p=5$ and $\ell=2$}
 \label{sec:p5l2}
 
@@ -101,7 +119,7 @@ are not able to choose a solution $\alpha_4$ of the Hilbert 90 problem for the
 root $\zeta_4=-2$ such that $\alpha_4^2=\alpha_2$.
 
 If we choose another solution $\alpha_2$ of the Hilbert 90 problem in
-$\mathbb{F}_{5^2}$, then there is still one root $\zeta_4$ that allows to find a
+$\mathbb{F}_{5^2}$, then there is still exactly one root $\zeta_4$ that allows to find a
 solution $\alpha_4$ with $\alpha_4^2=\alpha_2$. The hope was that, in general,
 every choice of solution $\alpha_2$ is compatible with a root $\zeta_4$, where by
 compatible we mean that there is a solution $\alpha_4$ with
