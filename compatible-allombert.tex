@@ -6,7 +6,7 @@
 \input{macros.tex}
 
 % opening
-\title{Compatibility of embeddings using Allombert's algorithm}
+\title{Some notes on the compatibility of embeddings using Allombert's algorithm}
 \author{}
 
 
@@ -23,10 +23,14 @@
 
 %\clearpage
 
-Assume we have three finite fields $K_1$, $K_2$, and $K_3$ such that
+Assume we have three finite fields $K_1$, $K_2$, $K_3$ and denote by
+$\partial(K_i)$ the degree of $K_i$ over its prime subfield
+$k:=\mathbb{F}_p$, for $1\leq i\leq3$. Suppose we also have
 \[\partial(K_1)\,|\,\partial(K_2)\,|\,\partial(K_3),\]
-and such that we already have $K_1\emb K_2$ and $K_1\emb K_3$, \ie such as in
-Figure~\ref{fig:uncomplete}.
+and $K_1\emb K_2$, $K_1\emb K_3$, \ie such as in
+Figure~\ref{fig:uncomplete}. By $K_1\emb K_2$, we mean that we have already
+computed an explicit embedding from $K_1$ to $K_2$, and we usually denote this
+morphism $\embed{K_1}{K_2}$.
 \begin{figure}
   \centering
     \begin{tikzpicture}
@@ -121,11 +125,13 @@ $e^{n/m}=c^{-1}d$. With these choices of $\beta_2, \beta_3, e$ we have that
 \]
 is compatible with the already existing embeddings.
 \section{An other case}
-Assume now that $\partial(K_1)$ does not divide $p-1$, \ie we do not have
-primitive $n$-th roots of unity in the prime field $\mathbb{F}_p$. We also
+Assume now that $m=\partial(K_1)$ does not divide $p-1$, \ie we do not have
+primitive $m$-th roots of unity in the prime field $k=\mathbb{F}_p$. We also
 assume that $\partial(K_1)$ and $\partial(K_2)$ are coprime with $p$, meaning we
 do not use Artin-Schreier theory either. What we wrote in
-Section~\ref{sec:easy} is essentially still true in that case. Here the
+Section~\ref{sec:easy} is essentially still true in that case, modulo extension
+of scalars $K_1\otimes k(\zeta_1)$, with $\zeta_1$ a primitive $m$-th root of
+unity. Here the
 embeddings are given by
 \[
   \embed{K_1}{K_2}:[\alpha_1]_0\mapsto[c\alpha_2]_0
@@ -134,10 +140,23 @@ embeddings are given by
   \embed{K_1}{K_3}:[\alpha_1]_0\mapsto[d\alpha_3]_0
 \]
 where $[\gamma]_0$ means the $0$-th coefficient of $\gamma$ in the basis
-$(1\otimes\zeta^j)_{0\leq j\leq r-1}$ (with
+$(1\otimes\zeta_1^j)_{0\leq j\leq r-1}$ (with
 $r=[\mathbb{F}_p(\zeta):\mathbb{F}_p]$), in other words if 
 \[
-  \gamma=\sum_{j=0}^{r-1}g_j\otimes\zeta^j
+  \gamma=\sum_{j=0}^{r-1}g_j\otimes\zeta_1^j
 \]
 then $[\gamma]_0=g_0$.
+
+\subsection{Compatibility of the roots}
+In order to our embeddings to be compatible, we first have to choose compatible
+roots of unity. We mean that if we have two finite fields $K_1$ and  $K_2$ with
+respective degree $m$ and $n$, such that $m\,|\,n$, and a
+primitive $m$-th root of unity (respectively a $n$-th root)
+denoted by $\zeta_1$ (respectively $\zeta_2$), we have that
+$\zeta_2^{n/m}=\zeta_1$ for some embedding of $k(\zeta_1)$ in $k(\zeta_2)$.
+Equivalently, we want $\zeta_2^{n/m}$ and $\zeta_1$ to have the same minimal
+polynomial over $k$. If $\chi_1$ is the polynomial defining $k(\zeta_1)$ and
+$\chi_2$ the polynomial defining $k(\zeta_2)$, this is the same as asking that
+if $\rho$ is a root of $\chi_2$, then $\rho^{n/m}$ is a root of $\chi_1$.
+
 \end{document}
