@@ -29,10 +29,10 @@ $\ell$-adic extensions
 \[
   \mathbb{F}_p \emb \mathbb{F}_{p^\ell} \emb \mathbb{F}_{p^{\ell^2}}\emb \cdots
 \]
-wandering if we can compute compatible embeddings between the fields in this
+wondering if we can compute compatible embeddings between the fields in this
 tower. By compatibility, we mean that we want to find solutions $\alpha_i$ of
 Hilbert 90 in $\mathbb{F}_{p^{\ell^i}}\otimes\mathbb{F}_p(\zeta_i)$, where
-$\zeta_i$ is a primitive $i$-th root of unity, and such that for all $j<i$, we
+$\zeta_i$ is a primitive $\ell^i$-th root of unity, and such that for all $j<i$, we
 have that 
 \[
   \alpha_i^{\ell^{i-j}}=\alpha_j.
@@ -57,8 +57,8 @@ $t=\overline X$ is such that $t^2=2$. And we choose
 \]
 where $u=\overline
 Y$ is such that $u^2 = t$. We have exactly one primitive square root of
-unity in $\mathbb{F}_5$ that is $\zeta_2 = -1$ and two $4$-th
-root of unity $\zeta_4=\pm 2$. The situation is described in
+unity in $\mathbb{F}_5$ that is $\zeta_1 = -1$ and two $4$-th
+root of unity $\zeta_2=\pm 2$. The situation is described in
 Figure~\ref{fig:p5l2}.
 
 \begin{figure}
@@ -86,15 +86,15 @@ Figure~\ref{fig:p5l2}.
   \label{fig:p5l2}
 \end{figure}
 
-Assume we have computed a solution $\alpha_2$ of Hilbert 90 in
-$\mathbb{F}_{5^2}$ for $\zeta_2=-1$, for example $\alpha_2=t$. Indeed, we have 
+Assume we have computed a solution $\alpha_1$ of Hilbert 90 in
+$\mathbb{F}_{5^2}$ for $\zeta_1=-1$, for example $\alpha_1=t$. Indeed, we have 
 \[
   t^5 = t^4\times t = -t
 \]
-since $t^2=2$. We now wander if we can compute a solution $\alpha_4$ of Hilbert
-90 in $\mathbb{F}_{5^4}$ for $\zeta_4$ such that $\alpha_4^2=\alpha_2$. The
-answer depends on the choice of the root $\zeta_4$ we take. Let us start with
-$\zeta_4 = 2$. We want to solve
+since $t^2=2$. We now wonder if we can compute a solution $\alpha_2$ of Hilbert
+90 in $\mathbb{F}_{5^4}$ for $\zeta_2$ such that $\alpha_2^2=\alpha_1$. The
+answer depends on the choice of the root $\zeta_2$ we take. Let us start with
+$\zeta_2 = 2$. We want to solve
 \[
   \sigma(\alpha) = 2\alpha,
 \]
@@ -103,8 +103,8 @@ and a solution is given by
   \alpha = u,
 \]
 since $u^2 = t$ and $t^2 = 2$. The other nonzero solutions are $2u$, $3u$ and
-$4u$. We have $u^2 = t$, so we are able to choose $\alpha_4$ such that
-$\alpha_4^2 = \alpha_2$. Now if we work with the root $\zeta_4=-2$, we now want
+$4u$. We have $u^2 = t$, so we are able to choose $\alpha_2$ such that
+$\alpha_2^2 = \alpha_1$. Now if we work with the root $\zeta_2=-2$, we now want
 to solve
 \[
   \sigma(\alpha) = -2\alpha,
@@ -115,15 +115,15 @@ and a solution is given by
 \]
 since $(ut)^2 = 2t$ and $(2t)^2 = -2$. The other nonzero solutions are $2ut$, $3ut$ and
 $4ut$. Now we have $(ut)^2 = 2t$ and $2$ is not a square in $\mathbb{F}_5$ so we
-are not able to choose a solution $\alpha_4$ of the Hilbert 90 problem for the
-root $\zeta_4=-2$ such that $\alpha_4^2=\alpha_2$.
+are not able to choose a solution $\alpha_2$ of the Hilbert 90 problem for the
+root $\zeta_2=-2$ such that $\alpha_2^2=\alpha_1$.
 
-If we choose another solution $\alpha_2$ of the Hilbert 90 problem in
-$\mathbb{F}_{5^2}$, then there is still exactly one root $\zeta_4$ that allows to find a
-solution $\alpha_4$ with $\alpha_4^2=\alpha_2$. The hope was that, in general,
-every choice of solution $\alpha_2$ is compatible with a root $\zeta_4$, where by
-compatible we mean that there is a solution $\alpha_4$ with
-$\alpha_4^2=\alpha_2$. This is not true, as shows Section~\ref{sec:p3l2}.
+If we choose another solution $\alpha_1$ of the Hilbert 90 problem in
+$\mathbb{F}_{5^2}$, then there is still exactly one root $\zeta_2$ that allows to find a
+solution $\alpha_2$ with $\alpha_2^2=\alpha_1$. The hope was that, in general,
+every choice of solution $\alpha_1$ is compatible with a root $\zeta_2$, where by
+compatible we mean that there is a solution $\alpha_2$ with
+$\alpha_2^2=\alpha_1$. This is not true, as shows Section~\ref{sec:p3l2}.
 
 \section{Case $p=3$ and $\ell=2$}
 \label{sec:p3l2}
@@ -141,9 +141,9 @@ $t=\overline X$ is such that $t^2=-1$. And we choose
 \]
 where $u=\overline
 Y$ is such that $u^2 = t+1$. We have exactly one primitive square root of
-unity in $\mathbb{F}_3$ that is $\zeta_2 = -1$ and we do not have any primitive $4$-th
-root of unity $\zeta_4$ in $\mathbb{F}_3$, but we have two of these roots in
-$\mathbb{F}_3(\zeta_4)\cong \mathbb{F}_{3^2}$: $\pm t$. The situation is
+unity in $\mathbb{F}_3$ that is $\zeta_1 = -1$ and we do not have any primitive $4$-th
+root of unity $\zeta_2$ in $\mathbb{F}_3$, but we have two of these roots in
+$\mathbb{F}_3(\zeta_2)\cong \mathbb{F}_{3^2}$: $\pm t$. The situation is
 summarised in Figure~\ref{fig:p3l2}.
 
 \begin{figure}
@@ -173,14 +173,14 @@ summarised in Figure~\ref{fig:p3l2}.
 
 
 
-Assume we have computed a solution $\alpha_2$ of Hilbert 90 in $\mathbb{F}_{3^2}$ for
-$\zeta_2$, for example $\alpha_2=t$. We indeed have
+Assume we have computed a solution $\alpha_1$ of Hilbert 90 in $\mathbb{F}_{3^2}$ for
+$\zeta_1$, for example $\alpha_1=t$. We indeed have
 \[
   t^3 = t^2\times t=-1\times t.
 \]
-We now wander if we can compute a solution $\alpha_4$ of Hilbert 90 in
-$\mathbb{F}_{3^4}\otimes\mathbb{F}_{3^2}$ for $1\otimes\zeta_4$ such
-that $\alpha_4^2=\alpha_2$. Assume we choose $\zeta_4=t$, we want to solve
+We now wonder if we can compute a solution $\alpha_2$ of Hilbert 90 in
+$\mathbb{F}_{3^4}\otimes\mathbb{F}_{3^2}$ for $1\otimes\zeta_2$ such
+that $\alpha_2^2=\alpha_1$. Assume we choose $\zeta_2=t$, we want to solve
 \[
   (\sigma\otimes\Id)(\alpha) = (1\otimes t)\alpha,
 \]
@@ -206,9 +206,9 @@ x)\alpha$ for $x\in\mathbb{F}_{3^2}$. If we compute $\alpha^2$, we get:
 \end{align*}
 so we have $\alpha^2=c\alpha_1$ with $c=1\otimes (2t+2)$ and $2t+2$ is not a
 square in $\mathbb{F}_{3^2}$, so this is impossible to choose a solution
-$\alpha$ such that $\alpha^2=\alpha_1$.
+$\alpha_2$ such that $\alpha_2^2=\alpha_1$.
 
-Now assume we choose $\zeta_4=2t$. In that case we want to solve
+Now assume we choose $\zeta_2=2t$. In that case we want to solve
 \[
   (\sigma\otimes\Id)(\alpha) = (1\otimes 2t)\alpha,
 \]
@@ -226,9 +226,17 @@ and we compute
   \alpha^2 = (1\otimes (t+1))\alpha_1.
 \]
 In that case, we get $c=1\otimes(t+1)$, but $t+1$ is not a square in
-$\mathbb{F}_{3^2}$ either. So, with the choice of $\alpha_2=t$, there is no root
-$\zeta_4$ such that we can find a solution $\alpha_4$ with
-$\alpha_4^2=\alpha_2$.
+$\mathbb{F}_{3^2}$ either. So, with the choice of $\alpha_1=t$, there is no root
+$\zeta_2$ such that we can find a solution $\alpha_2$ with
+$\alpha_2^2=\alpha_1$. Since the set of solutions of Hilbert 90 in
+$\mathbb{F}_{3^2}$ for the root $\zeta_1=-1$ is a $\mathbb{F}_3$ vector space of
+dimension one, there is only one other nonzero solution that is the opposite of
+the first one: $\alpha_1= -t$. Therefore, the same calculations would show that
+we get the coefficient $c=1\otimes (t+1)$ with the root $\zeta_2=t$ and
+$c=1\otimes(2t+2)$ with the root $\zeta_2=2t$. As a conclusion, there is no
+solution $\alpha_1$ of the Hilbert 90 problem in $\mathbb{F}_{3^2}$ that allows to
+find a compatible solution $\alpha_2$ in
+$\mathbb{F}_{3^4}\otimes\mathbb{F}_{3^2}$.
 
 \section{An idea of what is happening}
 Let $\mathbb{F}_{p^m}\cong K_1\emb K_2\cong \mathbb{F}_{p^n}$ be an extension,
@@ -247,9 +255,10 @@ so $\alpha_2^d$ is a solution of the Hilbert 90 problem for $1\otimes\zeta_1$ in
 $K_2\otimes k(\zeta_2)$ and moreover, we have that
 \begin{align*}
   (\sigma\otimes\Id)^m(\alpha_2^d) &= (1\otimes\zeta_1)^m\alpha_2^d \\
-  &= \alpha_2^d,
+  &= \alpha_2^d.
 \end{align*}
-so that $\alpha_2^d$ is in fact in $K_1\otimes k(\zeta_2)$, but is not in
-$K_1\otimes k(\zeta_1)$ in general, see Section~\ref{sec:p3l2} for an example.
+The element $\alpha_2^d$ is fixed by $\sigma^m\otimes\Id$,
+so $\alpha_2^d$ is in fact in $K_1\otimes k(\zeta_2)$, but is not in
+$K_1\otimes k(\zeta_1)$ in general, as we can see in Section~\ref{sec:p3l2}.
 
 \end{document}
