@@ -1,0 +1,63 @@
+\documentclass[a4paper,11pt]{article}
+
+\input{packages.tex}
+\input{tikz.tex}
+\input{thmstyle.tex}
+\input{macros.tex}
+
+% opening
+\title{Notes on compatible composita}
+\author{}
+
+
+
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+
+%\end{abstract}
+
+%\tableofcontents
+
+%\clearpage
+
+In this document, we investigate compatibility questions in the case of the
+compositum of two finite fields $\mathbb{F}_{p^m}$ and $\mathbb{F}_{p^n}$, where
+the integers $m$ and $n$ are coprime. In that case, the compositum is
+$\mathbb{F}_{p^{mn}}$. We denote by $\zeta_m$ (resp. $\zeta_n$) a primitive $m$-th 
+root of unity (resp. $n$-th). We set $\alpha_m$ a solution of Hilbert 90 in
+$\mathbb{F}_{p^m}\otimes\mathbb{F}_{p}(\zeta_m)$ for the root $1\otimes\zeta_m$,
+and we similarly set $\alpha_n$. Let now $u, v$ integers such that
+\[
+  un+vm = 1.
+\]
+We now set
+\[
+  \zeta=\zeta_m^u\zeta_n^v
+\]
+and 
+\[
+  \alpha=\alpha_m^u\alpha_n^v,
+\]
+such that $\zeta$ is a primitive $mn$-th root of unity, $\zeta^m=\zeta_n$,
+$\zeta^n=\zeta_m$ and $\alpha$ is a
+solution of Hilbert 90 in $\mathbb{F}_{p^{mn}}\otimes\mathbb{F}_{p}(\zeta)$ for
+the root $1\otimes\zeta$. We also have that
+\[
+  (\sigma\otimes\Id)(\alpha^n) = (1\otimes\zeta_m)\alpha^n
+\]
+and
+\[
+  (\sigma\otimes\Id)(\alpha^m) = (1\otimes\zeta_n)\alpha^m
+\]
+but nor necessarily $\alpha^n=\alpha_m$ and $\alpha^m=\alpha_n$. In fact we have 
+\begin{align*}
+  \alpha^n &= \alpha_m^{un}\alpha_n^{vn} \\
+  &= \alpha_m^{1-vm}a_n^v \\
+  &= \cfrac{a_n^v}{a_m^v}\alpha_m
+\end{align*}
+where $a_m=\alpha_m^m\in\mathbb{F}_p(\zeta_m)$ and $a_n =
+\alpha_n^n\in\mathbb{F}_p(\zeta_n)$.
+\end{document}
