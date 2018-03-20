@@ -29,7 +29,7 @@ the integers $m$ and $n$ are coprime. In that case, the compositum is
 $\mathbb{F}_{p^{mn}}$. We denote by $\zeta_m$ (resp. $\zeta_n$) a primitive $m$-th 
 root of unity (resp. $n$-th). We set $\alpha_m$ a solution of Hilbert 90 in
 $\mathbb{F}_{p^m}\otimes\mathbb{F}_{p}(\zeta_m)$ for the root $1\otimes\zeta_m$,
-and we similarly set $\alpha_n$. Let now $u, v$ integers such that
+and we similarly set $\alpha_n$. Let now $u, v$ be integers such that
 \[
   un+vm = 1.
 \]
@@ -52,12 +52,16 @@ and
 \[
   (\sigma\otimes\Id)(\alpha^m) = (1\otimes\zeta_n)\alpha^m
 \]
-but nor necessarily $\alpha^n=\alpha_m$ and $\alpha^m=\alpha_n$. In fact we have 
+but not necessarily $\alpha^n=\alpha_m$ and $\alpha^m=\alpha_n$. In fact we have 
 \begin{align*}
   \alpha^n &= \alpha_m^{un}\alpha_n^{vn} \\
   &= \alpha_m^{1-vm}a_n^v \\
   &= \cfrac{a_n^v}{a_m^v}\alpha_m
 \end{align*}
 where $a_m=\alpha_m^m\in\mathbb{F}_p(\zeta_m)$ and $a_n =
-\alpha_n^n\in\mathbb{F}_p(\zeta_n)$.
+\alpha_n^n\in\mathbb{F}_p(\zeta_n)$. We also get
+\[
+  \alpha^m = \cfrac{a_m^u}{a_n^u}\alpha_n
+\]
+in the same way.
 \end{document}
