@@ -64,4 +64,63 @@ where $a_m=\alpha_m^m\in\mathbb{F}_p(\zeta_m)$ and $a_n =
   \alpha^m = \cfrac{a_m^u}{a_n^u}\alpha_n
 \]
 in the same way.
+\section{Example with $p=7$, $m=2$, $n=3$}
+Let us start with an example where we do not have to worry about tensor
+products, because all the needed roots are in the prime field. We take $p=7$,
+$m=2$ and $n=3$. Since $p-1=6$ is divisible by both $2$ and $3$, we have
+primitive $2$-th and $3$-th roots of unity in $\mathbb{F}_7$. We investigate the
+possible embeddings $\mathbb{F}_{7^2}\emb\mathbb{F}_{7^6}$ and
+$\mathbb{F}_{7^3}\emb\mathbb{F}_{7^6}$, as shown in Figure~\ref{fig:p7}.
+\begin{figure}
+  \centering
+\begin{tikzpicture}
+  \node (1) at (0,0) {$\mathbb{F}_{7}$};
+  \node (2) at (-1,1) {$\mathbb{F}_{7^2}$};
+  \node (3) at (1,1) {$\mathbb{F}_{7^3}$};
+  \node (6) at (0,2) {$\mathbb{F}_{7^6}$};
+
+  \draw (1) -- (2);
+  \draw (1) -- (3);
+  \draw (2) -- (6);
+  \draw (3) -- (6);
+\end{tikzpicture}
+\phantom{and}
+\begin{tikzpicture}
+  \node (1) at (0,0) {$1$};
+  \node (-1) at (-1,1) {$-1$};
+  \node (2) at (0.8,1) {$2$};
+  \node (4) at (1.2,1) {$4$};
+  \node (3) at (-0.4,2) {$3$};
+  \node (5) at (0.4,2) {$5$};
+
+  \draw (1) -- (2);
+  \draw (1) -- (-1);
+  \draw (1) -- (4);
+  \draw (-1) -- (3);
+  \draw (-1) -- (5);
+  \draw (2) -- (3);
+  \draw (4) -- (5);
+\end{tikzpicture}
+  \caption{Compositum with $p=7$, $m=2$, $n=3$, and the associated roots.}
+  \label{fig:p7}
+\end{figure}
+In the same picture, we see that we have one primitive $2$-th root of unity that
+is $-1$, two primitive $3-th$ roots of unity that are $2$ and $4$ and two
+primitive $6$-th roots of unity that are $3$ and $5$. We have the compatibility
+relations $3^3=5^3=-1$, $3^2=2$ and $5^2=4$.
+
+We define 
+\[
+  \mathbb{F}_{7^2}\cong \mathbb{F}_7[y]/(y^2-3)\cong \mathbb{F}_7(u),
+\]
+\[
+  \mathbb{F}_{7^3}\cong \mathbb{F}_7[x]/(x^3-2)\cong \mathbb{F}_7(t),
+\]
+and
+\[
+  \mathbb{F}_{7^6}\cong \mathbb{F}_7[z]/(z^6-5)\cong \mathbb{F}_7(w).
+\]
+We embed $\mathbb{F}_{7^2}$ in $\mathbb{F}_{7^6}$ by sending $u$ to $w^3$ and we
+embed $\mathbb{F}_{7^3}$ in $\mathbb{F}_{7^6}$ by sending $t$ to $3w^4$.
+
 \end{document}

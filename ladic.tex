@@ -1,0 +1,110 @@
+\documentclass[a4paper,11pt]{article}
+
+\input{packages.tex}
+\input{tikz.tex}
+\input{thmstyle.tex}
+\input{macros.tex}
+
+% opening
+\title{Some notes on the compatibility of embeddings using Allombert's algorithm}
+\author{}
+
+
+
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+
+%\end{abstract}
+
+%\tableofcontents
+
+%\clearpage
+
+\section{Towers of $\ell$-adic extensions}
+
+Let $p$ be a prime number, we are interested in the tower of extensions of
+$k=\mathbb{F}_p$ of degree $\ell^i$, where $\ell\neq p$ is an other prime
+number and $i\in\mathbb{N}$ is an integer. For each $i$, we denote by
+$K_i=\mathbb{F}_{p^{\ell^i}}$ the extension of degree $\ell^i$, $\zeta_i$ a
+$\ell^i$-th primitive root of unity and $r_i$ the integer such that
+$k(\zeta_i)\cong\mathbb{F}_{p^{r_i}}$. We also denote by $A_i=K_i\otimes
+k(\zeta_i)$ the algebra used to solve Hilbert 90 problems, and $\alpha_i\in A_i$ the
+solution that we use.
+
+We have $r_1=\omega_{(\mathbb{Z}/\ell\mathbb{Z})^\times}(p)$, where
+$\omega_{(\mathbb{Z}/\ell\mathbb{Z})^\times}(p)$ denotes the order of $p$ in
+$(\mathbb{Z}/\ell\mathbb{Z})^\times$. If we denote by $\upsilon=v_\ell(p^{r_1}-1)$
+the $\ell$-adic valuation of $p^{r_1}-1$, we get 
+\[
+  r_1 = r_2 = \cdots = r_{\upsilon},
+\]
+and if $i\geq\upsilon$, we have $r_{i+1}=\ell r_i$.
+
+Assume we have an integer $n\in\mathbb{N}$, a root
+$\zeta_n$ and a solution of Hilbert 90 $\alpha_n\in A_n$. We are interested in
+constructing the embedding $K_n\emb K_{n+1}$, using Allombert's algorithm. We
+first compute 
+\[
+  g = \gcd(\pi_n(x^\ell), \Phi_{\ell^{n+1}}(x)),
+\]
+where $\pi_n$ is the minimal polynomial of $\zeta_n$ over $k$ and
+$\Phi_{\ell^{n+1}}$ is the $\ell^{n+1}$-th cyclotomic polynomial. We set
+$\pi_{n+1}$ to be an irreducicle factor of $g$ and we take $\zeta_{n+1}$ a root
+of $\pi_{n+1}$. We then define $A_{n+1}=K_{n+1}\otimes k(\zeta_{n+1})$ and
+\[
+\begin{array}{cccc}
+  N: & K_{n+1}\otimes k(\zeta_{n+1}) & \to & K_{n+1}\otimes k(\zeta_n) \\
+  & x\otimes y & \mapsto & \prod_{j=0}^{\ell-1} x \otimes \sigma^{jr_n}(y)
+\end{array}
+\]
+where $\sigma$ is the Frobenius automorphism of $k$. In other words, given
+$\gamma=x\otimes y\in A_{n+1}$, if $r_{n+1}=r_n$, we have $N(\gamma) =
+\gamma^\ell$, and if $r_{n+1}=\ell r_n$, we have $N(\gamma) = x^\ell\otimes
+N_{k(\zeta_{n+1})/k(\zeta_n)}(y)$, where $N_{k(\zeta_{n+1})/k(\zeta_n)}$ is the
+norm of $k(\zeta_{n+1})$ over $k(\zeta_n)$. 
+
+We embed $k(\zeta_n)$ in $k(\zeta_{n+1})$ by sending $\zeta_n$ to
+$\zeta_{n+1}^\ell$. With that choice we have that
+\[
+  N(1\otimes\zeta_{n+1})=1\otimes\zeta_n.
+\]
+We also see that $N$ and $\sigma\otimes1$ commute, and for any $\alpha,
+\beta\in A_{n+1}$, we have that \[
+  N(\alpha\beta) = N(\alpha)N(\beta).
+\]
+So if $\beta\in A_{n+1}$ is a nonzero solution of the Hilbert 90 problem in $A_{n+1}$ for
+$1\otimes\zeta_{n+1}$, \ie
+\[
+  (\sigma\otimes 1)(\beta) = (1\otimes\zeta_{n+1})\beta,
+\]
+then $N(\beta)$ is a nonzero solution of Hilbert 90 for $1\otimes\zeta_n$:
+\begin{align*}
+  (\sigma\otimes1)(N(\beta)) &= N((\sigma\otimes1)(\beta)) \\
+  &= N(1\otimes\zeta_{n+1})N(\beta) \\
+  &= (1\otimes\zeta_n)N(\beta).
+\end{align*}
+This also implies that $N(\beta)$ is in fact in $A_n$, so we have that
+\[
+  N(\beta) = (1\otimes a)\alpha_n,
+\]
+with $1\otimes a\in 1\otimes k(\zeta_n)$ and $a\neq0$, because the solutions of Hilbert 90 in $A_n$
+form a $k(\zeta_n)$ vector space of dimension $1$. We now want to find an
+element $1\otimes b\in1\otimes k(\zeta_{n+1})$ such that $N(1\otimes b)=1\otimes a^{-1}$. We distinguish two
+cases: $r_{n+1}=\ell r_n$ and $r_{n+1}=r_n$.
+
+Let us first assume that $r_{n+1}=\ell r_n$, it means that $k(\zeta_n)\subsetneq
+k(\zeta_{n+1})$ and that $N$ operates as the norm
+$N_{k(\zeta_{n+1})/k(\zeta_n)}$ on the right side of $A_{n+1}$. Since this norm
+is surjective we can find the  element $b$ such that $N(1\otimes b)=1\otimes a^{-1}$ and
+we set $\alpha_{n+1}= (1\otimes b)\beta$, in order to have
+$N(\alpha_{n+1})=\alpha_n$. In order to compute $b$ we remark that either
+$a^{-1}$ is a $\ell$-th power in $k(\zeta_n)$, or the polynomial
+$X^\ell-a^{-1}$ is irreducible in $k(\zeta_n)[X]$, so computing an $\ell$-th
+root of $a^{-1}$ is sufficient.
+
+In the case where $r_{n+1}=r_n$, there is only one of the $\ell$ possible roots
+$\zeta_{n+1}$ such that $a$ is a $\ell$-th power.
+\end{document}
