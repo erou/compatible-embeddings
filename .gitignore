@@ -223,4 +223,10 @@ TSWLatexianTemp*
 *.jl
 
 # jupyter notebook files
-.ipynb*
+*.ipynb
+
+# Images
+imgs
+
+# Misc
+plan-abstract.md
