@@ -13,6 +13,10 @@
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
+\usepackage{fancyvrb}
+
+%\input{jupyter.tex}
+
 \usepackage{tikz}
 
 % Tikz style
@@ -227,7 +231,7 @@ commute. In the context of a computer algebra system, this condition is
 important in order to give the user coherent answers when performing operations
 in different fields. This is the case when computing in the algebraic closure of a
 finite field, because the ambient field may change often. There are also
-applications in isogeny-based or pairing-based cryptography.
+applications in isogeny-based~\cite{Defeo17} or pairing-based cryptography.
 We note $E\emb F$ if $E$ is explicitly embedded in $F$, \ie if
 we have computed an embedding $\embed{E}{F}$.
 \begin{figure}
@@ -271,7 +275,7 @@ Bosma, Cannon and Steel suggested another scheme~\cite{BCS97} in which they
 give an axiomatic characterization of a lattice of compatibly embedded finite
 fields. Their method does not require any precomputation and enables to work in
 any user-defined finite field. However, embedding a new finite field requires
-polynomial factorization and leads to a quadratic cost in the extension degree.
+polynomial factorization and leads to a cost strictly larger than quadratic in the extension degree.
 Given a pair $\mathfrak L=(L, \Phi)$, where
 $L$ is a set of finite fields and $\Phi$ is a set of embeddings between
 elements of $L$, we say that $\mathfrak L$ is a \emph{lattice of compatibly
@@ -329,13 +333,48 @@ to compute compatible embeddings between them, it is also possible to compute a 
 field to a subfield: \ie a map that sends an element to its inverse image when
 the element is in the subfield, and throw an error otherwise. All these
 computations are automatic and invisible to the user, except if he or she wants
-to work with the maps themselves.
+to work with the maps themselves. All the computed embeddings are kept in
+memory so that the same work is not done twice. Together with conditions CE5 and
+CE6, this leads to many embeddings being stored behind the scenes. Here is an
+example of a minimal session using our code.
+
+\begin{minipage}{0.45\textwidth}
+  \begin{Verbatim}[commandchars=\\\{\}]
+
+\textcolor{red}{In:}  p = 5
+     k2, x2 = FiniteField(p, 2, ``x2'')
+     k4, x4 = FiniteField(p, 4, ``x4'')
+     k8, x8 = FiniteField(p, 8, ``x8'')
+     f2_4 = embed(k2, k4)
+     y = f2_4(x2)
+\textcolor{blue}{Out:} x4ˆ3+x4^2+x4+3 
+
+\textcolor{red}{In:}  y^(p^2) ==  y
+\textcolor{blue}{Out:} true 
+  \end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+  \begin{Verbatim}[commandchars=\\\{\}]
+
+\textcolor{red}{In:}  f2_8 = embed(k2, k8)
+     f4_8 = embed(k4, k8)
+     f2_8(x2) == f4_8(f2_4(x2))
+\textcolor{blue}{Out:} true
+
+\textcolor{red}{In:}  z = k8(x4^2+1)
+\textcolor{blue}{Out:} 3*x8^6+4*x8^5+3*x8^3+4*x8+2
+
+\textcolor{red}{In:}  k4(z)
+\textcolor{blue}{Out:} x4^2+1
+  \end{Verbatim}
+\end{minipage}
 
 \paragraph{Future work}
 
-The code has yet to be optimised: condition CE5 could be droped and the
-``transitive closure'' of our lattice would be computed only if needed by the
-user. Some technical computations inside the framework could also be optimised
+The code has yet to be optimised: condition CE5 could be fulfilled lazily by
+computing the embeddings only when needed by the user. This would prevent the
+storage of useless embeddings. Some technical computations inside the framework could also be optimised
 using non-naive algorithms or by being written in C instead of Julia. Finally,
 the embedding algorithm used by Bosma,
 Canon and Steel (the naive algorithm) is not optimal either. Replacing the naive
