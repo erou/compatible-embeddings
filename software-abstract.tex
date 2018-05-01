@@ -275,7 +275,8 @@ Bosma, Cannon and Steel suggested another scheme~\cite{BCS97} in which they
 give an axiomatic characterization of a lattice of compatibly embedded finite
 fields. Their method does not require any precomputation and enables to work in
 any user-defined finite field. However, embedding a new finite field requires
-polynomial factorization and leads to a cost strictly larger than quadratic in the extension degree.
+polynomial factorization and leads to a cost strictly larger than quadratic in
+the extension degree~\cite{BDDFS17}.
 Given a pair $\mathfrak L=(L, \Phi)$, where
 $L$ is a set of finite fields and $\Phi$ is a set of embeddings between
 elements of $L$, we say that $\mathfrak L$ is a \emph{lattice of compatibly
@@ -317,8 +318,8 @@ $F$ in $G$, for each subfield $S$ of $G$, we check that the finite field $S\cap 
 embedded in $S$ and $F$, and if not, we embed it. If there is not
 any finite field of degree $d=\gcd(\partial(S), \dF)$, we compute an
 arbitrary finite field $I$ of degree $d$ using Flint
-and we embed $I$ in $S$ and $F$. This results in a recursive call to our
-embedding algorithm, so the complexity of the operation might explode at that step.
+and we embed $I$ in $S$ and $F$, resulting in a recursive call to our
+embedding algorithm. 
 
 Our code is available as an experimental branch of
 Nemo\footnote{\url{https://github.com/erou/Nemo.jl/tree/embeddings}}, that is
@@ -329,22 +330,27 @@ computed by Flint, whereas high level tasks (\eg checking conditions CE5 and CE6
 written in Julia using Nemo. Our goal is to first include the C code inside the
 standard Flint library and then the Julia code in Nemo.
 With our experimental code, it is possible to define arbitrary finite fields and
-to compute compatible embeddings between them, it is also possible to compute a ``projection'' of a
+to compute compatible embeddings between them, it is also possible to compute a
+section of a
 field to a subfield: \ie a map that sends an element to its inverse image when
 the element is in the subfield, and throw an error otherwise. All these
-computations are automatic and invisible to the user, except if he or she wants
+computations are automatic and tranparent to the user, except if he or she wants
 to work with the maps themselves. All the computed embeddings are kept in
 memory so that the same work is not done twice. Together with conditions CE5 and
 CE6, this leads to many embeddings being stored behind the scenes. Here is an
-example of a minimal session using our code.
+example of a minimal session using our code\footnote{A longer one is available
+  at
+  \url{https://mybinder.org/v2/gh/defeo/Nemo-embeddings-demo/master?filepath=demo.ipynb}.}.
 
 \begin{minipage}{0.45\textwidth}
   \begin{Verbatim}[commandchars=\\\{\}]
 
 \textcolor{red}{In:}  p = 5
+     \textcolor{gray}{# We create k2 = F_5(x2) = F_25}
      k2, x2 = FiniteField(p, 2, ``x2'')
      k4, x4 = FiniteField(p, 4, ``x4'')
      k8, x8 = FiniteField(p, 8, ``x8'')
+     \textcolor{gray}{# We compute the embedding k2->k4}
      f2_4 = embed(k2, k4)
      y = f2_4(x2)
 \textcolor{blue}{Out:} x4ˆ3+x4^2+x4+3 
@@ -359,10 +365,12 @@ example of a minimal session using our code.
 
 \textcolor{red}{In:}  f2_8 = embed(k2, k8)
      f4_8 = embed(k4, k8)
+     \textcolor{gray}{# We check the compatibility}
      f2_8(x2) == f4_8(f2_4(x2))
 \textcolor{blue}{Out:} true
 
-\textcolor{red}{In:}  z = k8(x4^2+1)
+\textcolor{red}{In:}  \textcolor{gray}{# We can directly call k8 } 
+     z = k8(x4^2+1)
 \textcolor{blue}{Out:} 3*x8^6+4*x8^5+3*x8^3+4*x8+2
 
 \textcolor{red}{In:}  k4(z)
