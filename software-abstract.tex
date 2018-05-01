@@ -102,7 +102,9 @@
 \begin{document}
 \maketitle
 
-Finite fields are widely used in mathematics and their applications. As a
+Finite fields are widely used in mathematics and their applications. They are
+often the building block of more complicated algebraic structure used in
+cryptology or coding theory. As a
 consequence, several computer algebra systems or libraries have been written in
 order to work in arbitrary finite fields. Among them, we find
 Magma~\cite{Magma}, Sage~\cite{Sagemath}, Flint~\cite{Flint}, NTL~\cite{NTL} or
@@ -110,25 +112,24 @@ PARI~\cite{Pari}. Many problems require not only to work in a given finite field
 $K$, but also in finite extensions of $K$, as represented in
 Figure~\ref{fig:alg-closure}, that are again finite fields, or in
 the algebraic closure of $K$. In particular, it is desirable to be able to
-freely move from a field to a subfield or an extension.
+freely \emph{move} from a field to a subfield or an extension.
 
-Given two finite fields $E$ and $F$ with cardinalities $|E|=p^{m}$ and
-$|F|=p^{n}$, we know that $E$ can be embedded in $F$ if and only if $m\,|\,n$.
+Given two finite fields $E$ and $F$ with cardinalities $\#E=p^{m}$ and
+$\#F=p^{n}$, we know that $E$ can be embedded in $F$ if and only if $m\,|\,n$.
 In other words, $E$ is in that case isomorphic to a subfield $E'\subset F$ of
 $F$ with
-cardinality $|E'|=p^{m}$. There are
-$m=[E:\mathbb{F}_p]=|\Gal(E/\mathbb{F}_p)|$ disctinct embeddings from $E$ to
+cardinality $\#E'=p^{m}$. There are
+$m=[E:\mathbb{F}_p]=\#\Gal(E/\mathbb{F}_p)$ disctinct embeddings from $E$ to
 $F$ (the degree of $E$ over $\mathbb{F}_p$ will also be denoted by
 $\partial(E)$). Indeed, the Galois group of the extension $E$ over
 $\mathbb{F}_p$ acts
 on the embeddings and, given two different embeddings $\embed{E}{F}$ and
 $\embed{E}{F}'$ and an element $x\in E$, the images $\embed{E}{F}(x)$ and
-$\embed{E}{F}'(x)$ must be conjugates. There is no cannonical
+$\embed{E}{F}'(x)$ must be conjugate. There is no canonical
 embedding from $E$ to $F$. Furthermore, the proof of the fact that $E$ can be
-embedded in $F$ if and only if $\dE\,|\,\dF$ is not constructive, so computing
-the
-embedding is itself a challenging problem, and there exists a variety of
-solutions~\cite{BDDFS17} to construct towers of extensions and composita.
+embedded in $F$ if and only if $\dE\,|\,\dF$ does not give an efficient
+algorithm. Finding such an algorithm is an interesting problem, and there exists
+a variety of solutions, see for example the survey paper~\cite{BDDFS17}.
 
 \begin{figure}
   \centering
@@ -222,7 +223,12 @@ embeddings are \emph{compatible} if
   \embed{E}{G}=\embed{F}{G}\circ\embed{E}{F}.
 \]
 In other words, we want the diagram of Figure~\ref{fig:compatibility} to
-commute. We note $E\emb F$ if $E$ is explicitly embedded in $F$, \ie if
+commute. In the context of a computer algebra system, this condition is
+important in order to give the user coherent answers when performing operations
+in different fields. This is the case when computing in the algebraic closure of a
+finite field, because the ambient field may change often. There are also
+applications in isogeny-based or pairing-based cryptography.
+We note $E\emb F$ if $E$ is explicitly embedded in $F$, \ie if
 we have computed an embedding $\embed{E}{F}$.
 \begin{figure}
   \centering
@@ -246,7 +252,7 @@ we have computed an embedding $\embed{E}{F}$.
 
 \paragraph{Compatibility}
 
-Compatibility can be achieved using \emph{Conway polynomials}, a set $\left\{
+Compatibility can be achieved using \emph{Conway polynomials}~\cite{Parker90, HL98}, a set $\left\{
 P_d \right\}_{d\in D}$ of
 irreducible polynomials over $\mathbb{F}_p$ such that any root $\beta_d$ of
 $P_d$ is primitive in $\mathbb{F}_{p}[X]/(P_d(X))\cong \mathbb{F}_{p^d}$ and
@@ -257,13 +263,16 @@ the norm of $\mathbb{F}_{p^{d_2}}$ over $\mathbb{F}_{p^{d_1}}$. A compatible
 embedding of $\mathbb{F}_{p^{d_1}}$ in $\mathbb{F}_{p^{d_2}}$ is then obtained
 by sending $\beta_{d_1}$ to $\beta_{d_2}^k$, with $k=(p^{d_2}-1)/(p^{d_1}-1)$.
 By adding a minimality condition with respect to some ordering, this provides a
-way of constructing standardized finite field extensions. But Conway polynomials
+way of constructing standardized finite field extensions. However Conway polynomials
 are hard to compute, so in practice this technique can only be used with rather
 small fields.
 
 Bosma, Cannon and Steel suggested another scheme~\cite{BCS97} in which they
 give an axiomatic characterization of a lattice of compatibly embedded finite
-fields. Given a pair $\mathfrak L=(L, \Phi)$, where
+fields. Their method does not require any precomputation and enables to work in
+any user-defined finite field. However, embedding a new finite field requires
+polynomial factorization and leads to a quadratic cost in the extension degree.
+Given a pair $\mathfrak L=(L, \Phi)$, where
 $L$ is a set of finite fields and $\Phi$ is a set of embeddings between
 elements of $L$, we say that $\mathfrak L$ is a \emph{lattice of compatibly
 embedded finite fields} if
@@ -307,24 +316,36 @@ arbitrary finite field $I$ of degree $d$ using Flint
 and we embed $I$ in $S$ and $F$. This results in a recursive call to our
 embedding algorithm, so the complexity of the operation might explode at that step.
 
+Our code is available as an experimental branch of
+Nemo\footnote{\url{https://github.com/erou/Nemo.jl/tree/embeddings}}, that is
+itself based on an experimental branch of
+Flint\footnote{\url{https://github.com/defeo/flint2/tree/embeddings}}. Critical
+routines (\eg polynomial factorization, matrix computations) are written in C and
+computed by Flint, whereas high level tasks (\eg checking conditions CE5 and CE6) are
+written in Julia using Nemo. Our goal is to first include the C code inside the
+standard Flint library and then the Julia code in Nemo.
 With our experimental code, it is possible to define arbitrary finite fields and
 to compute compatible embeddings between them, it is also possible to compute a ``projection'' of a
 field to a subfield: \ie a map that sends an element to its inverse image when
 the element is in the subfield, and throw an error otherwise. All these
 computations are automatic and invisible to the user, except if he or she wants
-to work with the maps themself.
+to work with the maps themselves.
 
 \paragraph{Future work}
 
 The code has yet to be optimised: condition CE5 could be droped and the
 ``transitive closure'' of our lattice would be computed only if needed by the
 user. Some technical computations inside the framework could also be optimised
-using different algorithms. Finally, the embedding algorithm used by Bosma,
+using non-naive algorithms or by being written in C instead of Julia. Finally,
+the embedding algorithm used by Bosma,
 Canon and Steel (the naive algorithm) is not optimal either. Replacing the naive
 algorithm by more sophisticated algorithm requires both theoretic work and some
 new implementations. An important question is whether a ``standardized''
 construction can be found for these algorithms, similar to the one obtained
-using Conway polynomials.
+using Conway polynomials. Contrary to Bosma, Canon and Steel framework, Conway
+polynomials also permit to simply obtain the generator of a field from the
+generator of another field using norms. We aim to be able to do the same thing,
+by memorizing a little more than the generators of our finite fields.
 
 \bibliographystyle{plain}
 \bibliography{erou}
