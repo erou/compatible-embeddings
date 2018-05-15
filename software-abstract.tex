@@ -338,15 +338,15 @@ computations are automatic and tranparent to the user, except if he or she wants
 to work with the maps themselves. All the computed embeddings are kept in
 memory so that the same work is not done twice. Together with conditions CE5 and
 CE6, this leads to many embeddings being stored behind the scenes. Here is an
-example of a minimal session using our code\footnote{A longer one is available
-  at
+example of a minimal session using our code\footnote{A longer and
+  interactive one is available at
   \url{https://mybinder.org/v2/gh/defeo/Nemo-embeddings-demo/master?filepath=demo.ipynb}.}.
 
 \begin{minipage}{0.45\textwidth}
   \begin{Verbatim}[commandchars=\\\{\}]
 
 \textcolor{red}{In:}  p = 5
-     \textcolor{gray}{# We create k2 = F_5(x2) = F_25}
+     \textcolor{gray}{# We create k2 = GF(25) = GF(5)[x2]}
      k2, x2 = FiniteField(p, 2, ``x2'')
      k4, x4 = FiniteField(p, 4, ``x4'')
      k8, x8 = FiniteField(p, 8, ``x8'')
@@ -355,7 +355,8 @@ example of a minimal session using our code\footnote{A longer one is available
      y = f2_4(x2)
 \textcolor{blue}{Out:} x4ˆ3+x4^2+x4+3 
 
-\textcolor{red}{In:}  y^(p^2) ==  y
+\textcolor{red}{In:}  \textcolor{gray}{# We check that y is in GF(25)} 
+     y^(p^2) ==  y
 \textcolor{blue}{Out:} true 
   \end{Verbatim}
 \end{minipage}
@@ -369,7 +370,8 @@ example of a minimal session using our code\footnote{A longer one is available
      f2_8(x2) == f4_8(f2_4(x2))
 \textcolor{blue}{Out:} true
 
-\textcolor{red}{In:}  \textcolor{gray}{# We can directly call k8 } 
+\textcolor{red}{In:}  \textcolor{gray}{# We can directly see x4^2+1} 
+     \textcolor{gray}{# as an element of k8} 
      z = k8(x4^2+1)
 \textcolor{blue}{Out:} 3*x8^6+4*x8^5+3*x8^3+4*x8+2
 
