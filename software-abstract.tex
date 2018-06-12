@@ -8,22 +8,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[OT1]{fontenc}
 
-\usepackage{algorithm}
-\usepackage{algorithmic}
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
-
 \usepackage{fancyvrb}
-
-%\input{jupyter.tex}
 
 \usepackage{tikz}
 
 % Tikz style
 
-\tikzset{round/.style={circle, draw=black, very thick, scale = 0.7}}
 \tikzset{arrow/.style={->, >=latex}}
-\tikzset{dashed-arrow/.style={->, >=latex, dashed}}
 
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
@@ -44,8 +35,6 @@
 \DeclareMathOperator{\Minpoly}{Minpoly}
 \DeclareMathOperator{\Mod}{mod}
 \DeclareMathOperator{\Ord}{Ord}
-\DeclareMathOperator{\ppcm}{ppcm}
-\DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Vect}{Vect}
 
 % Shortcuts
@@ -53,35 +42,16 @@
 \newcommand{\dE}{\partial(E)}
 \newcommand{\dF}{\partial(F)}
 \newcommand{\dG}{\partial(G)}
-\newcommand{\diff}{\mathop{}\!\mathrm{d}}
 \newcommand{\eg}{\emph{e.g. }}
 \newcommand{\emb}{\hookrightarrow}
 \newcommand{\embed}[2]{\phi_{#1\hookrightarrow#2}}
-\newcommand{\ent}[2]{[\![#1,#2]\!]}
 \newcommand{\ie}{\emph{i.e. }}
-\newcommand{\ps}[2]{\left\langle#1,#2\right\rangle}
 \newcommand{\FF}{\mathbb{F}}
-
-
-
-\def\Q {\ensuremath{\mathbb{Q}}}
-\def\Z {\ensuremath{\mathbb{Z}}}
-\def\F {\ensuremath{\mathbb{F}}}
-\def\Tr {\ensuremath{\mathrm{Tr}}}
-
-\def\M {\ensuremath{\mathsf{M}}}
-
-\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
-
-\newtheorem{Def}{Definition}
-\newtheorem{Theo}{Theorem}
-\newtheorem{Prop}{Proposition}
-\newtheorem{Lemma}{Lemma}
 
 \issue{TBA}
 \articlehead{TBA}
 \titlehead{Lattices of compatibly embedded finite fields}
-\authorhead{Luca De Feo, Hugues Randriambololona, Édouard Rousseau and Éric Schost}
+\authorhead{Luca De Feo, Hugues Randriambololona and Édouard Rousseau}
 \setcounter{page}{1}
 
 \title{Lattices of compatibly embedded finite fields}
@@ -96,10 +66,6 @@
   Édouard Rousseau\footnote{
     Télécom ParisTech and Université de Versailles,
     \url{edouard.rousseau@telecom-paristech.fr}
-  },
-  Éric Schost\footnote{
-    University of Waterloo
-    \url{eshost@uwaterloo.ca}
   }
 }
 
@@ -123,7 +89,7 @@ $\#F=p^{n}$, we know that $E$ can be embedded in $F$ if and only if $m\,|\,n$.
 In other words, $E$ is in that case isomorphic to a subfield $E'\subset F$ of
 $F$ with
 cardinality $\#E'=p^{m}$. There are
-$m=[E:\mathbb{F}_p]=\#\Gal(E/\mathbb{F}_p)$ disctinct embeddings from $E$ to
+$m=[E:\mathbb{F}_p]=\#\Gal(E/\mathbb{F}_p)$ distinct embeddings from $E$ to
 $F$ (the degree of $E$ over $\mathbb{F}_p$ will also be denoted by
 $\partial(E)$). Indeed, the Galois group of the extension $E$ over
 $\mathbb{F}_p$ acts
@@ -273,13 +239,13 @@ small fields.
 
 Bosma, Cannon and Steel suggested another scheme~\cite{BCS97} in which they
 give an axiomatic characterization of a lattice of compatibly embedded finite
-fields. Their method does not require any precomputation and enables to work in
+fields. Their method does not require any precomputation and enables one to work in
 any user-defined finite field. However, embedding a new finite field requires
 polynomial factorization and leads to a cost strictly larger than quadratic in
 the extension degree~\cite{BDDFS17}.
-Given a pair $\mathfrak L=(L, \Phi)$, where
+Following \cite{BCS97}, we say that a pair $\mathfrak L=(L, \Phi)$, where
 $L$ is a set of finite fields and $\Phi$ is a set of embeddings between
-elements of $L$, we say that $\mathfrak L$ is a \emph{lattice of compatibly
+elements of $L$, is a \emph{lattice of compatibly
 embedded finite fields} if
 \begin{enumerate}
   \item[CE1] (unicity) for each pair $(E, F)$ of elements in $L$, there exists
@@ -388,7 +354,7 @@ storage of useless embeddings. Some technical computations inside the framework 
 using non-naive algorithms or by being written in C instead of Julia. Finally,
 the embedding algorithm used by Bosma,
 Canon and Steel (the naive algorithm) is not optimal either. Replacing the naive
-algorithm by more sophisticated algorithm requires both theoretic work and some
+algorithm by a more sophisticated algorithm requires both theoretical work and some
 new implementations. An important question is whether a ``standardized''
 construction can be found for these algorithms, similar to the one obtained
 using Conway polynomials. Contrary to Bosma, Canon and Steel framework, Conway

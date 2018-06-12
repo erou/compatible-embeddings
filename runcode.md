@@ -8,3 +8,7 @@
 
 + go to the build.jl file in the Nemo deps
 + install the github/defeo Flint using the same options as in build.jl
+    * ./ configure -some stuff
+    * `make -j4`
+    * `sudo make install`
+    * `cp libflint.so* ../../local/lib/`
