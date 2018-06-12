@@ -50,11 +50,11 @@
 
 \issue{TBA}
 \articlehead{TBA}
-\titlehead{Lattices of compatibly embedded finite fields}
+\titlehead{Lattices of compatibly embedded finite fields in Nemo/Flint}
 \authorhead{Luca De Feo, Hugues Randriambololona and Édouard Rousseau}
 \setcounter{page}{1}
 
-\title{Lattices of compatibly embedded finite fields}
+\title{Lattices of compatibly embedded finite fields in Nemo/Flint}
 \author{Luca De Feo\footnote{
     Université de Versailles and Inria, Paris Saclay,
     \url{luca.de-feo@uvsq.fr}
@@ -71,6 +71,15 @@
 
 \begin{document}
 \maketitle
+
+\begin{abstract}
+ We present a software that allows the user to compute embeddings between
+ arbitrary finite fields. It is written using Julia and C, as part of Nemo and
+ Flint\cite{Nemo, Flint}. The software ensures compatibility between the
+ embeddings, so that the user can work with multiple fields and have coherent
+ results independently of where the computations are made and of where the
+ results are expressed.
+\end{abstract}
 
 Finite fields are widely used in mathematics and their applications. They are
 often the building block of more complicated algebraic structure used in
@@ -102,6 +111,7 @@ algorithm. Finding such an algorithm is an interesting problem, and there exists
 a variety of solutions, see for example the survey paper~\cite{BDDFS17}.
 
 \begin{figure}
+\begin{minipage}[b]{.46\linewidth}
   \centering
   \tikzset{
         dotstyle/.style={circle, inner sep = 1.2pt, outer sep = 4pt, fill =
@@ -182,25 +192,9 @@ a variety of solutions, see for example the survey paper~\cite{BDDFS17}.
   \end{tikzpicture}
   \caption{Extensions of $\mathbb{F}_p$.}
   \label{fig:alg-closure}
-\end{figure}
-
-
-Additionaly, we want the embeddings to be compatible. Given three finite 
-fields $E$, $F$, and $G$, such that $\dE\,|\,\dF$ and $\dF\,|\,\dG$, and three 
-embeddings $\embed{E}{F}$, $\embed{F}{G}$, and $\embed{E}{G}$, we say that the
-embeddings are \emph{compatible} if 
-\[
-  \embed{E}{G}=\embed{F}{G}\circ\embed{E}{F}.
-\]
-In other words, we want the diagram of Figure~\ref{fig:compatibility} to
-commute. In the context of a computer algebra system, this condition is
-important in order to give the user coherent answers when performing operations
-in different fields. This is the case when computing in the algebraic closure of a
-finite field, because the ambient field may change often. There are also
-applications in isogeny-based~\cite{Defeo17} or pairing-based cryptography.
-We note $E\emb F$ if $E$ is explicitly embedded in $F$, \ie if
-we have computed an embedding $\embed{E}{F}$.
-\begin{figure}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{.46\linewidth}
   \centering
     \begin{tikzpicture}
       \node (E) at (0, 0) {$E$}; 
@@ -218,8 +212,24 @@ we have computed an embedding $\embed{E}{F}$.
 
   \caption{Embeddings between finite fields.}
   \label{fig:compatibility}
+\end{minipage}
 \end{figure}
 
+Additionaly, we want the embeddings to be compatible. Given three finite 
+fields $E$, $F$, and $G$, such that $\dE\,|\,\dF$ and $\dF\,|\,\dG$, and three 
+embeddings $\embed{E}{F}$, $\embed{F}{G}$, and $\embed{E}{G}$, we say that the
+embeddings are \emph{compatible} if 
+\[
+  \embed{E}{G}=\embed{F}{G}\circ\embed{E}{F}.
+\]
+In other words, we want the diagram of Figure~\ref{fig:compatibility} to
+commute. In the context of a computer algebra system, this condition is
+important in order to give the user coherent answers when performing operations
+in different fields. This is the case when computing in the algebraic closure of a
+finite field, because the ambient field may change often. There are also
+applications in isogeny-based~\cite{Defeo17} or pairing-based cryptography.
+We note $E\emb F$ if $E$ is explicitly embedded in $F$, \ie if
+we have computed an embedding $\embed{E}{F}$.
 \paragraph{Compatibility}
 
 Compatibility can be achieved using \emph{Conway polynomials}~\cite{Parker90, HL98}, a set $\left\{
@@ -239,7 +249,7 @@ small fields.
 
 Bosma, Cannon and Steel suggested another scheme~\cite{BCS97} in which they
 give an axiomatic characterization of a lattice of compatibly embedded finite
-fields. Their method does not require any precomputation and enables one to work in
+fields. Their method, implemented in Magma, does not require any precomputation and enables one to work in
 any user-defined finite field. However, embedding a new finite field requires
 polynomial factorization and leads to a cost strictly larger than quadratic in
 the extension degree~\cite{BDDFS17}.
@@ -350,9 +360,7 @@ example of a minimal session using our code\footnote{A longer and
 
 The code has yet to be optimised: condition CE5 could be fulfilled lazily by
 computing the embeddings only when needed by the user. This would prevent the
-storage of useless embeddings. Some technical computations inside the framework could also be optimised
-using non-naive algorithms or by being written in C instead of Julia. Finally,
-the embedding algorithm used by Bosma,
+storage of useless embeddings. Moreover, the embedding algorithm used by Bosma,
 Canon and Steel (the naive algorithm) is not optimal either. Replacing the naive
 algorithm by a more sophisticated algorithm requires both theoretical work and some
 new implementations. An important question is whether a ``standardized''
