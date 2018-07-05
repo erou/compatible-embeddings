@@ -24,6 +24,7 @@
 %\clearpage
 
 \section{Towers of $\ell$-adic extensions, $\ell\neq2$}
+\label{sec:ladic}
 
 Let $p$ be a prime number, we are interested in the tower of extensions of
 $k=\mathbb{F}_p$ of degree $\ell^i$, where $\ell\notin\left\{ 2, p
@@ -70,7 +71,14 @@ norm of $k(\zeta_{n+1})$ over $k(\zeta_n)$.
 We embed $k(\zeta_n)$ in $k(\zeta_{n+1})$ by sending $\zeta_n$ to
 $\zeta_{n+1}^\ell$. With that choice we have that
 \[
-  N(1\otimes\zeta_{n+1})=1\otimes\zeta_n.
+  N(1\otimes\zeta_{n+1})=1\otimes\zeta_n.\footnote{If $r_{n+1}=r_n$,
+  $N(1\otimes\zeta_{n+1})=1\otimes\zeta_{n+1}^\ell$. If $r_{n+1}=\ell r_n$, it means that
+there are no roots of $X^\ell-\zeta_n$. Since there are $\ell$-roots of unity in
+$k(\zeta_n)$, the polynomial $X^\ell-\zeta_n$ is either irreducible or splits
+into linear polynomial over $k(\zeta_n)[X]$. The polynomial $X^\ell -\zeta_n$ is
+the minimal polynomial of $\zeta_{n+1}$ over $k(\zeta_n)$ and the product of its
+roots (\ie the norm of $\zeta_{n+1}$) is (up to the sign) the constant
+coefficient, so $N(1\otimes\zeta_{n+1})=1\otimes\zeta_n$.}
 \]
 We also see that $N$ and $\sigma\otimes1$ commute, and for any $\alpha,
 \beta\in A_{n+1}$, we have that \[
@@ -108,4 +116,79 @@ root of $a^{-1}$ is sufficient.
 
 In the case where $r_{n+1}=r_n$, there is only one of the $\ell$ possible roots
 $\zeta_{n+1}$ such that $a$ is a $\ell$-th power, at least for $\ell\neq2$.
+
+\section{Composita, $\ell\neq2$}
+
+The considerations in Section~\ref{sec:ladic} generalize to the case of
+embeddings between some composita, but not all of them. Let $m, n\in\mathbb{N}$
+two integers such that $m\,|\,n$ and such that for all prime $\ell$ such that
+$\ell\,|\,n$, we also have $\ell\,|\,m$. In other words, we want $m$ and $n$ to
+have the same set of primes in their factorization. Our goal is to extend the
+results of Section~\ref{sec:ladic} to the embedding
+$\mathbb{F}_{p^n}\emb\mathbb{F}_{p^m}$. Let us note 
+\[
+  n = \prod_i \ell_i^{\alpha_i}
+\]
+the factorization of $n$ into primes. For now, we also assume that for all $i$,
+we have 
+\[
+  \alpha_i\geq h(\ell_i)
+\]
+where, for any prime $\ell$, 
+\[
+  h(\ell) = v_\ell(p^{r_\ell}-1)
+\]
+with $v_\ell$ being the $\ell$-adic valuation and
+$r_\ell=\omega_{(\mathbb{Z}/\ell\mathbb{Z})^\times}(p)$ is the multiplicative
+order of $p$ in the group $(\mathbb{Z}/\ell\mathbb{Z})^\times$, meaning that
+$r_\ell$ is the number such that we have 
+\[
+  k(\zeta_\ell)=\mathbb{F}_p(\zeta_\ell)=\mathbb{F}_{p^{r_\ell}},
+\]
+where $\zeta_\ell$ refers to a $\ell$-th primitive root of unity.
+In the end, these numbers mean that given an integer $\nu\in\mathbb{N}$, if
+$1\leq\nu\leq h(\ell)$, we have
+\[
+  k(\zeta_{\ell^\nu}) = \mathbb{F}_{p^{r_\ell}},
+\]
+and if $\nu\geq h(\ell)$, we have
+\[
+  k(\zeta_{\ell^\nu}) = \mathbb{F}_{p^{\ell^{\nu-h(\ell)}\times r_\ell}}.
+\]
+Since $r_\ell\leq\ell-1$, these conditions on $n$ and $m$ are equivalent to the fact that
+\[
+  [k(\zeta_n):k(\zeta_m)] = n/m.
+\]
+
+We define $A_n=\mathbb{F}_{p^n}\otimes k(\zeta_n)$ and
+\[
+\begin{array}{cccc}
+  N_{n/m}: & A_n & \to & \mathbb{F}_{p^n}\otimes k(\zeta_m) \\
+  & x\otimes y & \mapsto & \prod_{j=0}^{n/m-1} x \otimes \sigma^{jd}(y)
+\end{array}
+\]
+
+where $d$ is the degree of the extension $k(\zeta_m)$ over $k$. We embed
+$k(\zeta_m)$ in $k(\zeta_n)$ by sending $\zeta_m$ to $\zeta_n^{n/m}$. With that
+choice we have that
+\[
+  N_{n/m}(1\otimes\zeta_n) = 1\otimes\zeta_m.
+\]
+Indeed, if $n = \ell m$ for a prime $\ell$ dividing $m$, the arguments of
+Section~\ref{sec:ladic} still hold and the more general case follows by
+transitivity of the ``norm'' $N$, \ie given $m\,|\,n\,|\,o$, we have
+$N_{o/m}=N_{n/m}\circ N_{o/n}$. As in the previous section, we see that
+$N_{n/m}$ is multiplicative and that if $\beta\in A_n$ is a nonzero solution of
+the Hilbert 90 problem in $A_n$ for $1\otimes\zeta_n$, then $N_{n/m}(\beta)$ is
+an element of $A_m$ and is a nonzero solution of Hilbert 90 for
+$1\otimes\zeta_m$. Therefore, as the solutions of Hilbert 90 in $A_m$ for
+$1\otimes\zeta_m$ form a dimension one $k(\zeta_m)$-vector space and since
+$N_{n/m}$ is the usual norm of the extension $k(\zeta_n)$ over $k(\zeta_m)$
+(which is surjective) on the right part of $A_n=\mathbb{F}_{p^n}\otimes
+k(\zeta_n)$, we can conclude that the compatibility can be achieved, as in
+Section~\ref{sec:ladic}.
+
+Now, if we have one $i$ with $\alpha_i\leq h(\ell_i)$, it is not clear how to
+extend the results of the last section.
+
 \end{document}
