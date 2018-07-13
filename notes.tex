@@ -66,7 +66,16 @@ where $\sigma$ is the Frobenius automorphism of $k$. In other words, given
 $\gamma=x\otimes y\in A_{n+1}$, if $r_{n+1}=r_n$, we have $N(\gamma) =
 \gamma^\ell$, and if $r_{n+1}=\ell r_n$, we have $N(\gamma) = x^\ell\otimes
 N_{k(\zeta_{n+1})/k(\zeta_n)}(y)$, where $N_{k(\zeta_{n+1})/k(\zeta_n)}$ is the
-norm of $k(\zeta_{n+1})$ over $k(\zeta_n)$. 
+norm of $k(\zeta_{n+1})$ over $k(\zeta_n)$. More generally, if $\gamma\in
+A_{n+1}$ is not a simple tensor, we define
+\[
+  N(\gamma) = \prod_{j=0}^{\ell-1}(1\otimes\sigma^{jr_n})(\gamma).
+\]
+We then have that
+\[
+  (1\otimes\sigma^{r_n})(N(\gamma)) = N(\gamma),
+\]
+so we still have $N(\gamma)\in K_{n+1}\otimes k(\zeta_n)$.
 
 We embed $k(\zeta_n)$ in $k(\zeta_{n+1})$ by sending $\zeta_n$ to
 $\zeta_{n+1}^\ell$. With that choice we have that
