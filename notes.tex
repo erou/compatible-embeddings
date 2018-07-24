@@ -26,107 +26,162 @@
 \section{Towers of $\ell$-adic extensions, $\ell\neq2$}
 \label{sec:ladic}
 
-Let $p$ be a prime number, we are interested in the tower of extensions of
-$k=\mathbb{F}_p$ of degree $\ell^i$, where $\ell\notin\left\{ 2, p
+Let $p$ be a prime number, we are interested in the tower of $\ell$-adic extensions of
+$k=\mathbb{F}_p$, where $\ell\notin\left\{ 2, p
 \right\}$ is an other prime
-number and $i\in\mathbb{N}$ is an integer. For each $i$, we denote by
-$K_i=\mathbb{F}_{p^{\ell^i}}$ the extension of degree $\ell^i$, $\zeta_i$ a
-$\ell^i$-th primitive root of unity and $r_i$ the integer such that
-$k(\zeta_i)\cong\mathbb{F}_{p^{r_i}}$. We also denote by $A_i=K_i\otimes
-k(\zeta_i)$ the algebra used to solve Hilbert 90 problems, and $\alpha_i\in A_i$ the
+number. For each $i$, we denote by
+$\mathbb{F}_{p^{\ell^i}}$ the extension of degree $\ell^i$, $\zeta_{\ell^i}$ a
+$\ell^i$-th primitive root of unity and $r_{\ell^i}$ the integer such that
+$k(\zeta_{\ell^i})\cong\mathbb{F}_{p^{r_{\ell^i}}}$. We also denote by
+$A_{\ell^i}=\mathbb{F}_{p^{\ell^i}}\otimes
+k(\zeta_{\ell^i})$ the algebra used to solve Hilbert 90 problems, and
+$\alpha_{\ell^i}\in A_{\ell^i}$ the
 solution that we use.
 
-We have $r_1=\omega_{(\mathbb{Z}/\ell\mathbb{Z})^\times}(p)$, where
+We have $r_{\ell}=\omega_{(\mathbb{Z}/\ell\mathbb{Z})^\times}(p)$, where
 $\omega_{(\mathbb{Z}/\ell\mathbb{Z})^\times}(p)$ denotes the order of $p$ in
-$(\mathbb{Z}/\ell\mathbb{Z})^\times$. If we denote by $\upsilon=v_\ell(p^{r_1}-1)$
-the $\ell$-adic valuation of $p^{r_1}-1$, we get 
+$(\mathbb{Z}/\ell\mathbb{Z})^\times$. If we denote by $\upsilon=v_\ell(p^{r_\ell}-1)$
+the $\ell$-adic valuation of $p^{r_\ell}-1$, we get 
 \[
-  r_1 = r_2 = \cdots = r_{\upsilon},
+  r_\ell = r_{\ell^2} = \cdots = r_{\ell^{\upsilon}},
 \]
-and if $i\geq\upsilon$, we have $r_{i+1}=\ell r_i$.
+and if $i\geq\upsilon$, we have $r_{\ell^{i+1}}=\ell r_{\ell^i}$.
 
 Assume we have an integer $n\in\mathbb{N}$, a root
-$\zeta_n$ and a solution of Hilbert 90 $\alpha_n\in A_n$. We are interested in
-constructing the embedding $K_n\emb K_{n+1}$, using Allombert's algorithm. We
+$\zeta_{\ell^n}$ and a solution of Hilbert 90 $\alpha_{\ell^n}\in A_{\ell^n}$. We are interested in
+constructing the embedding $\mathbb{F}_{p^{\ell^n}}\emb
+\mathbb{F}_{p^{\ell^{n+1}}}$, using Allombert's algorithm. We
 first compute 
 \[
-  g = \gcd(\pi_n(x^\ell), \Phi_{\ell^{n+1}}(x)),
+  g = \gcd(\pi_{\ell^n}(x^\ell), \Phi_{\ell^{n+1}}(x)),
 \]
-where $\pi_n$ is the minimal polynomial of $\zeta_n$ over $k$ and
+where $\pi_{\ell^n}$ is the minimal polynomial of $\zeta_{\ell^n}$ over $k$ and
 $\Phi_{\ell^{n+1}}$ is the $\ell^{n+1}$-th cyclotomic polynomial. We set
-$\pi_{n+1}$ to be an irreducicle factor of $g$ and we take $\zeta_{n+1}$ a root
-of $\pi_{n+1}$. We then define $A_{n+1}=K_{n+1}\otimes k(\zeta_{n+1})$ and
+$\pi_{\ell^{n+1}}$ to be an irreducicle factor of $g$ and we take
+$\zeta_{\ell^{n+1}}$ a root
+of $\pi_{\ell^{n+1}}$. We then define
+$A_{\ell^{n+1}}=\mathbb{F}_{p^{\ell^{n+1}}}\otimes k(\zeta_{\ell^{n+1}})$ and
 \[
 \begin{array}{cccc}
-  N: & K_{n+1}\otimes k(\zeta_{n+1}) & \to & K_{n+1}\otimes k(\zeta_n) \\
-  & x\otimes y & \mapsto & \prod_{j=0}^{\ell-1} x \otimes \sigma^{jr_n}(y)
+  N_{\ell^{n+1}/\ell^n,\, \bm{\ell^{n+1}}}: & A_{\bm{\ell^{n+1}}} & \to &
+  A_{\bm{\ell^{n+1}}} \\
+  & \gamma & \mapsto & \prod_{j=0}^{\ell-1} (1 \otimes
+  \sigma^{jr_{\ell^n}})(\gamma)
 \end{array}
 \]
-where $\sigma$ is the Frobenius automorphism of $k$. In other words, given
-$\gamma=x\otimes y\in A_{n+1}$, if $r_{n+1}=r_n$, we have $N(\gamma) =
-\gamma^\ell$, and if $r_{n+1}=\ell r_n$, we have $N(\gamma) = x^\ell\otimes
-N_{k(\zeta_{n+1})/k(\zeta_n)}(y)$, where $N_{k(\zeta_{n+1})/k(\zeta_n)}$ is the
-norm of $k(\zeta_{n+1})$ over $k(\zeta_n)$. More generally, if $\gamma\in
-A_{n+1}$ is not a simple tensor, we define
+where $\sigma$ is the Frobenius automorphism of $k$. If the domain of the map is
+clear within the given context, we will omit the second index and only note
+$N_{\ell^{n+1}/\ell^n}$. We note that, in particular, given
+$\gamma=x\otimes y\in A_{\ell^{n+1}}$ a simple tensor, if
+$r_{\ell^{n+1}}=r_{\ell^n}$, we have $N_{\ell^{n+1}/\ell^n}(\gamma) =
+\gamma^\ell$, and if $r_{n+1}=\ell r_n$, we have $N_{\ell^{n+1}/\ell^n}(\gamma) = x^\ell\otimes
+N_{k(\zeta_{\ell^{n+1}})/k(\zeta_{\ell^n})}(y)$, where
+$N_{k(\zeta_{\ell^{n+1}})/k(\zeta_{\ell^n})}$ is the
+norm of the extension $k(\zeta_{\ell^{n+1}})$ over $k(\zeta_{\ell^n})$. More generally, if $\gamma\in
+A_{\ell^{n+1}}$ is not a simple tensor, we have that
 \[
-  N(\gamma) = \prod_{j=0}^{\ell-1}(1\otimes\sigma^{jr_n})(\gamma).
+  (1\otimes\sigma^{r_{\ell^n}})(N_{\ell^{n+1}/\ell^n}(\gamma)) =
+  N_{\ell^{n+1}/\ell^n}(\gamma),
 \]
-We then have that
+so we still have 
 \[
-  (1\otimes\sigma^{r_n})(N(\gamma)) = N(\gamma),
+  N_{\ell^{n+1}/\ell^n}(\gamma)\in \mathbb{F}_{p^{\ell^{n+1}}}\otimes \phi_{k(\zeta_{\ell^n})\emb
+k(\zeta_{\ell^{n+1}})}(k(\zeta_n)).
 \]
-so we still have $N(\gamma)\in K_{n+1}\otimes k(\zeta_n)$.
 
-We embed $k(\zeta_n)$ in $k(\zeta_{n+1})$ by sending $\zeta_n$ to
-$\zeta_{n+1}^\ell$. With that choice we have that
+We indeed embed $k(\zeta_{\ell^n})$ in $k(\zeta_{\ell^{n+1}})$ by sending
+$\zeta_{\ell^n}$ to
+$\zeta_{\ell^{n+1}}^\ell$ and we denote by $\phi_{k(\zeta_{\ell^n})\emb
+k(\zeta_{\ell^{n+1}})}$ this embedding. We also note
 \[
-  N(1\otimes\zeta_{n+1})=1\otimes\zeta_n.\footnote{If $r_{n+1}=r_n$,
-  $N(1\otimes\zeta_{n+1})=1\otimes\zeta_{n+1}^\ell$. If $r_{n+1}=\ell r_n$, it means that
-there are no roots of $X^\ell-\zeta_n$. Since there are $\ell$-roots of unity in
-$k(\zeta_n)$, the polynomial $X^\ell-\zeta_n$ is either irreducible or splits
-into linear polynomial over $k(\zeta_n)[X]$. The polynomial $X^\ell -\zeta_n$ is
-the minimal polynomial of $\zeta_{n+1}$ over $k(\zeta_n)$ and the product of its
-roots (\ie the norm of $\zeta_{n+1}$) is (up to the sign) the constant
-coefficient, so $N(1\otimes\zeta_{n+1})=1\otimes\zeta_n$.}
+  \Phi_{A_{\ell^n}\emb
+  A_{\ell^{n+1}}}=\phi_{\mathbb{F}_{p^{\ell^n}}\emb\mathbb{F}_{p^{\ell^{n+1}}}}\otimes\phi_{k(\zeta_{\ell^n})\emb
+k(\zeta_{\ell^{n+1}})}
 \]
-We also see that $N$ and $\sigma\otimes1$ commute, and for any $\alpha,
-\beta\in A_{n+1}$, we have that \[
-  N(\alpha\beta) = N(\alpha)N(\beta).
-\]
-So if $\beta\in A_{n+1}$ is a nonzero solution of the Hilbert 90 problem in $A_{n+1}$ for
-$1\otimes\zeta_{n+1}$, \ie
+an embedding from the algebra $A_{\ell^n}$ in $A_{\ell^{n+1}}$, where $\phi_{\mathbb{F}_{p^{\ell^n}}\emb\mathbb{F}_{p^{\ell^{n+1}}}}$ is some
+embedding of $\mathbb{F}_{p^{\ell^n}}$ in $\mathbb{F}_{p^{\ell^{n+1}}}$.
+With that choice we have that
 \[
-  (\sigma\otimes 1)(\beta) = (1\otimes\zeta_{n+1})\beta,
+  N_{\ell^{n+1}/\ell^n}(1\otimes\zeta_{\ell^{n+1}})=\Phi_{A_{\ell^n}\emb
+  A_{\ell^{n+1}}}(1\otimes\zeta_{\ell^n}).\footnote{If $r_{\ell^{n+1}}=r_{\ell^n}$,
+  $N_{\ell^{n+1}/\ell^n}(1\otimes\zeta_{n+1})=1\otimes\zeta_{n+1}^\ell$. If
+  $r_{\ell^{n+1}}=\ell r_{\ell^n}$, it means that
+  there are no roots of $X^\ell-\zeta_{\ell^n}$ in $k(\zeta_{\ell^n})$. Since there are $\ell$-roots of unity in
+  $k(\zeta_{\ell^n})$, the polynomial $X^\ell-\zeta_{\ell^n}$ is either irreducible or splits
+  into linear polynomial over $k(\zeta_{\ell^n})[X]$. The polynomial $X^\ell
+  -\zeta_{\ell^{n+1}}^\ell=X^\ell-\phi_{\mathbb{F}_{p^{\ell^n}}\emb
+  \mathbb{F}_{p^{\ell^{n+1}}}}(
+  \zeta_{\ell^n})$ is
+  the minimal polynomial of $\zeta_{\ell^{n+1}}$ over $\phi_{\mathbb{F}_{p^{\ell^n}}\emb
+  \mathbb{F}_{p^{\ell^{n+1}}}}(k(\zeta_{\ell^n}))$ and the product of its
+  roots (\ie the norm of $\zeta_{\ell^{n+1}}$) is (up to the sign) the constant
+  coefficient, so
+  $N_{\ell^{n+1}/\ell^n}(1\otimes\zeta_{\ell^{n+1}})=\Phi_{A_{\ell^n}\emb
+  A_{\ell^{n+1}}}(1\otimes\zeta_{\ell^n})$.}
 \]
-then $N(\beta)$ is a nonzero solution of Hilbert 90 for $1\otimes\zeta_n$:
+We also see that $N_{\ell^{n+1}/\ell^n}$ and $\sigma\otimes1$ commute, and for any $\alpha,
+\beta\in A_{\ell^{n+1}}$, we have that \[
+  N_{\ell^{n+1}/\ell^n}(\alpha\beta) =
+  N_{\ell^{n+1}/\ell^n}(\alpha)N_{\ell^{n+1}/\ell^n}(\beta).
+\]
+So if $\beta\in A_{\ell^{n+1}}$ is a nonzero solution of the Hilbert 90 problem
+in $A_{\ell^{n+1}}$ for
+$1\otimes\zeta_{\ell^{n+1}}$, \ie
+\[
+  (\sigma\otimes 1)(\beta) = (1\otimes\zeta_{\ell^{n+1}})\beta,
+\]
+then $N_{\ell^{n+1}/\ell^n}(\beta)$ is a nonzero solution of Hilbert 90 for
+$\Phi_{A_{\ell^n}\emb A_{\ell^{n+1}}}(1\otimes\zeta_{\ell^n})$:
 \begin{align*}
-  (\sigma\otimes1)(N(\beta)) &= N((\sigma\otimes1)(\beta)) \\
-  &= N(1\otimes\zeta_{n+1})N(\beta) \\
-  &= (1\otimes\zeta_n)N(\beta).
+  (\sigma\otimes1)(N_{\ell^{n+1}/\ell^n}(\beta)) &= N_{\ell^{n+1}/\ell^n}((\sigma\otimes1)(\beta)) \\
+  &= N_{\ell^{n+1}/\ell^n}(1\otimes\zeta_{\ell^{n+1}})N_{\ell^{n+1/\ell^n}}(\beta) \\
+  &= \Phi_{A_{\ell^n}\emb A_{\ell^{n+1}}}(1\otimes\zeta_n)N_{\ell^{n+1}/\ell^n}(\beta).
 \end{align*}
-This also implies that $N(\beta)$ is in fact in $A_n$, so we have that
+This also implies that $N_{\ell^{n+1}/\ell^n}(\beta)$ is in fact in
+$\Phi_{A_{\ell^n}\emb A_{\ell^{n+1}}}(A_{\ell^n})$, so we have that
 \[
-  N(\beta) = (1\otimes a)\alpha_n,
+  N_{\ell^{n+1}/\ell^n}(\beta) = (1\otimes a)\Phi_{A_{\ell^n}\emb
+  A_{\ell^{n+1}}}(\alpha_n),
 \]
-with $1\otimes a\in 1\otimes k(\zeta_n)$ and $a\neq0$, because the solutions of Hilbert 90 in $A_n$
-form a $k(\zeta_n)$ vector space of dimension $1$. We now want to find an
-element $1\otimes b\in1\otimes k(\zeta_{n+1})$ such that $N(1\otimes b)=1\otimes a^{-1}$. We distinguish two
+with $1\otimes a\in \Phi_{A_{\ell^n}\emb A_{\ell^{n+1}}}(1\otimes
+k(\zeta_{\ell^n}))$ and $a\neq0$, because the solutions of Hilbert 90 in
+$\Phi_{A_{\ell^n}\emb A_{\ell^{n+1}}}(A_{\ell^n})$
+form a $\phi_{k(\zeta_{\ell^n})\emb k(\zeta_{\ell^{n+1}})}(k(\zeta_{\ell^n}))$ vector space of dimension $1$. We now want to find an
+element $1\otimes b\in1\otimes k(\zeta_{\ell^{n+1}})$ such that
+\[
+N_{\ell^{n+1}/\ell^n}(1\otimes b)=1\otimes a^{-1}.
+\]
+We distinguish two
 cases: $r_{n+1}=\ell r_n$ and $r_{n+1}=r_n$.
-
-Let us first assume that $r_{n+1}=\ell r_n$, it means that $k(\zeta_n)\subsetneq
-k(\zeta_{n+1})$ and that $N$ operates as the norm
-$N_{k(\zeta_{n+1})/k(\zeta_n)}$ on the right side of $A_{n+1}$. Since this norm
-is surjective we can find the  element $b$ such that $N(1\otimes b)=1\otimes a^{-1}$ and
-we set $\alpha_{n+1}= (1\otimes b)\beta$, in order to have
-$N(\alpha_{n+1})=\alpha_n$. In order to compute $b$ we remark that either
-$a^{-1}$ is a $\ell$-th power in $k(\zeta_n)$, or the polynomial
-$X^\ell-a^{-1}$ is irreducible in $k(\zeta_n)[X]$, so computing an $\ell$-th
+Let us first assume that $r_{\ell^{n+1}}=\ell r_{\ell^n}$, it means that
+\[
+  \phi_{k(\zeta_{\ell^n})\emb k(\zeta_{\ell^{n+1}})}(k(\zeta_{\ell^n}))\subsetneq
+k(\zeta_{\ell^{n+1}})
+\]
+and that $N_{\ell^{n+1}/\ell^{n}}$ operates as the norm
+$N_{k(\zeta_{n+1})/k(\zeta_n)}$ on the right side of $A_{\ell^{n+1}}$. Since this norm
+is surjective we can find the  element $b$ such that $N_{\ell^{n+1}/\ell^n}(1\otimes b)=1\otimes a^{-1}$ and
+we set 
+\[
+  \alpha_{\ell^{n+1}}\eqdef (1\otimes b)\beta,
+\]
+in order to have
+\[
+  N_{\ell^{n+1}/\ell^n}(\alpha_{\ell^{n+1}})=\Phi_{A_{\ell}\emb
+  A_{\ell^{n+1}}}(\alpha_{\ell^n}).
+\]
+In order to compute $b$ we remark that either the element
+$a^{-1}$ is a $\ell$-th power in $\phi_{k(\zeta_{\ell^m})\emb
+k(\zeta_{\ell^{n+1}})}(k(\zeta_{\ell^n}))$, or the polynomial
+$X^\ell-a^{-1}$ is irreducible in $\phi_{k(\zeta_{\ell^m})\emb
+k(\zeta_{\ell^{n+1}})}(k(\zeta_{\ell^n}))[X]$, so computing an $\ell$-th
 root of $a^{-1}$ is sufficient.
 
-In the case where $r_{n+1}=r_n$, there is only one of the $\ell$ possible roots
-$\zeta_{n+1}$ such that $a$ is a $\ell$-th power, at least for $\ell\neq2$.
+In the case where $r_{\ell^{n+1}}=r_{\ell^n}$, there is only one of the $\ell$ possible roots
+$\zeta_{\ell^{n+1}}$ such that $a$ is a $\ell$-th power, at least for $\ell\neq2$.
 
-\section{Composita, $\ell\neq2$}
+\section{Composita using norms, $\ell\neq2$}
+\label{sec:comp-norm}
 
 The considerations in Section~\ref{sec:ladic} generalize to the case of
 embeddings between some composita, but not all of them. Let $m, n\in\mathbb{N}$
@@ -134,11 +189,11 @@ two integers such that $m\,|\,n$ and such that for all prime $\ell$ such that
 $\ell\,|\,n$, we also have $\ell\,|\,m$. In other words, we want $m$ and $n$ to
 have the same set of primes in their factorization. Our goal is to extend the
 results of Section~\ref{sec:ladic} to the embedding
-$\mathbb{F}_{p^n}\emb\mathbb{F}_{p^m}$. Let us note 
+$\mathbb{F}_{p^m}\emb\mathbb{F}_{p^n}$. Let us note 
 \[
-  n = \prod_i \ell_i^{\alpha_i}
+  m = \prod_i \ell_i^{\alpha_i}
 \]
-the factorization of $n$ into primes. For now, we also assume that for all $i$,
+the factorization of $m$ into primes. For now, we also assume that for all $i$,
 we have 
 \[
   \alpha_i\geq h(\ell_i)
@@ -172,8 +227,8 @@ Since $r_\ell\leq\ell-1$, these conditions on $n$ and $m$ are equivalent to the 
 We define $A_n=\mathbb{F}_{p^n}\otimes k(\zeta_n)$ and
 \[
 \begin{array}{cccc}
-  N_{n/m}: & A_n & \to & \mathbb{F}_{p^n}\otimes k(\zeta_m) \\
-  & x\otimes y & \mapsto & \prod_{j=0}^{n/m-1} x \otimes \sigma^{jd}(y)
+  N_{n/m}: & A_n & \to & A_n \\
+  & \gamma & \mapsto & \prod_{j=0}^{n/m-1} (1\otimes \sigma^{jd})(\gamma)
 \end{array}
 \]
 
@@ -181,7 +236,13 @@ where $d$ is the degree of the extension $k(\zeta_m)$ over $k$. We embed
 $k(\zeta_m)$ in $k(\zeta_n)$ by sending $\zeta_m$ to $\zeta_n^{n/m}$. With that
 choice we have that
 \[
-  N_{n/m}(1\otimes\zeta_n) = 1\otimes\zeta_m.
+  N_{n/m}(1\otimes\zeta_n) = \Phi_{A_m\emb A_n}(1\otimes\zeta_m),
+\]
+with 
+\[
+  \Phi_{A_m\emb
+  A_n}=\phi_{\mathbb{F}_{p^m}\emb\mathbb{F}_{p^n}}\otimes\phi_{k(\zeta_m)\emb
+  k(\zeta_n)}.
 \]
 Indeed, if $n = \ell m$ for a prime $\ell$ dividing $m$, the arguments of
 Section~\ref{sec:ladic} still hold and the more general case follows by
@@ -199,5 +260,97 @@ Section~\ref{sec:ladic}.
 
 Now, if we have one $i$ with $\alpha_i\leq h(\ell_i)$, it is not clear how to
 extend the results of the last section.
+
+\section{Composita using chinese remainder}
+\label{sec:comp-crt}
+
+As we saw in Section~\ref{sec:comp-norm}, if we use only norms, we can only
+compatibly embed finite fields $\mathbb{F}_{p^m}\emb\mathbb{F}_{p^n}$ if
+$[k(\zeta_n):k(\zeta_m)]=n/m$. We will now present a different technique that
+still uses norms on the different towers of $\ell$-adic extensions, but
+constructs the composita using chinese remainder. Let us start with a simple
+example. We let $\ell\in\mathbb{N}$ and $m\in\mathbb{N}$ be two different prime numbers and we will
+investigate the compatibility of the embeddings between $\mathbb{F}_{p^\ell}$,
+$\mathbb{F}_{p^{\ell m}}$ and $\mathbb{F}_{p^{\ell^2 m^2}}$. Let $u_1, u_2, v_1,
+v_2\in \mathbb{N}$ be integers such that
+\[
+  u_1\ell+u_2m=1
+\]
+\[
+  v_1\ell^2+v_2m^2=1.
+\]
+Let $\zeta_\ell$ (resp. $\zeta_m$) be a $\ell$-th (resp. $m$-th) primitive root
+of unity. Using the construction described in Section~\ref{sec:ladic}, we denote
+by $\zeta_{\ell^2}$ (resp. $\zeta_{m^2}$) an $\ell^2$-th (resp. $m^2$-th)
+primitive root of unity and $\alpha_{\ell^2}\in A_{\ell^2}$ (resp.
+$\alpha_{m^2}\in A_{m^2}$) a nonzero solution of Hilbert $90$ in $A_{\ell^2}$
+for $1\otimes\zeta_{\ell^2}$ (resp. in $A_{m^2}$ for $1\otimes\zeta_{m^2}$) such that
+\[
+  N_{\ell^2/\ell}(\alpha_{\ell^2})=\Phi_{A_\ell\emb A_{\ell^2}}(\alpha_\ell)
+\]
+\[
+  N_{m^2/m}(\alpha_{m^2})=\Phi_{A_m\emb A_{m^2}}(\alpha_m).
+\]
+We also define\footnote{This is an abuse of notation.}
+\[
+  \zeta_{\ell m}=\zeta_\ell^{u_2}\zeta_{m}^{u_1}
+\]
+and
+\[
+  \zeta_{\ell^2 m^2}=\zeta_{\ell^2}^{v_2}\zeta_{m^2}^{v_1},
+\]
+so that $\zeta_{\ell m}^\ell = \zeta_m$, $\zeta_{\ell m}^\ell=\zeta_m$,
+$\zeta_{\ell^2m^2}^{\ell^2}=\zeta_{m^2}$ and $\zeta_{\ell^2
+m^2}^{m^2}=\zeta_{\ell^2}$, and
+\[
+  \alpha_{\ell m}=\Phi_{A_\ell\emb A_{\ell m}}(\alpha_\ell)^{u_2}\Phi_{A_m\emb
+    A_{\ell m}}(\alpha_m)^{u_1}
+\]
+\[
+  \alpha_{\ell^2 m^2}=\Phi_{A_{\ell^2}\emb A_{\ell^2
+  m^2}}(\alpha_{\ell^2})^{v_2}\Phi_{A_{m^2}\emb
+  A_{\ell^2 m^2}}(\alpha_{m^2})^{v_1}
+\]
+where the images of the maps $\Phi$ are obtained using Allombert's algorithm.
+
+With these definitions, we get:
+\begin{align*}
+  \alpha_{\ell m}^m &= \Phi_{A_\ell\emb A_{\ell m}}(\alpha_\ell)^{u_2m}\Phi_{A_m\emb
+    A_{\ell m}}(\alpha_m)^{u_1m} \\
+  &= \Phi_{A_\ell\emb A_{\ell m}}(\alpha_\ell)^{1-u_1\ell}\Phi_{A_m\emb
+    A_{\ell m}}(\alpha_m)^{u_1m} \\
+    &= \left( \cfrac{\Phi_{A_m\emb A_{\ell m}}(\alpha_{m}^m)}{\Phi_{A_\ell\emb A_{\ell
+    m}}(\alpha_\ell^\ell)}\right)^{u_1} \Phi_{A_\ell\emb A_{\ell
+    m}}(\alpha_\ell).
+\end{align*}
+
+We then define
+\[
+\begin{array}{cccc}
+  T_{\ell m/\ell,\, \bm{\ell m}}: & A_{\bm{\ell m}} & \to & A_{\bm{\ell m}} \\
+  & x & \mapsto & \left( \cfrac{\Phi_{A_{\ell}\emb A_{\bm{\ell
+  m}}}(\alpha_{\ell}^{\ell})}{\Phi_{A_{m}\emb A_{\bm{\ell
+  m}}}(\alpha_{m}^{m})}\right)^{u_1} x^{m},
+\end{array}
+\]
+or simply $T_{\ell m/\ell}$ if there is no ambiguity about the domain of the
+map. With this definition, we obtain
+\[
+  T_{\ell m/\ell}(\alpha_{\ell m}) = \Phi_{A_{\ell}\emb A_{\ell
+  m}}(\alpha_{\ell}),
+\]
+and we similarly define $T_{\ell m/m}$, $T_{\ell^2m^2/\ell^2}$, and
+$T_{\ell^2m^2/m^2}$. We also define 
+\[
+  T_{\ell^2m^2/\ell m}(\cdot) = \left(N_{\ell^2/\ell}\circ
+  T_{\ell^2m^2/\ell^2}(\cdot)\right)^{u_2}\times \left(\mathbb{N}_{m^2/m}\circ
+  T_{\ell^2m^2/m^2}(\cdot)\right)^{u_1}
+\]
+and 
+\[
+  \Phi_{A_{\ell m}\emb A_{\ell^2 m^2}}(\alpha_{\ell m})\eqdef T_{\ell^2m^2/\ell
+  m}(\alpha_{\ell^2m^2}).
+\]
+
 
 \end{document}
