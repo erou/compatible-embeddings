@@ -264,7 +264,7 @@ extend the results of the last section.
 \section{Composita using chinese remainder}
 \label{sec:comp-crt}
 
-As we saw in Section~\ref{sec:comp-norm}, if we use only norms, we can only
+As we saw in Section~\ref{sec:comp-norm}, if we use only norms, we can 
 compatibly embed finite fields $\mathbb{F}_{p^m}\emb\mathbb{F}_{p^n}$ if
 $[k(\zeta_n):k(\zeta_m)]=n/m$. We will now present a different technique that
 still uses norms on the different towers of $\ell$-adic extensions, but
@@ -342,8 +342,8 @@ map. With this definition, we obtain
 and we similarly define $T_{\ell m/m}$, $T_{\ell^2m^2/\ell^2}$, and
 $T_{\ell^2m^2/m^2}$. We also define 
 \[
-  T_{\ell^2m^2/\ell m}(\cdot) = \left(N_{\ell^2/\ell}\circ
-  T_{\ell^2m^2/\ell^2}(\cdot)\right)^{u_2}\times \left(\mathbb{N}_{m^2/m}\circ
+  T_{\ell^2m^2/\ell m}(\cdot) = \left(N_{\ell^2/\ell,\,\bm{\ell^2m^2}}\circ
+  T_{\ell^2m^2/\ell^2}(\cdot)\right)^{u_2}\times \left(N_{m^2/m,\,\bm{\ell^2m^2}}\circ
   T_{\ell^2m^2/m^2}(\cdot)\right)^{u_1}
 \]
 and 
@@ -351,6 +351,64 @@ and
   \Phi_{A_{\ell m}\emb A_{\ell^2 m^2}}(\alpha_{\ell m})\eqdef T_{\ell^2m^2/\ell
   m}(\alpha_{\ell^2m^2}).
 \]
-
+We then have
+\begin{align*}
+  N_{\ell^2/\ell,\,\bm{\ell^2m^2}}\circ T_{\ell^2m^2/\ell^2}(\alpha_{\ell^2m^2})
+  &= N_{\ell^2/\ell,\,\bm{\ell^2m^2}}(\Phi_{A_{\ell^2}\emb
+  A_{\ell^2m^2}}(\alpha_{\ell^2})) \\
+  &= \Phi_{A_{\ell^2}\emb
+  A_{\ell^2m^2}}(N_{\ell^2/\ell,\,\bm{\ell^2}}(\alpha_{\ell^2})) \\
+  &= \Phi_{A_{\ell^2}\emb A_{\ell^2m^2}}\circ\Phi_{A_\ell\emb
+    A_{\ell^2}}(\alpha_\ell),
+\end{align*}
+where the first and the third equality are obtained by definition of
+$T_{\ell^2m^2/\ell^2}$ and $N_{\ell^2/\ell}$, and the second equality holds
+because the ``norms'' $N$ and the morphims of algebra $\Phi$ commute. We
+similarly obtain
+\[
+  N_{m^2/m,\,\bm{\ell^2m^2}}\circ T_{\ell^2m^2/m^2}(\alpha_{\ell^2m^2}) =
+  \Phi_{A_{m^2}\emb A_{\ell^2m^2}}\circ\Phi_{A_m\emb
+    A_{m^2}}(\alpha_m),
+\]
+and so it follows from the definition of $\Phi_{A_{\ell m}\emb
+A_{\ell^2m^2}}(\alpha_{\ell m})$ that
+\begin{align*}
+  \Phi_{A_{\ell m}\emb A_{\ell^2m^2}}(\alpha_{\ell m}) &= \\
+  \left(\Phi_{A_{\ell^2}\emb A_{\ell^2m^2}}\circ\Phi_{A_\ell\emb
+    A_{\ell^2}}(\alpha_\ell)\right)^{u_2}
+    &\times \left(\Phi_{A_{m^2}\emb A_{\ell^2m^2}}\circ\Phi_{A_m\emb
+      A_{m^2}}(\alpha_m)\right)^{u_1}.
+\end{align*}
+Now, we define
+\[
+  \Phi_{A_{\ell}\emb A_{\ell^2m^2}}\eqdef\Phi_{A_{\ell^2}\emb
+  A_{\ell^2m^2}}\circ\Phi_{A_{\ell}\emb A_{\ell^2}},
+\]
+and we wonder if we have the equality
+\[
+  \Phi_{A_{\ell}\emb A_{\ell^2m^2}}(\alpha_\ell)\overset{?}{=}\Phi_{A_{\ell
+  m}\emb A_{\ell^2m^2}}\circ\Phi_{A_{\ell}\emb A_{\ell m}}(\alpha_\ell).
+\]
+Then, if we note
+\[
+  \gamma = \cfrac{\Phi_{A_{\ell}\emb A_{\bm{\ell
+  m}}}(\alpha_{\ell}^{\ell})}{\Phi_{A_{m}\emb A_{\bm{\ell
+  m}}}(\alpha_{m}^{m})},
+\]
+we have
+\begin{align*}
+  \Phi_{A_{\ell m }\emb A_{\ell^2m^2}}(T_{\ell m/\ell}(\alpha_{\ell m})) &=
+  \Phi_{A_{\ell m}\emb A_{\ell^2m^2}}(\gamma^{u_1}\alpha_{\ell m}^m)\\
+  &= \Phi_{A_{\ell m}\emb A_{\ell^2 m^2}}(\gamma)^{u_1}\Phi_{A_{\ell m}\emb
+  A_{\ell^2 m^2}}(\alpha_{\ell m})^{m}\\
+  &= \Phi_{A_{\ell^2}\emb A_{\ell^2m^2}}\circ\Phi_{A_{\ell}\emb
+  A_{\ell^2}}(\alpha_\ell).
+\end{align*}
+To obtain the last equality, we use the fact that $\gamma\in k(\zeta_{\ell m})$,
+and that the embeddings between the cyclotomic fields $k(\zeta)$ are well
+defined and are compatible. In the end we have the wanted equality, that ensures
+compatibility between the embeddings of the finite fields $\mathbb{F}_{p^\ell}$,
+$\mathbb{F}_{p^{\ell m}}$, and $\mathbb{F}_{p^{\ell^2m^2}}$. Let us now look at
+the general case.
 
 \end{document}
