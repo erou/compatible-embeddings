@@ -175,10 +175,39 @@ $a^{-1}$ is a $\ell$-th power in $\phi_{k(\zeta_{\ell^m})\emb
 k(\zeta_{\ell^{n+1}})}(k(\zeta_{\ell^n}))$, or the polynomial
 $X^\ell-a^{-1}$ is irreducible in $\phi_{k(\zeta_{\ell^m})\emb
 k(\zeta_{\ell^{n+1}})}(k(\zeta_{\ell^n}))[X]$, so computing an $\ell$-th
-root of $a^{-1}$ is sufficient.
+root of $a^{-1}$ is sufficient. In the case where $r_{\ell^{n+1}}=r_{\ell^n}$,
+there is only one of the $\ell$ possible roots $\zeta_{\ell^{n+1}}$ such that
+$a$ is a $\ell$-th power, at least for $\ell\neq2$.
 
-In the case where $r_{\ell^{n+1}}=r_{\ell^n}$, there is only one of the $\ell$ possible roots
-$\zeta_{\ell^{n+1}}$ such that $a$ is a $\ell$-th power, at least for $\ell\neq2$.
+More generally, in the case of embeddings 
+$\mathbb{F}_{p^{\ell^m}}\emb\mathbb{F}_{p^{\ell^n}}$, with $m<n$ two integers, we can similarly define 
+\[
+\begin{array}{cccc}
+  N_{\ell^{n}/\ell^m,\, \bm{\ell^{n}}}: & A_{\bm{\ell^{n}}} & \to &
+  A_{\bm{\ell^{n}}} \\
+  & \gamma & \mapsto & \prod_{j=0}^{\ell^{n-m}-1} (1 \otimes
+  \sigma^{jr_{\ell^m}})(\gamma)
+\end{array}
+\]
+and
+\[
+  \Phi_{A_{\ell^m}\emb A_{\ell^n}}(\alpha_{\ell^m})\eqdef
+  N_{\ell^n/\ell^m}(\alpha_{\ell^{n}}).
+\]
+We see that the norms are transitive, \ie for each triple of integers $m, n, o$
+such that $m<n<o$,
+we have
+\[
+  N_{\ell^o/\ell^m}=N_{\ell^{n}/\ell^{m}}\circ N_{\ell^o/\ell^n}.
+\]
+These ``norms'' commute with the morphisms of algebra $\Phi$, so we obtain 
+\[
+  \Phi_{A_{\ell^m}\emb A_{\ell^o}}(\alpha_{\ell^m}) = \Phi_{A_{\ell^{n}}\emb
+A_{\ell^{o}}}\circ \Phi_{A_{\ell^{m}}\emb
+A_{\ell^{n}}}(\alpha_{\ell^m}).
+\]
+And as a corollary we obtain that the embeddings between the finite fields of
+the $\ell$-adic tower obtained via $\Phi$ are compatible. 
 
 \section{Composita using norms, $\ell\neq2$}
 \label{sec:comp-norm}
@@ -587,4 +616,6 @@ A_n}\circ\Phi_{A_{q_i^{a_i}}\emb A_{q_i^{c_i}}}(\alpha_{q_i^{a_i}})^{u_i}\\
   the third equality comes from the fact that we know that the morphisms of algebra
   $\Phi$ commute on each $q_i$-adic tower.
 \end{proof}
+As a corollary, we obtain that the embeddings obtained via the maps $\Phi$ are
+compatible.
 \end{document}
