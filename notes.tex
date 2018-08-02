@@ -411,4 +411,143 @@ compatibility between the embeddings of the finite fields $\mathbb{F}_{p^\ell}$,
 $\mathbb{F}_{p^{\ell m}}$, and $\mathbb{F}_{p^{\ell^2m^2}}$. Let us now look at
 the general case.
 
+\paragraph{General case.} We take three integers $l, m, n\in\mathbb{N}$ such
+that
+\[
+  l\,|\,m\,|\,n
+\]
+and we assume that they are all coprime with the characteristic $p$. We write 
+\begin{align*}
+  l &=\prod_{i\in\mathfrak{I}}q_i^{a_i}\\
+  m &=\prod_{j\in\mathfrak{J}}q_j^{b_j}\\
+  n &=\prod_{k\in\mathfrak{K}}q_k^{c_k}
+\end{align*}
+the prime decomposition of $l$, $m$ and $n$, where the $q$'s are primes, the
+sets $\mathfrak I\subset\mathfrak J\subset\mathfrak K$ are some indices sets,
+and the coefficients $a_i$, $b_j$ and $c_k$ are integers. We also note $u_i$
+some coefficients such that
+\[
+  \sum_{i\in\mathfrak I}u_i L_i = 1
+\]
+with 
+\[
+  L_i = \prod_{j\in\mathfrak I,\, j\neq i}q_j^{a_j}.
+\]
+Similarly, we note
+\[
+  \sum_{j\in\mathfrak J}v_jM_j = 1
+\]
+with
+\[
+  M_j = \prod_{k\in\mathfrak J,\,k\neq j}q_k^{b_k}.
+\]
+We assume that each $q$-adic tower of extensions of $\mathbb{F}_p$ has a set of
+well defined ``norms'' that are compatible, along with roots of unity and
+solutions of Hilbert 90, as described in
+Section~\ref{sec:ladic}\footnote{The case of $q=2$ is not treated yet, as well
+as the first steps in the construction of the tower, where the fact that the
+cyclotomic fields may not grow is a problem. Still, we will consider these
+norms as black boxes and we will explicitly tell when we use one of their
+properties.}. We then define
+\[
+  \zeta_{l}\eqdef\prod_{i\in\mathfrak
+  I}(\zeta_{q_i^{a_i}})^{u_i}\footnote{This is (again) an abuse of notation.}
+\]
+and
+\[
+  \alpha_l \eqdef \prod_{i\in\mathfrak I}\Phi_{A_{q_i^{a_i}}\emb
+A_l}(\alpha_{q_i^{a_i}})^{u_i}
+\]
+where the images $\Phi_{A_{q_i^{a_i}}\emb A_{l}}(\alpha_{q_i^{a_i}})$ are
+computed using Allombert's algorithm. We similarly define $\zeta_m$, $\alpha_m$,
+$\zeta_n$ and $\alpha_n$. With these choices, $\zeta_l$ is a primitive $l$-th
+root of unity and $\alpha_l$ is a solution of Hilbert 90 in $A_l$ for the root
+$1\otimes\zeta_l$. We also obtain, for any $i\in\mathfrak I$:
+\begin{align*}
+  \alpha_l^{L_i} &= \prod_{j\in\mathfrak I}\Phi_{A_{q_j^{a_j}}\emb
+A_l}(\alpha_{q_j^{a_j}})^{u_jL_i}\\
+ &= (\prod_{j\in\mathfrak I,\,j\neq i}\Phi_{A_{q_j^{a_j}}\emb
+A_l}(\alpha_{q_j^{a_j}})^{u_jL_i}) \Phi_{A_{q_i^{a_i}}\emb
+A_l}(\alpha_{q_i^{a_i}})^{u_iL_i} \\
+ &= (\prod_{j\in\mathfrak I,\,j\neq i}\Phi_{A_{q_j^{a_j}}\emb
+A_l}(\beta_{q_j^{a_j}})^{u_jL_{i,j}}) \Phi_{A_{q_i^{a_i}}\emb
+A_l}(\alpha_{q_i^{a_i}})^{1-\sum_{j\in\mathfrak I,\,j\neq i}u_jL_j} \\
+&= (\prod_{j\in\mathfrak I,\,j\neq i}\Bigl(\cfrac{\Phi_{A_{q_j^{a_j}}\emb
+A_l}(\beta_{q_j^{a_j}})}{\Phi_{A_{q_i^{a_i}}\emb
+A_l}(\beta_{q_i^{a_i}})}\Bigr)^{u_jL_{i, j}})\Phi_{A_{q_i^{a_i}}\emb
+A_l}(\alpha_{q_i^{a_i}})
+\end{align*}
+where $L_{i, j}\eqdef\prod_{k\in\mathfrak I,\, k\neq i, j}q_k^{a_k}$ and
+$\beta_{q_j^{a_j}}\eqdef
+(\alpha_{q_j^{a_j}})^{q_j^{a_j}}\in1\otimes\mathbb{F}_{p}(\zeta_{q_j^{a_j}})$.
+Then, if we note
+\[
+  \gamma_{i} \eqdef \prod_{j\in\mathfrak I,\,j\neq i}\Bigl(\cfrac{\Phi_{A_{q_j^{a_j}}\emb
+A_l}(\beta_{q_j^{a_j}})}{\Phi_{A_{q_i^{a_i}}\emb
+A_l}(\beta_{q_i^{a_i}})}\Bigr)^{u_jL_{i,j}},
+\]
+we also define
+\[
+  T_{l/q_i^{a_i}}(\alpha_l)\eqdef \gamma_i^{-1}\alpha_l^{L_i}
+\]
+and we have that
+\[
+  T_{l/q_i^{a_i}}(\alpha_l)=\Phi_{A_{q_i^{a_i}}\emb
+  A_{l}}(\alpha_{q_i^{a_i}}).
+\]
+We similarly define $T_{m/q_j^{b_j}}(\alpha_m)$ for any $j\in\mathfrak J$ and
+$T_{n/q_k^{c_k}}(\alpha_n)$ for any $k\in\mathfrak K$. We are now able to define
+\[
+  T_{m/l}(\alpha_m) \eqdef\prod_{i\in\mathfrak
+  I}N_{q_i^{b_i}/q_i^{a_i},\,\bm{m}}(T_{m/q_i^{b_i}}(\alpha_m))^{u_i}
+\]
+and we will note $\Phi_{A_l\emb
+A_m}=\phi_{\mathbb{F}_{p^l}\emb\mathbb{F}_{p^m}}\otimes\phi_{\mathbb{F}_{p}(\zeta_l)\emb\mathbb{F}_p(\zeta_m)}$ the (well defined) morphism of algebra
+such that
+\[
+  \Phi_{A_l\emb A_m}(\alpha_l) \eqdef T_{m/l}(\alpha_m).
+\]
+It follows that
+\begin{align*}
+  \Phi_{A_l\emb A_m}(\alpha_l) &= \prod_{i\in\mathfrak
+  I}N_{q_i^{b_i}/q_i^{a_i},\,\bm{m}}(\Phi_{A_{q_i^{b_i}}\emb
+A_m}(\alpha_{q_i^{b_i}}))^{u_i}\\
+&= \prod_{i\in\mathfrak I}\Phi_{A_{q_i^{b_i}}\emb
+A_m}(N_{q_i^{b_i}/q_i^{a_i},\,\bm{q_i^{b_i}}}(\alpha_{q_i^{b_i}}))^{u_i}\\
+&= \prod_{i\in\mathfrak I}\Phi_{A_{q_i^{b_i}}\emb
+A_m}\circ\Phi_{A_{q_i^{a_i}}\emb A_{q_i^{b_i}}}(\alpha_{q_i^{a_i}})^{u_i}
+\end{align*}
+since the morphisms of algebra $\Phi$ and the ``norms'' $N$ commute. As done
+above, we similarly define $T_{n/m}(\alpha_n)$, $T_{n/l}(\alpha_n)$ and the
+morphisms $\Phi_{A_m\emb A_n}$ and $\Phi_{A_l\emb A_n}$. We can now state our
+compatibility result.
+\begin{prop}
+We have the equality
+\[
+  \Phi_{A_l\emb A_n}(\alpha_l) = \Phi_{A_m\emb A_n}\circ\Phi_{A_l\emb
+  A_m}(\alpha_l).
+\]
+\end{prop}
+\begin{proof}
+  We have 
+  \[
+    \Phi_{A_m\emb A_n}(\alpha_m)=\prod_{j\in\mathfrak J}\Phi_{A_{q_j^{c_j}}\emb
+  A_n}\circ\Phi_{A_{q_j^{b_j}}\emb A_{q_j^{c_j}}}(\alpha_{q_j^{b_j}})^{v_j}
+  \]
+  and
+  \begin{align*}
+ \Phi_{A_m\emb A_n}\circ\Phi_{A_l\emb A_m}(\alpha_l)   &= \Phi_{A_m\emb
+ A_n}(T_{m/l}(\alpha_m)) \\
+ &= \Phi_{A_m\emb A_n}(\prod_{i\in\mathfrak
+ I}(N_{q_{i}^{b_i}/q_i^{a_i}}(T_{m/q_i^{b_i}}(\alpha_m))^{u_i})\\
+ &= \prod_{i\in\mathfrak I}N_{q_i^{b_i}/q_i^{a_i}}(\Phi_{A_m\emb
+ A_n}(T_{m/q_i^{b_i}}(\alpha_m)))^{u_i}.
+  \end{align*}
+  For each $i\in\mathfrak I$, we then have
+  \begin{align*}
+    \Phi_{A_m\emb A_n}(T_{m/q_i^{b_i}}(\alpha_m)) &= \Phi_{A_m\emb
+    A_n}(\lambda_i^{-1}\alpha_m^{M_i})\\
+    &= \Phi_{A_m\emb A_n}(\lambda_i^{-1})\Phi_{A_m\emb A_n}(\alpha_m)^{M_i}.
+  \end{align*}
+\end{proof}
 \end{document}
