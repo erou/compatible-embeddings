@@ -541,13 +541,50 @@ We have the equality
  &= \Phi_{A_m\emb A_n}(\prod_{i\in\mathfrak
  I}(N_{q_{i}^{b_i}/q_i^{a_i}}(T_{m/q_i^{b_i}}(\alpha_m))^{u_i})\\
  &= \prod_{i\in\mathfrak I}N_{q_i^{b_i}/q_i^{a_i}}(\Phi_{A_m\emb
- A_n}(T_{m/q_i^{b_i}}(\alpha_m)))^{u_i}.
+ A_n}(T_{m/q_i^{b_i}}(\alpha_m)))^{u_i},
   \end{align*}
-  For each $i\in\mathfrak I$, we then have
+  since $\Phi_{A_m\emb A_n}$ is a morsphim of algebra and commute with
+  $N_{q_i^{b_i}/q_i^{a_i}}$. For each $i\in\mathfrak I$, we then have
   \begin{align*}
     \Phi_{A_m\emb A_n}(T_{m/q_i^{b_i}}(\alpha_m)) &= \Phi_{A_m\emb
     A_n}(\lambda_i^{-1}\alpha_m^{M_i})\\
-    &= \Phi_{A_m\emb A_n}(\lambda_i^{-1})\Phi_{A_m\emb A_n}(\alpha_m)^{M_i}.
+    &= \Phi_{A_m\emb A_n}(\lambda_i^{-1})\Phi_{A_m\emb A_n}(\alpha_m)^{M_i},
   \end{align*}
+  with
+  \[
+    \lambda_i\eqdef \prod_{j\in\mathfrak I,\,j\neq i}\Bigl(\cfrac{\Phi_{A_{q_j^{b_j}}\emb
+A_m}(\beta_{q_j^{b_j}})}{\Phi_{A_{q_i^{b_i}}\emb
+A_m}(\beta_{q_i^{b_i}})}\Bigr)^{v_jM_{i,j}}.
+  \]
+And finally
+  \begin{align*}
+    \Phi_{A_m\emb A_n}(\alpha_m)^{M_i} &= \prod_{j\in\mathfrak J}\Phi_{A_{q_j^{c_j}}\emb
+  A_n}\circ\Phi_{A_{q_j^{b_j}}\emb A_{q_j^{c_j}}}(\alpha_{q_j^{b_j}})^{v_jM_i}\\
+  &= \prod_{j\in\mathfrak J,\,j\neq i}\Bigl(\cfrac{\Phi_{A_{q_j^{c_j}}\emb
+  A_n}\circ\Phi_{A_{q_j^{b_j}}\emb A_{q_j^{c_j}}}(\beta_{q_j^{b_j}})}{\Phi_{A_{q_i^{c_i}}\emb
+  A_n}\circ\Phi_{A_{q_i^{b_i}}\emb
+  A_{q_i^{c_i}}}(\beta_{q_i^{b_i}})}\Bigr)^{v_jM_{i,j}}\\
+  &\times\Phi_{A_{q_i^{c_i}}\emb
+  A_n}\circ\Phi_{A_{q_i^{b_i}}\emb A_{q_i^{c_i}}}(\alpha_{q_i^{b_i}})\\
+  &= \Phi_{A_m\emb A_n}(\lambda_i)\times\Phi_{A_{q_i^{c_i}}\emb
+  A_n}\circ\Phi_{A_{q_i^{b_i}}\emb A_{q_i^{c_i}}}(\alpha_{q_i^{b_i}}),
+  \end{align*}
+  because the elements $\beta$ are all in cyclotomic fields and the embeddings
+  are well defined and commute in these fields. In the end we get
+  \begin{align*}
+  \Phi_{A_m\emb A_n}\circ\Phi_{A_l\emb A_m}(\alpha_l) &= \prod_{i\in\mathfrak
+  I}N_{q_i^{b_i}/q_i^{a_i}}(\Phi_{A_{q_i^{c_i}}\emb
+A_n}\circ\Phi_{A_{q_i^{b_i}}\emb A_{q_i^{c_i}}}
+  (\alpha_{q_i^{b_i}}))^{u_i}\\
+&= \prod_{i\in\mathfrak I}\Phi_{A_{q_i^{c_i}}\emb
+A_n}\circ\Phi_{A_{q_i^{b_i}}\emb A_{q_i^{c_i}}}\circ\Phi_{A_{q_i^{a_i}}\emb
+A_{q_i^{b_i}}}(\alpha_{q_i^{a_i}})^{u_i}\\
+&= \prod_{i\in\mathfrak I}\Phi_{A_{q_i^{c_i}}\emb
+A_n}\circ\Phi_{A_{q_i^{a_i}}\emb A_{q_i^{c_i}}}(\alpha_{q_i^{a_i}})^{u_i}\\
+&= \Phi_{A_l\emb A_n}(\alpha_l).
+  \end{align*}
+  The last equality is just the definition of $\Phi_{A_l\emb A_n}(\alpha_l)$ and
+  the third equality comes from the fact that we know that the morphisms of algebra
+  $\Phi$ commute on each $q_i$-adic tower.
 \end{proof}
 \end{document}
