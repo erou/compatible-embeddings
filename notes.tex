@@ -210,10 +210,15 @@ And as a corollary we obtain that the embeddings between the finite fields of
 the $\ell$-adic tower obtained via $\Phi$ are compatible. 
 
 \section{Composita using norms, $\ell\neq2$}
-\label{sec:comp-norm}
 
 The considerations in Section~\ref{sec:ladic} generalize to the case of
-embeddings between some composita, but not all of them. Let $m, n\in\mathbb{N}$
+embeddings between composita, but depending on the nature of the composita,
+there can be more or less additionnal work.
+
+\subsection{Composita without new primes}
+\label{sec:comp-norm-wo}
+
+Let $m, n\in\mathbb{N}$
 two integers such that $m\,|\,n$ and such that for all prime $\ell$ such that
 $\ell\,|\,n$, we also have $\ell\,|\,m$. In other words, we want $m$ and $n$ to
 have the same set of primes in their factorization. Our goal is to extend the
@@ -290,10 +295,14 @@ Section~\ref{sec:ladic}.
 Now, if we have one $i$ with $\alpha_i\leq h(\ell_i)$, it is not clear how to
 extend the results of the last section.
 
+\subsection{Composita with new primes}
+\label{sec:comp-norm-w}
+
+
 \section{Composita using chinese remainder}
 \label{sec:comp-crt}
 
-As we saw in Section~\ref{sec:comp-norm}, if we use only norms, we can 
+As we saw in Section~\ref{sec:comp-norm-wo}, if we use only norms, we can 
 compatibly embed finite fields $\mathbb{F}_{p^m}\emb\mathbb{F}_{p^n}$ if
 $[k(\zeta_n):k(\zeta_m)]=n/m$. We will now present a different technique that
 still uses norms on the different towers of $\ell$-adic extensions, but
@@ -356,33 +365,33 @@ With these definitions, we get:
 We then define
 \[
 \begin{array}{cccc}
-  T_{\ell m/\ell,\, \bm{\ell m}}: & A_{\bm{\ell m}} & \to & A_{\bm{\ell m}} \\
+  C_{\ell m/\ell,\, \bm{\ell m}}: & A_{\bm{\ell m}} & \to & A_{\bm{\ell m}} \\
   & x & \mapsto & \left( \cfrac{\Phi_{A_{\ell}\emb A_{\bm{\ell
   m}}}(\alpha_{\ell}^{\ell})}{\Phi_{A_{m}\emb A_{\bm{\ell
   m}}}(\alpha_{m}^{m})}\right)^{u_1} x^{m},
 \end{array}
 \]
-or simply $T_{\ell m/\ell}$ if there is no ambiguity about the domain of the
+or simply $C_{\ell m/\ell}$ if there is no ambiguity about the domain of the
 map. With this definition, we obtain
 \[
-  T_{\ell m/\ell}(\alpha_{\ell m}) = \Phi_{A_{\ell}\emb A_{\ell
+  C_{\ell m/\ell}(\alpha_{\ell m}) = \Phi_{A_{\ell}\emb A_{\ell
   m}}(\alpha_{\ell}),
 \]
-and we similarly define $T_{\ell m/m}$, $T_{\ell^2m^2/\ell^2}$, and
-$T_{\ell^2m^2/m^2}$. We also define 
+and we similarly define $C_{\ell m/m}$, $C_{\ell^2m^2/\ell^2}$, and
+$C_{\ell^2m^2/m^2}$. We also define 
 \[
-  T_{\ell^2m^2/\ell m}(\cdot) = \left(N_{\ell^2/\ell,\,\bm{\ell^2m^2}}\circ
-  T_{\ell^2m^2/\ell^2}(\cdot)\right)^{u_2}\times \left(N_{m^2/m,\,\bm{\ell^2m^2}}\circ
-  T_{\ell^2m^2/m^2}(\cdot)\right)^{u_1}
+  C_{\ell^2m^2/\ell m}(\cdot) = \left(N_{\ell^2/\ell,\,\bm{\ell^2m^2}}\circ
+  C_{\ell^2m^2/\ell^2}(\cdot)\right)^{u_2}\times \left(N_{m^2/m,\,\bm{\ell^2m^2}}\circ
+  C_{\ell^2m^2/m^2}(\cdot)\right)^{u_1}
 \]
 and 
 \[
-  \Phi_{A_{\ell m}\emb A_{\ell^2 m^2}}(\alpha_{\ell m})\eqdef T_{\ell^2m^2/\ell
+  \Phi_{A_{\ell m}\emb A_{\ell^2 m^2}}(\alpha_{\ell m})\eqdef C_{\ell^2m^2/\ell
   m}(\alpha_{\ell^2m^2}).
 \]
 We then have
 \begin{align*}
-  N_{\ell^2/\ell,\,\bm{\ell^2m^2}}\circ T_{\ell^2m^2/\ell^2}(\alpha_{\ell^2m^2})
+  N_{\ell^2/\ell,\,\bm{\ell^2m^2}}\circ C_{\ell^2m^2/\ell^2}(\alpha_{\ell^2m^2})
   &= N_{\ell^2/\ell,\,\bm{\ell^2m^2}}(\Phi_{A_{\ell^2}\emb
   A_{\ell^2m^2}}(\alpha_{\ell^2})) \\
   &= \Phi_{A_{\ell^2}\emb
@@ -391,11 +400,11 @@ We then have
     A_{\ell^2}}(\alpha_\ell),
 \end{align*}
 where the first and the third equality are obtained by definition of
-$T_{\ell^2m^2/\ell^2}$ and $N_{\ell^2/\ell}$, and the second equality holds
+$C_{\ell^2m^2/\ell^2}$ and $N_{\ell^2/\ell}$, and the second equality holds
 because the ``norms'' $N$ and the morphims of algebra $\Phi$ commute. We
 similarly obtain
 \[
-  N_{m^2/m,\,\bm{\ell^2m^2}}\circ T_{\ell^2m^2/m^2}(\alpha_{\ell^2m^2}) =
+  N_{m^2/m,\,\bm{\ell^2m^2}}\circ C_{\ell^2m^2/m^2}(\alpha_{\ell^2m^2}) =
   \Phi_{A_{m^2}\emb A_{\ell^2m^2}}\circ\Phi_{A_m\emb
     A_{m^2}}(\alpha_m),
 \]
@@ -426,7 +435,7 @@ Then, if we note
 \]
 we have
 \begin{align*}
-  \Phi_{A_{\ell m }\emb A_{\ell^2m^2}}(T_{\ell m/\ell}(\alpha_{\ell m})) &=
+  \Phi_{A_{\ell m }\emb A_{\ell^2m^2}}(C_{\ell m/\ell}(\alpha_{\ell m})) &=
   \Phi_{A_{\ell m}\emb A_{\ell^2m^2}}(\gamma^{u_1}\alpha_{\ell m}^m)\\
   &= \Phi_{A_{\ell m}\emb A_{\ell^2 m^2}}(\gamma)^{u_1}\Phi_{A_{\ell m}\emb
   A_{\ell^2 m^2}}(\alpha_{\ell m})^{m}\\
@@ -517,24 +526,24 @@ A_l}(\beta_{q_i^{a_i}})}\Bigr)^{u_jL_{i,j}},
 \]
 we also define
 \[
-  T_{l/q_i^{a_i}}(\alpha_l)\eqdef \gamma_i^{-1}\alpha_l^{L_i}
+  C_{l/q_i^{a_i}}(\alpha_l)\eqdef \gamma_i^{-1}\alpha_l^{L_i}
 \]
 and we have that
 \[
-  T_{l/q_i^{a_i}}(\alpha_l)=\Phi_{A_{q_i^{a_i}}\emb
+  C_{l/q_i^{a_i}}(\alpha_l)=\Phi_{A_{q_i^{a_i}}\emb
   A_{l}}(\alpha_{q_i^{a_i}}).
 \]
-We similarly define $T_{m/q_j^{b_j}}(\alpha_m)$ for any $j\in\mathfrak J$ and
-$T_{n/q_k^{c_k}}(\alpha_n)$ for any $k\in\mathfrak K$. We are now able to define
+We similarly define $C_{m/q_j^{b_j}}(\alpha_m)$ for any $j\in\mathfrak J$ and
+$C_{n/q_k^{c_k}}(\alpha_n)$ for any $k\in\mathfrak K$. We are now able to define
 \[
-  T_{m/l}(\alpha_m) \eqdef\prod_{i\in\mathfrak
-  I}N_{q_i^{b_i}/q_i^{a_i},\,\bm{m}}(T_{m/q_i^{b_i}}(\alpha_m))^{u_i}
+  C_{m/l}(\alpha_m) \eqdef\prod_{i\in\mathfrak
+  I}N_{q_i^{b_i}/q_i^{a_i},\,\bm{m}}(C_{m/q_i^{b_i}}(\alpha_m))^{u_i}
 \]
 and we will note $\Phi_{A_l\emb
 A_m}=\phi_{\mathbb{F}_{p^l}\emb\mathbb{F}_{p^m}}\otimes\phi_{\mathbb{F}_{p}(\zeta_l)\emb\mathbb{F}_p(\zeta_m)}$ the (well defined) morphism of algebra
 such that
 \[
-  \Phi_{A_l\emb A_m}(\alpha_l) \eqdef T_{m/l}(\alpha_m).
+  \Phi_{A_l\emb A_m}(\alpha_l) \eqdef C_{m/l}(\alpha_m).
 \]
 It follows that
 \begin{align*}
@@ -547,7 +556,7 @@ A_m}(N_{q_i^{b_i}/q_i^{a_i},\,\bm{q_i^{b_i}}}(\alpha_{q_i^{b_i}}))^{u_i}\\
 A_m}\circ\Phi_{A_{q_i^{a_i}}\emb A_{q_i^{b_i}}}(\alpha_{q_i^{a_i}})^{u_i}
 \end{align*}
 since the morphisms of algebra $\Phi$ and the ``norms'' $N$ commute. As done
-above, we similarly define $T_{n/m}(\alpha_n)$, $T_{n/l}(\alpha_n)$ and the
+above, we similarly define $C_{n/m}(\alpha_n)$, $C_{n/l}(\alpha_n)$ and the
 morphisms $\Phi_{A_m\emb A_n}$ and $\Phi_{A_l\emb A_n}$. We can now state our
 compatibility result.
 \begin{prop}
@@ -566,16 +575,16 @@ We have the equality
   and
   \begin{align*}
  \Phi_{A_m\emb A_n}\circ\Phi_{A_l\emb A_m}(\alpha_l)   &= \Phi_{A_m\emb
- A_n}(T_{m/l}(\alpha_m)) \\
+ A_n}(C_{m/l}(\alpha_m)) \\
  &= \Phi_{A_m\emb A_n}(\prod_{i\in\mathfrak
- I}(N_{q_{i}^{b_i}/q_i^{a_i}}(T_{m/q_i^{b_i}}(\alpha_m))^{u_i})\\
+ I}(N_{q_{i}^{b_i}/q_i^{a_i}}(C_{m/q_i^{b_i}}(\alpha_m))^{u_i})\\
  &= \prod_{i\in\mathfrak I}N_{q_i^{b_i}/q_i^{a_i}}(\Phi_{A_m\emb
- A_n}(T_{m/q_i^{b_i}}(\alpha_m)))^{u_i},
+ A_n}(C_{m/q_i^{b_i}}(\alpha_m)))^{u_i},
   \end{align*}
   since $\Phi_{A_m\emb A_n}$ is a morsphim of algebra and commute with
   $N_{q_i^{b_i}/q_i^{a_i}}$. For each $i\in\mathfrak I$, we then have
   \begin{align*}
-    \Phi_{A_m\emb A_n}(T_{m/q_i^{b_i}}(\alpha_m)) &= \Phi_{A_m\emb
+    \Phi_{A_m\emb A_n}(C_{m/q_i^{b_i}}(\alpha_m)) &= \Phi_{A_m\emb
     A_n}(\lambda_i^{-1}\alpha_m^{M_i})\\
     &= \Phi_{A_m\emb A_n}(\lambda_i^{-1})\Phi_{A_m\emb A_n}(\alpha_m)^{M_i},
   \end{align*}
@@ -618,4 +627,75 @@ A_n}\circ\Phi_{A_{q_i^{a_i}}\emb A_{q_i^{c_i}}}(\alpha_{q_i^{a_i}})^{u_i}\\
 \end{proof}
 As a corollary, we obtain that the embeddings obtained via the maps $\Phi$ are
 compatible.
+\section{Techniques using traces}
+We notice that we can in fact solve some of our problems using traces too.
+\paragraph{In $\ell$-adic towers.} We keep the same notations as in the previous
+sections, especially for the roots $\zeta$, the algebras $A$, the solutions of
+Hilbert $90$ $\alpha$, the morphisms of algebra $\Phi$, and so on. We construct the roots
+of unity in the same way that we used to, meaning that 
+\[
+  (1\otimes\zeta_{\ell^{n+1}})^\ell = \Phi_{A_{\ell^n}\emb
+  A_{\ell^{n+1}}}(1\otimes\zeta_{\ell^n}).
+\]
+Let $\ell\notin \left\{ 2, p \right\}$ be a prime number and
+$n\in\mathbb{N}$ some integer. Let $\alpha_{\ell^{n}}\in A_{\ell^{n}}$ be a
+solution of Hilbert $90$ for the root $1\otimes\zeta_{\ell^{n}}$ and $\beta\in
+A_{\ell^{n+1}}$ a solution in $A_{\ell^{n+1}}$ for the root
+$1\otimes\zeta_{\ell^{n+1}}$. We see that
+$\beta^\ell$ is a solution of Hilbert $90$ for the root
+$(1\otimes\zeta_{\ell^{n+1}})^\ell=\Phi_{A_{\ell^n}\emb
+A_{\ell^{n+1}}}(1\otimes\zeta_{\ell^n})$. What we want is to be able to define
+$\alpha_{\ell^{n+1}}\in A_{\ell^{n+1}}$ such that
+\[
+  (\alpha_{\ell^{n+1}})^\ell = \Phi_{A_{\ell^n}\emb
+  A_{\ell^{n+1}}}(\alpha_{\ell^n}),
+\]
+sadly we do not have any warranty that $\beta^{\ell}\in\Phi_{A_{\ell^n}\emb
+A_{\ell^{n+1}}}(A_{\ell^n})$, we only know that
+$\beta^{\ell}\in\phi_{\mathbb{F}_{p^{\ell^n}}\emb
+\mathbb{F}_{p^{\ell^{n+1}}}}(\mathbb{F}_{p^{\ell^n}})\otimes
+k(\zeta_{\ell^{n+1}})$. If $k(\zeta_{\ell^{n+1}})=k(\zeta_{\ell^n})$, then the
+last remark is not an obstruction and as already claimed, we can find a suitable
+root $\zeta_{\ell^{n+1}}$ and a solution satisfying $\alpha_{\ell^{n+1}}$.
+Otherwise we can use a trace-like function that sends the scalars into the
+smaller field $\phi_{k(\zeta_{\ell^{n}})\emb
+k(\zeta_{\ell^{n+1}})}(k(\zeta_{\ell^{n}}))$, as we did before with the
+norm-like function. Let us define
+\[
+\begin{array}{cccc}
+  T_{\ell^{n+1}/\ell^n,\, \bm{\ell^{n+1}}}: & A_{\bm{\ell^{n+1}}} & \to &
+  A_{\bm{\ell^{n+1}}} \\
+  & \sum_{i}x_i\otimes y_i & \mapsto & \sum_i
+  x_i\otimes\Tr_{k(\zeta_{\ell^{n+1}})/k(\zeta_{\ell^{n}})}(y_i)
+\end{array}
+\]
+where $\Tr_{k(\zeta_{\ell^{n+1}})/k(\zeta_{\ell^{n}})}$ denotes the usual trace
+for the extension $k(\zeta_{\ell^{n+1}})/k(\zeta_{\ell^{n}})$. If the domain of the map is
+clear within the given context, we will omit the second index and only note
+$T_{\ell^{n+1}/\ell^n}$. Using the fact that $\sigma\otimes1$ and
+$T_{\ell^{n+1}/\ell^{n}}$ commute and that $T_{\ell^{n+1}/\ell^n}$ is
+$1\otimes\phi_{k(\zeta_{\ell^n})\emb
+k(\zeta_{\ell^{n+1}})}(k(\zeta_{\ell^{n}}))$ linear, we see that
+$T_{\ell^{n+1}/\ell^n}(\beta^\ell)$ is still a solution of Hilbert $90$ for the
+root $\Phi_{A_{\ell^n}\emb A_{\ell^{n+1}}}(1\otimes\zeta_{\ell^n})$ and that
+$T_{\ell^{n+1}/\ell^n}(\beta^\ell)\in\Phi_{A_{\ell^n}\emb
+A_{\ell^{n+1}}}(A_{\ell^n})$. It follows that we can find an element
+$\alpha_{\ell^{n+1}}\in A_{\ell^{n+1}}$ such that
+\[
+  T_{\ell^{n+1}/\ell^n}((\alpha_{\ell^{n+1}})^\ell) = \Phi_{A_{\ell^{n}}\emb
+  A_{\ell^{n+1}}}(\alpha_{\ell^{n}}).
+\]
+\paragraph{In composita.}
+
+
+
+\section{TODO}
+\begin{itemize}
+  \item How to use traces
+  \item Using norms with composita
+    \begin{itemize}
+      \item what can go bad with roots of unity
+      \item how to fix it
+    \end{itemize}
+\end{itemize}
 \end{document}
