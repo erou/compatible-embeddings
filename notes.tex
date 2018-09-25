@@ -290,7 +290,11 @@ $1\otimes\zeta_m$ form a dimension one $k(\zeta_m)$-vector space and since
 $N_{n/m}$ is the usual norm of the extension $k(\zeta_n)$ over $k(\zeta_m)$
 (which is surjective) on the right part of $A_n=\mathbb{F}_{p^n}\otimes
 k(\zeta_n)$, we can conclude that the compatibility can be achieved, as in
-Section~\ref{sec:ladic}.
+Section~\ref{sec:ladic}\footnote{So here we just say that we can achieve to
+  obtain an element $\alpha_n\in A_n$ such that
+  $N_{n/m}(\alpha_n)=\Phi(\alpha_m)$ for a certain $m\,|\,n$, and that it is
+  possible for all choice of $m$, but it \emph{does not} mean that we can do it
+simultaneously for all $m$.}.
 
 Now, if we have one $i$ with $\alpha_i\leq h(\ell_i)$, it is not clear how to
 extend the results of the last section.
@@ -688,6 +692,96 @@ $\alpha_{\ell^{n+1}}\in A_{\ell^{n+1}}$ such that
 \paragraph{In composita.}
 
 
+
+\section{Existence of a compatible lattice}
+\label{sec:existence}
+We use the same notations as in the previous sections, in particular the
+definitions of the maps $\Phi$ and $N$ still hold.
+In this section we will investigate the existence of a compatible lattice. We
+first define a tower of algebras: let $(d_n)_{n\in\mathbb{N}}$ the sequence
+defined by $d_0=1$, $d_1=2$, $d_2=2^2\cdot 3=12$, and more generally
+\[
+  d_n = \prod_{j=1}^n p_j^{n+1-j}
+\]
+for $n\geq1$, with $p_j$ the $j$-th prime number. We also define
+$D=\left\{d_n\,|\,n\in\mathbb{N}\right\}$. We have 
+\[
+  d_0\,|\,d_1\,|\,d_2\,|\,\cdots\,|\,d_{n-1}\,|\,d_n\,|\,d_{n+1}\,|\,\cdots,
+\]
+in other words if $a\leq b$, $d_a\,|\,d_b$. These divisibility properties allow
+us to define the tower of algebras
+\[
+  A_{p-1}\emb A_{p^{2}-1}\emb\cdots\emb A_{p^{d_{n-1}}-1}\emb
+  A_{p^{d_n}-1}\emb\cdots.
+\]
+In particular
+\[
+  A_{p-1}\eqdef
+\mathbb{F}_{p^{p-1}}\otimes\mathbb{F}_{p}(\zeta_{p-1})=\mathbb{F}_{p^{p-1}}\otimes\mathbb{F}_p\cong\mathbb{F}_{p^{p-1}}
+\]
+and for $n\geq1$
+\[
+  A_{p^{d_n}-1}=\mathbb{F}_{p^{p^{d_n}-1}}\otimes\mathbb{F}_p(\zeta_{p^{d_n}-1})=\mathbb{F}_{p^{p^{d_n}-1}}\otimes\mathbb{F}_{p^{d_n}}.
+\]
+We know that $\mathbb{F}_{p^{d_n}}$ contains a primitive $(p^{d_n}-1)$-th root
+of unity: aby primitive element of $\mathbb{F}_{p^{d_n}}$ is in fact such a
+root. That is why we write
+$\mathbb{F}_{p^{d_n}}=\mathbb{F}_{p}(\zeta_{p^{d_n}-1})$, but we have not
+specified which roots we consider.
+We construct the roots of unity in the following way: we first choose any $(p-1)$-th primitive root of unity and we continue by recurrence. Assume we have
+chosen a primitive $(p^{d_{n-1}}-1)$-th root of unity
+$\zeta_{p^{d_{n-1}}-1}\in\mathbb{F}_{p^{d_{n-1}}}$
+for a certain $n\geq1$. By surjectivity of the norm, we can find an element
+$y\in\mathbb{F}_{p^{d_n}}$ such that
+\begin{align*}
+  N_{\mathbb{F}_{p^{d_n}}/\mathbb{F}_{p^{d_{n-1}}}}(y)&=y^{\frac{p^{d_n}-1}{p^{d_{n-1}}-1}}\\
+  &=\zeta_{p^{d_{n-1}}-1}.
+\end{align*}
+Since $\zeta_{p^{d_{n-1}}-1}$ is primitive, $y$ is also primitive, in other
+words $y$ is a $p^{d_n}-1$ primitive root of unity, and we define
+$\zeta_{p^{d_n}-1}\eqdef y$1.
+
+We now construct solutions of the Hilbert $90$ problem in each floor of our
+tower. We first choose any solution $\alpha_{p-1}\in A_{p-1}$ of Hilbert $90$
+associated with the root $\zeta_{p-1}$, and we continue by recurrence. Assume we
+have constructed a solution $\alpha_{p^{d_{n-1}}-1}\in A_{p^{d_{n-1}}-1}$ of
+Hilbert $90$ associated with the root $\zeta_{p^{d_{n-1}}-1}$ for a certain
+$n\geq1$. Then, like in the previous sections, we can find a nonzero solution
+$\beta\in A_{p^{d_n}-1}$ of the Hilbert $90$ with the root $\zeta_{p^{d_n}-1}$,
+and we get
+\[
+  N_{p^{d_n}-1/p^{d_{n-1}}-1}(\beta)=(1\otimes\lambda)\Phi_{A_{p^{d_{n-1}}-1}\emb
+  A_{p^{d_n}-1}}(\alpha_{p^{d_{n-1}}-1}),
+\]
+where $1\otimes\lambda$ is an element in the subfield $\Phi_{A_{p^{d_{n-1}}-1}\emb
+A_{p^{d_n}-1}}(1\otimes\mathbb{F}_{p^{d_{n-1}}})$. Since the map
+$N_{p^{d_n}-1/p^{d_{n-1}}-1}$ acts on $1\otimes\mathbb{F}_{p^{d_n}}$ as the
+usual norm $N_{\mathbb{F}_{p^{d_n}}/\mathbb{F}_{p^{d_{n-1}}}}$, we can again use
+the surjectivity of the norm to ``correct'' our element $\beta$ as was done in
+the previous sections. In the end we obtain an element $\alpha_{p^{d_n}-1}$ such
+that
+\[
+  N_{p^{d_n}-1/p^{d_{n-1}}-1}(\alpha_{p^{d_n}-1})=\Phi_{A_{p^{d_{n-1}}-1}\emb
+  A_{p^{d_n}-1}}(\alpha_{p^{d_{n-1}}-1}).
+\]
+Since our norm-like functions $N$ are transitive, the compatibility of the
+morphisms of algebra $\Phi$, and the compatibility of the associated morsphims
+of fields $\phi$ follows. But we have only constructed algebras of the form
+$A_{p^d-1}$ with $d\in D$, so our lattice has a lot of holes. We can first plug
+the holes of the form $A_{p^{n}-1}$ for any $n\in\mathbb{N}$ (not just $n\in
+D$), by defining 
+\[
+  f_n \eqdef \min\left\{ d\in D\,,\,n\,|\,d \right\}
+\]
+and\footnote{We should say that
+  everything is embedded in a big space for that to make sense.}
+\begin{align*}
+  \zeta_{p^n-1}&\eqdef  N_{p^{f_n}-1/p^n-1}(\zeta_{p^{f_n}-1})\\
+  \alpha_{p^n-1}&\eqdef
+  N_{p^{f_n}-1/p^n-1}(\alpha_{p^{f_n}-1}).
+\end{align*}
+Here again, by transitivity of the norms, we achieve compatibility with the
+morphisms of algebra $\Phi$ between algebras of the form $A_{p^n-1}$ for $n\in\mathbb{N}$.
 
 \section{TODO}
 \begin{itemize}
