@@ -783,6 +783,70 @@ and\footnote{We should say that
 Here again, by transitivity of the norms, we achieve compatibility with the
 morphisms of algebra $\Phi$ between algebras of the form $A_{p^n-1}$ for $n\in\mathbb{N}$.
 
+Let us now deal with the general case of two integers $\ell\,|\,m$. We define
+$a=\omega_{\mathbb{Z}/\ell\mathbb{Z}}(p)$ (respectively
+$b=\omega_{\mathbb{Z}/m\mathbb{Z}}(p)$) the multiplicative order of $p$ in
+$\mathbb{Z}/\ell\mathbb{Z}$ (resp. in $\mathbb{Z}/m\mathbb{Z}$). We thus define
+\[
+  \alpha_\ell\eqdef(\alpha_{p^a-1})^{\frac{p^a-1}{\ell}}\in A_{\ell}=\mathbb{F}_{p^\ell}\otimes \mathbb{F}_{p^a}
+\]
+and
+\[
+  \alpha_m\eqdef(\alpha_{p^b-1})^{\frac{p^{b}-1}{m}}\in A_m=\mathbb{F}_{p^m}\otimes \mathbb{F}_{p^b}.
+\]
+If $a=b$ then we have 
+\[
+  \alpha_{\ell}=\alpha_m^{m/\ell},
+\]
+but if $a<b$, we need to take additionnal care of the right part of the tensor,
+the ``scalar'' part. In that case we have
+\[
+  \alpha_\ell=N_{p^b-1/p^a-1}((\alpha_{p^b-1})^{\frac{p^a-1}{\ell}})
+\]
+and we can also write 
+\begin{align*}
+  (\alpha_{p^b-1})^{\frac{p^a-1}{\ell}}&=(\alpha_{p^b-1})^{\frac{p^b-1}{\ell\cdot\frac{p^b-1}{p^a-1}}}\\
+  &\eqdef \alpha_{\ell v}.
+\end{align*}
+with $v\eqdef\frac{p^b-1}{p^a-1}$.
+
+We see that we have an equality linking $\alpha_\ell$ and
+$\alpha_{\ell v}$, though the natural thing would be an
+equality linking $\alpha_\ell$ and $\alpha_m$. Unfortunately the map
+$N_{p^b-1/p^a-1}=N_{m/\ell}$ send $\zeta_{m}$ to
+$\zeta_{m}^{v}$, and this is not necessarily an $\ell$-th primitive root of unity.
+By starting elsewhere in the tower, namely $\alpha_{\ell v}$ instead of
+$\alpha_{\ell \frac{m}{\ell}}$, we ensure that we arrive on the right root of
+unity $\zeta_{\ell}$. Note that we do not necessarily have
+$\frac{m}{\ell}\,|\,v$.
+
+In fact, we do not have to go \emph{that high} in the tower, but we will risk to
+obtain an other primitive $\ell$-th root of unity and we will have to apply
+corrections. Let us write
+\[
+  \ell=\prod_{j\in\mathcal P_\ell}q_j^{\alpha_j}
+\]
+the prime decomposition of $\ell$, where $\mathcal P_\ell$ is a set of indices
+and the $q_j$'s are primes. We also write
+\[
+  m=\prod_{j\in\mathcal P_m}q_j^{\beta_j}
+\]
+and it follows that $\mathcal P_\ell\subset\mathcal P_m$ and that for all
+$j\in\mathcal P_\ell$, $\alpha_j\leq\beta_j$. Now denote by $\nu_j(v)$ the
+$q_j$-adic valuation of $v$. Our problem happens when, for $j\in\mathcal
+P_\ell$,
+\[
+  \nu_j(v)\neq \beta_j-\alpha_j=\nu_j(m/\ell)
+\]
+because it eliminates too much (or too little) of the $q_j$ part of the root $\zeta_\ell$. That
+is why we can consider to go only as high as 
+\[
+  \eta=\prod_{j\in\mathcal
+  P_\ell}q_j^{\alpha_j+\nu_j(v)}\times\prod_{j\in\mathcal P_m\setminus \mathcal
+  P_\ell}q_j^{\beta_j}.
+\]
+Indeed, with that choice we elimate just as much of each $q_j$.
+
 \section{TODO}
 \begin{itemize}
   \item How to use traces
