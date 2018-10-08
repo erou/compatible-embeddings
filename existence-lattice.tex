@@ -1,0 +1,239 @@
+\documentclass[a4paper,11pt]{article}
+
+\input{packages.tex}
+\input{tikz.tex}
+\input{thmstyle.tex}
+\input{macros.tex}
+
+% opening
+\title{Existence of a lattice of compatibly embedded finite fieds using
+Allombert algorithm}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+
+%\end{abstract}
+
+%\tableofcontents
+
+%\clearpage
+
+\section{Introduction and notations}
+
+Our goal is to construct a \emph{lattice of compatibly embedded finite fields},
+meaning that given a collection of finite fields, we want to be able to compute
+embeddings betweem them that are furthermore \emph{compatible}, \ie the diagrams
+involving morphisms between finite fields should be commutative. Let $p$ be a
+prime number, we denote by $\mathbb{F}_{p^{\ell}}$ the finite field with
+$p^\ell$ elements and we also sometimes use $k=\mathbb{F}_p$. Allombert's algorithm usually asks for an extension of
+scalars because some roots of unity may be missing, so we note 
+\[
+  A_n \eqdef \mathbb{F}_{p^n}\otimes\mathbb{F}_{p}(\zeta_n)
+\]
+where $\zeta_n$ denotes a primitive $n$-th root of unity. We consider all our finite
+fields to be embedding in an algebraic closure, so if we have $\ell\,|\,m$ two
+integers, we know that
+\[
+  \mathbb{F}_{p^{\ell}}\emb\mathbb{F}_{p^m}
+\]
+and we will also consider 
+\[
+  \mathbb{F}_{p^{\ell}}\subset\mathbb{F}_{p^m}
+\]
+and
+\[
+  A_{\ell}\subset A_m.
+\]
+Throughout the document, we consider solutions of equations of the type
+\begin{equation}
+  \tag{H90}
+ (\sigma\otimes1)(x) = (1\otimes\zeta)x
+  \label{h90}
+\end{equation}
+where $\zeta$ is a primitive root of unity. Properties of the solutions of this
+equation are given in Allombert's article. For each algebra $A_n$, we note
+$\alpha_n$ a solution of \eqref{h90} for the root $\zeta_n$. We also consider
+the norm-like maps
+\[
+\begin{array}{cccc}
+  N_{m/\ell,\, \bm{n}}: & A_{\bm{n}} & \to &
+  A_{\bm{n}} \\
+  & \gamma & \mapsto & \prod_{j=0}^{\left[ k(\zeta_m)\,:\,k(\zeta_\ell) \right]-1} (1 \otimes
+  \sigma^{j\left[ k(\zeta_\ell)\,:\,k \right]})(\gamma)
+\end{array}
+\]
+where $\sigma$ is the Frobenius morphism and the notation $\left[ L\,:\,K
+\right]$ denotes the degree of the extension $L/K$. The index $n$ will often be
+ignored if it is clear from the context. These maps are multiplicative and
+transitive, \ie $N_{m/\ell}\circ N_{n/m} = N_{n/\ell}$.
+
+\section{Existence of a compatible lattice}
+\label{sec:existence}
+We use the same notations as in the previous sections, in particular the
+definitions of the maps $\Phi$ and $N$ still hold.
+In this section we will investigate the existence of a compatible lattice. We
+first define a tower of algebras: let $(d_n)_{n\in\mathbb{N}}$ the sequence
+defined by $d_0=1$, $d_1=2$, $d_2=2^2\cdot 3=12$, and more generally
+\[
+  d_n = \prod_{j=1}^n p_j^{n+1-j}
+\]
+for $n\geq1$, with $p_j$ the $j$-th prime number. We also define
+$D=\left\{d_n\,|\,n\in\mathbb{N}\right\}$. We have 
+\[
+  d_0\,|\,d_1\,|\,d_2\,|\,\cdots\,|\,d_{n-1}\,|\,d_n\,|\,d_{n+1}\,|\,\cdots,
+\]
+in other words if $a\leq b$, $d_a\,|\,d_b$. These divisibility properties allow
+us to define the tower of algebras
+\[
+  A_{p-1}\emb A_{p^{2}-1}\emb\cdots\emb A_{p^{d_{n-1}}-1}\emb
+  A_{p^{d_n}-1}\emb\cdots.
+\]
+In particular
+\[
+  A_{p-1}\eqdef
+\mathbb{F}_{p^{p-1}}\otimes\mathbb{F}_{p}(\zeta_{p-1})=\mathbb{F}_{p^{p-1}}\otimes\mathbb{F}_p\cong\mathbb{F}_{p^{p-1}}
+\]
+and for $n\geq1$
+\[
+  A_{p^{d_n}-1}=\mathbb{F}_{p^{p^{d_n}-1}}\otimes\mathbb{F}_p(\zeta_{p^{d_n}-1})=\mathbb{F}_{p^{p^{d_n}-1}}\otimes\mathbb{F}_{p^{d_n}}.
+\]
+We know that $\mathbb{F}_{p^{d_n}}$ contains a primitive $(p^{d_n}-1)$-th root
+of unity: any primitive element of $\mathbb{F}_{p^{d_n}}$ is in fact such a
+root. That is why we write
+$\mathbb{F}_{p^{d_n}}=\mathbb{F}_{p}(\zeta_{p^{d_n}-1})$, but we have not
+specified which roots we consider.
+We construct the roots of unity in the following way: we first choose any $(p-1)$-th primitive root of unity and we continue by recurrence. Assume we have
+chosen a primitive $(p^{d_{n-1}}-1)$-th root of unity
+$\zeta_{p^{d_{n-1}}-1}\in\mathbb{F}_{p^{d_{n-1}}}$
+for a certain $n\geq1$. By surjectivity of the norm, we can find an element
+$y\in\mathbb{F}_{p^{d_n}}$ such that
+\begin{align*}
+  N_{\mathbb{F}_{p^{d_n}}/\mathbb{F}_{p^{d_{n-1}}}}(y)&=y^{\frac{p^{d_n}-1}{p^{d_{n-1}}-1}}\\
+  &=\zeta_{p^{d_{n-1}}-1}.
+\end{align*}
+Since $\zeta_{p^{d_{n-1}}-1}$ is primitive, $y$ is also primitive, in other
+words $y$ is a $(p^{d_n}-1)$-th primitive root of unity, and we define
+$\zeta_{p^{d_n}-1}\eqdef y$.
+
+We now construct solutions of \eqref{h90} in each floor of our
+tower. We first choose any solution $\alpha_{p-1}\in A_{p-1}$ of Hilbert $90$
+associated with the root $\zeta_{p-1}$, and we continue by recurrence. Assume we
+have constructed a solution $\alpha_{p^{d_{n-1}}-1}\in A_{p^{d_{n-1}}-1}$ of
+Hilbert $90$ associated with the root $\zeta_{p^{d_{n-1}}-1}$ for a certain
+$n\geq1$ and let
+$\beta\in A_{p^{d_n}-1}$ be any nonzero solution of \eqref{h90} with the root
+$\zeta_{p^{d_n}-1}$.
+Then we get
+\begin{align*}
+  (\sigma\otimes1)(N_{p^{d_n}-1/p^{d_{n-1}}-1}(\beta)) &= N_{p^{d_n}-1/p^{d_{n-1}}-1}((\sigma\otimes1)(\beta)) \\
+  &= N_{p^{d_n}-1/p^{d_{n-1}}-1}(1\otimes\zeta_{p^{d_n}-1}) N_{p^{d_n}-1/p^{d_{n-1}}-1}(\beta) \\
+  &= (1\otimes\zeta_{p^{d_{n-1}}-1})N_{p^{d_n}-1/p^{d_{n-1}}-1}(\beta),
+\end{align*}
+meaning that we have
+\[
+  N_{p^{d_n}-1/p^{d_{n-1}}-1}(\beta)=(1\otimes\lambda)\alpha_{p^{d_{n-1}}-1},
+\]
+where $1\otimes\lambda$ is an element in the subfield $1\otimes\mathbb{F}_{p^{d_{n-1}}}$. Since the map
+$N_{p^{d_n}-1/p^{d_{n-1}}-1}$ acts on $1\otimes\mathbb{F}_{p^{d_n}}$ as the
+usual norm $N_{\mathbb{F}_{p^{d_n}}/\mathbb{F}_{p^{d_{n-1}}}}$, we can use
+the surjectivity of the norm to ``correct'' our element $\beta$. In the end we
+obtain an element $\alpha_{p^{d_n}-1}$ such
+that
+\[
+  N_{p^{d_n}-1/p^{d_{n-1}}-1}(\alpha_{p^{d_n}-1})=
+  \alpha_{p^{d_{n-1}}-1}.
+\]
+Since our norm-like functions $N$ are transitive, we have obtained that 
+\[
+  N_{p^{b}-1/p^a-1}(\alpha_{p^b-1})=\alpha_{p^a-1}
+\]
+for any $a,b\in D$ such that $a<b$. But we have only constructed algebras of the form
+$A_{p^d-1}$ with $d\in D$, so our lattice has a lot of holes. We can first plug
+the holes of the form $A_{p^{n}-1}$ for any $n\in\mathbb{N}$ (not just $n\in
+D$), by defining 
+\[
+  f_n \eqdef \min\left\{ d\in D\,,\,n\,|\,d \right\}
+\]
+and
+\begin{align*}
+  \zeta_{p^n-1}&\eqdef  N_{p^{f_n}-1/p^n-1}(\zeta_{p^{f_n}-1})\\
+  \alpha_{p^n-1}&\eqdef
+  N_{p^{f_n}-1/p^n-1}(\alpha_{p^{f_n}-1}).
+\end{align*}
+Here again, by transitivity of the norms, we obtain that
+\[
+  N_{p^{b}-1/p^a-1}(\alpha_{p^b-1})=\alpha_{p^a-1}
+\]
+for any $a,b\in\mathbb{N}$ such that $a\,|\,b$.
+
+
+
+Let us now deal with the general case of two integers $\ell\,|\,m$. We define
+$a=\omega_{\mathbb{Z}/\ell\mathbb{Z}}(p)$ (respectively
+$b=\omega_{\mathbb{Z}/m\mathbb{Z}}(p)$) the multiplicative order of $p$ in
+$\mathbb{Z}/\ell\mathbb{Z}$ (resp. in $\mathbb{Z}/m\mathbb{Z}$). We thus define
+\[
+  \alpha_\ell\eqdef(\alpha_{p^a-1})^{\frac{p^a-1}{\ell}}\in A_{\ell}=\mathbb{F}_{p^\ell}\otimes \mathbb{F}_{p^a}
+\]
+and
+\[
+  \alpha_m\eqdef(\alpha_{p^b-1})^{\frac{p^{b}-1}{m}}\in A_m=\mathbb{F}_{p^m}\otimes \mathbb{F}_{p^b}.
+\]
+If $a=b$ then we have 
+\[
+  \alpha_{\ell}=\alpha_m^{m/\ell},
+\]
+but if $a<b$, we need to take additionnal care of the right part of the tensor,
+the ``scalar'' part. In that case we have
+\[
+  \alpha_\ell=N_{p^b-1/p^a-1}((\alpha_{p^b-1})^{\frac{p^a-1}{\ell}})
+\]
+and we can also write 
+\begin{align*}
+  (\alpha_{p^b-1})^{\frac{p^a-1}{\ell}}&=(\alpha_{p^b-1})^{\frac{p^b-1}{\ell\cdot\frac{p^b-1}{p^a-1}}}\\
+  &\eqdef \alpha_{\ell v}.
+\end{align*}
+with $v\eqdef\frac{p^b-1}{p^a-1}$.
+
+We see that we have an equality linking $\alpha_\ell$ and
+$\alpha_{\ell v}$, though the natural thing would be an
+equality linking $\alpha_\ell$ and $\alpha_m$. Unfortunately the map
+$N_{p^b-1/p^a-1}=N_{m/\ell}$ send $\zeta_{m}$ to
+$\zeta_{m}^{v}$, and this is not necessarily an $\ell$-th primitive root of unity.
+By starting elsewhere in the tower, namely $\alpha_{\ell v}$ instead of
+$\alpha_{\ell \frac{m}{\ell}}$, we ensure that we arrive on the right root of
+unity $\zeta_{\ell}$. Note that we do not necessarily have
+$\frac{m}{\ell}\,|\,v$.
+
+In fact, we do not have to go \emph{that high} in the tower, but we will risk to
+obtain an other primitive $\ell$-th root of unity and we will have to apply
+corrections. Let us write
+\[
+  \ell=\prod_{j\in\mathcal P_\ell}q_j^{\alpha_j}
+\]
+the prime decomposition of $\ell$, where $\mathcal P_\ell$ is a set of indices
+and the $q_j$'s are primes. We also write
+\[
+  m=\prod_{j\in\mathcal P_m}q_j^{\beta_j}
+\]
+and it follows that $\mathcal P_\ell\subset\mathcal P_m$ and that for all
+$j\in\mathcal P_\ell$, $\alpha_j\leq\beta_j$. Now denote by $\nu_j(v)$ the
+$q_j$-adic valuation of $v$. Our problem happens when, for $j\in\mathcal
+P_\ell$,
+\[
+  \nu_j(v)\neq \beta_j-\alpha_j=\nu_j(m/\ell)
+\]
+because it eliminates too much (or too little) of the $q_j$ part of the root $\zeta_\ell$. That
+is why we can consider to go only as high as 
+\[
+  \eta=\prod_{j\in\mathcal
+  P_\ell}q_j^{\alpha_j+\nu_j(v)}\times\prod_{j\in\mathcal P_m\setminus \mathcal
+  P_\ell}q_j^{\beta_j}.
+\]
+Indeed, with that choice we elimate just as much of each $q_j$ as we want.
+
+\end{document}
