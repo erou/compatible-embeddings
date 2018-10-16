@@ -23,6 +23,7 @@ Allombert algorithm}
 %\clearpage
 
 \section{Introduction and notations}
+\label{sec:intro}
 
 Our goal is to construct a \emph{lattice of compatibly embedded finite fields},
 meaning that given a collection of finite fields, we want to be able to compute
@@ -235,5 +236,125 @@ is why we can consider to go only as high as
   P_\ell}q_j^{\beta_j}.
 \]
 Indeed, with that choice we elimate just as much of each $q_j$ as we want.
+
+\section{Compatibility conditions: how to climb a lattice?}
+\label{sec:climb}
+
+We use the same notations as in Sections \ref{sec:intro} and
+\ref{sec:existence}. Assume we have two integers $\ell, m\in\mathbb{N}$,
+debote by $d$ their $\gcd$ and $n\in\mathbb{N}$ an other integer such that
+$\ell\,|\,n$ and $m\,|\,n$. In this section we imagine that we have a set of solutions of
+\eqref{h90} $\alpha_{p^\ell-1}$ and $\alpha_{p^m-1}$ that we have already computed, and we wonder if they have been
+well-chosen, \ie if we can find an other solution $\alpha_{p^n-1}$ in a bigger algebra that is
+sent via the norm to these solutions. We first need a lemma.
+
+\begin{lm}
+  \label{lm:norms}
+  Let $x\in (\mathbb{F}_{p^\ell})^\times$ and $y\in(\mathbb{F}_{p^m})^\times$ such that 
+  \[
+    N_{\mathbb{F}_{p^\ell}/\mathbb{F}_{p^d}}(x)=N_{\mathbb{F}_{p^m}/\mathbb{F}_{p^d}}(y).
+  \]
+  Then there exists $z\in(\mathbb{F}_{p^n})^\times$ such that
+  \[
+    N_{\mathbb{F}_{p^n}/\mathbb{F}_{p^\ell}}(z)=x
+  \]
+  and
+  \[
+    N_{\mathbb{F}_{p^n}/\mathbb{F}_{p^m}}(z)=y.
+  \]
+\end{lm}
+\begin{proof}
+  We denote by $f$ the function:
+\[
+\begin{array}{cccc}
+  f: & (\mathbb{F}_{p^n})^\times & \to &
+  (\mathbb{F}_{p^\ell})^\times\times(\mathbb{F}_{p^m})^\times\\
+  & z & \mapsto & (\mathbb{N}_{\mathbb{F}_{p^n}/\mathbb{F}_{p^\ell}}(z),
+  N_{\mathbb{F}_{p^n}/\mathbb{F}_{p^m}}(z))
+\end{array}
+\]
+and we define the set
+\[
+  \mathcal E = \left\{ (x, y)\in
+    (\mathbb{F}_{p^\ell})^\times\times(\mathbb{F}_{p^m})^\times\,|\,N_{\mathbb{F}_{p^\ell}/\mathbb{F}_{p^d}}(x)=N_{\mathbb{F}_{p^m}/\mathbb{F}_{p^d}}(y)\right\}.
+\]
+We will prove that $\Img(f)=\mathcal E$, which is exactly a translation of the
+lemma.
+
+Assume we have an element $(x,y)\in\Img(f)$, then by transitivity of the norm we
+also have $(x,y)\in\mathcal E$, so 
+\[
+  \Img(f)\subset\mathcal E.
+\]
+We finish the proof by a cardinality argument. The function $f$ is a group
+morphism, so we have 
+\[
+  \Card\Img(f)=\frac{p^{n}-1}{\Card\Ker(f)}.
+\]
+Moreover the elements in $\Ker(f)$ are those that are in the kernel of both
+norms. The kernel of $\mathbb{N}_{\mathbb{F}_{p^n}/\mathbb{F}_{p^\ell}}$ is a
+subgroup of $(\mathbb{F}_{p^n})^\times$ of index $p^{\ell}-1$, and the kernel of
+$\mathbb{N}_{\mathbb{F}_{p^n}/\mathbb{F}_{p^m}}$ is a
+subgroup of $(\mathbb{F}_{p^n})^\times$ of index $p^{m}-1$. The intersection of
+these subgroups is a subgroup of index $\lcm(p^{\ell}-1, p^m-1)$. In the end we
+obtain that
+\[
+  \Card\Img(f) = \lcm(p^\ell-1, p^m-1).
+\]
+We also have 
+\begin{align*}
+  \Card\mathcal E &= (p^{d}-1)\frac{p^\ell-1}{p^d-1}\frac{p^m-1}{p^d-1}\\
+  &= \frac{(p^\ell-1)(p^m-1)}{p^d-1}\\
+  &= \lcm(p^\ell-1, p^m-1)
+\end{align*}
+because $\gcd(p^\ell-1, p^m-1)=p^d-1$. In the end, we have 
+\[
+  \Card\Img(f)=\Card\mathcal E,
+\]
+
+\end{proof}
+
+\begin{prop}
+  Let $\alpha_{p^\ell-1}\in A_{p^\ell-1}$ and $\alpha_{p^m-1}\in A_{p^m-1}$ be
+  two solutions of \eqref{h90}, respectively for the roots $\zeta_{p^\ell-1}$ and
+  $\zeta_{p^m-1}$, such that
+  \[
+    N_{p^\ell-1/p^d-1}(\alpha_{p^\ell-1})=N_{p^m-1/p^d-1}(\alpha_{p^m-1}).
+  \]
+  Given an algebra $A_{p^n-1}$ with a root $\zeta_{p^n-1}$ such that 
+  \[
+    N_{p^n-1/p^\ell-1}(1\otimes\zeta_{p^n-1})=1\otimes\zeta_{p^\ell-1}
+  \]
+  and
+  \[
+    N_{p^n-1/p^m-1}(1\otimes\zeta_{p^n-1})=1\otimes\zeta_{p^m-1},
+  \]
+  there exists a solution $\alpha_{p^n-1}$ of \eqref{h90} for the root $\zeta_{p^n-1}$ such that
+  \[
+    N_{p^n-1/p^\ell-1}(\alpha_{p^n-1})=\alpha_{p^\ell-1}
+  \]
+  and
+  \[
+    N_{p^n-1/p^m-1}(\alpha_{p^n-1})=\alpha_{p^m-1}.
+  \]
+\end{prop}
+\begin{proof}
+  Let $\beta$ be any nonzero solution of \eqref{h90} for the root
+  $\zeta_{p^n-1}$, then we have that
+  \[
+    N_{p^n-1/p^\ell-1}(\beta)=(1\otimes c_\ell)\alpha_{p^\ell-1}
+  \]
+  and
+  \[
+    N_{p^n-1/p^m-1}(\beta)=(1\otimes c_m)\alpha_{p^m-1}.
+  \]
+  It follows that 
+  \[
+    N_{F_{p^\ell}/\mathbb{F}_{p^d}}(c_\ell)=N_{\mathbb{F}_{p^m}/\mathbb{F}_{p^d}}(c_m),
+  \]
+  and by the Lemma~\ref{lm:norms}, we can find an element $c_n$ such that the
+  proposition follows.
+
+\end{proof}
 
 \end{document}
