@@ -311,7 +311,11 @@ because $\gcd(p^\ell-1, p^m-1)=p^d-1$. In the end, we have
 \[
   \Card\Img(f)=\Card\mathcal E,
 \]
-
+so
+\[
+  \Img f = \mathcal E
+\]
+and this concludes the proof.
 \end{proof}
 
 \begin{prop}
@@ -352,8 +356,19 @@ because $\gcd(p^\ell-1, p^m-1)=p^d-1$. In the end, we have
   \[
     N_{F_{p^\ell}/\mathbb{F}_{p^d}}(c_\ell)=N_{\mathbb{F}_{p^m}/\mathbb{F}_{p^d}}(c_m),
   \]
-  and by the Lemma~\ref{lm:norms}, we can find an element $c_n$ such that the
-  proposition follows.
+  and by the Lemma~\ref{lm:norms}, we can find an element $c_n$ such that
+  \[
+    N_{\mathbb{F}_{p^n}/\mathbb{F}_{p^\ell}}(c_n) = c_\ell
+  \]
+  and
+  \[
+    N_{\mathbb{F}_{p^n}/\mathbb{F}_{p^m}}(c_n)=c_m.
+  \]
+ We then define 
+ \[
+   \alpha_{p^n-1}=(c_n)^{-1}\beta
+ \]
+ and the proposition follows.
 
 \end{proof}
 
