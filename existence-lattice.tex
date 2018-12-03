@@ -61,21 +61,20 @@ $\alpha_n$ a solution of \eqref{h90} for the root $\zeta_n$. We also consider
 the norm-like maps
 \[
 \begin{array}{cccc}
-  N_{m/\ell,\, \bm{n}}: & A_{\bm{n}} & \to &
+  \N_{b/a,\, \bm{n}}: & A_{\bm{n}} & \to &
   A_{\bm{n}} \\
-  & \gamma & \mapsto & \prod_{j=0}^{\left[ k(\zeta_m)\,:\,k(\zeta_\ell) \right]-1} (1 \otimes
-  \sigma^{j\left[ k(\zeta_\ell)\,:\,k \right]})(\gamma)
+  & \gamma & \mapsto & \prod_{j=0}^{b/a-1} (1 \otimes
+  \sigma^{ja})(\gamma)
 \end{array}
 \]
-where $\sigma$ is the Frobenius morphism and the notation $\left[ L\,:\,K
-\right]$ denotes the degree of the extension $L/K$. The index $n$ will often be
+where $\sigma$ is the Frobenius morphism and the notation. The index $n$ will often be
 ignored if it is clear from the context. These maps are multiplicative and
-transitive, \ie $N_{m/\ell}\circ N_{n/m} = N_{n/\ell}$.
+transitive, \ie $\N_{b/a}\circ \N_{c/b} = \N_{c/a}$.
 
 \section{Existence of a compatible lattice}
 \label{sec:existence}
 We use the same notations as in the previous sections, in particular the
-definitions of the maps $\Phi$ and $N$ still hold.
+definitions of the maps $\Phi$ and $\N$ still hold.
 In this section we will investigate the existence of a compatible lattice. We
 first define a tower of algebras: let $(d_n)_{n\in\mathbb{N}}$ the sequence
 defined by $d_0=1$, $d_1=2$, $d_2=2^2\cdot 3=12$, and more generally
@@ -130,27 +129,27 @@ $\beta\in A_{p^{d_n}-1}$ be any nonzero solution of \eqref{h90} with the root
 $\zeta_{p^{d_n}-1}$.
 Then we get
 \begin{align*}
-  (\sigma\otimes1)(N_{p^{d_n}-1/p^{d_{n-1}}-1}(\beta)) &= N_{p^{d_n}-1/p^{d_{n-1}}-1}((\sigma\otimes1)(\beta)) \\
-  &= N_{p^{d_n}-1/p^{d_{n-1}}-1}(1\otimes\zeta_{p^{d_n}-1}) N_{p^{d_n}-1/p^{d_{n-1}}-1}(\beta) \\
-  &= (1\otimes\zeta_{p^{d_{n-1}}-1})N_{p^{d_n}-1/p^{d_{n-1}}-1}(\beta),
+  (\sigma\otimes1)(\N_{d_n/d_{n-1}}(\beta)) &= \N_{d_n/d_{n-1}}((\sigma\otimes1)(\beta)) \\
+  &= \N_{d_n/d_{n-1}}(1\otimes\zeta_{p^{d_n}-1}) \N_{d_n/d_{n-1}}(\beta) \\
+  &= (1\otimes\zeta_{p^{d_{n-1}}-1})\N_{d_n/d_{n-1}}(\beta),
 \end{align*}
 meaning that we have
 \[
-  N_{p^{d_n}-1/p^{d_{n-1}}-1}(\beta)=(1\otimes\lambda)\alpha_{p^{d_{n-1}}-1},
+  \N_{d_n/d_{n-1}}(\beta)=(1\otimes\lambda)\alpha_{p^{d_{n-1}}-1},
 \]
 where $1\otimes\lambda$ is an element in the subfield $1\otimes\mathbb{F}_{p^{d_{n-1}}}$. Since the map
-$N_{p^{d_n}-1/p^{d_{n-1}}-1}$ acts on $1\otimes\mathbb{F}_{p^{d_n}}$ as the
+$\N_{d_n/d_{n-1}}$ acts on $1\otimes\mathbb{F}_{p^{d_n}}$ as the
 usual norm $N_{\mathbb{F}_{p^{d_n}}/\mathbb{F}_{p^{d_{n-1}}}}$, we can use
 the surjectivity of the norm to ``correct'' our element $\beta$. In the end we
 obtain an element $\alpha_{p^{d_n}-1}$ such
 that
 \[
-  N_{p^{d_n}-1/p^{d_{n-1}}-1}(\alpha_{p^{d_n}-1})=
+  \N_{d_n/d_{n-1}}(\alpha_{p^{d_n}-1})=
   \alpha_{p^{d_{n-1}}-1}.
 \]
-Since our norm-like functions $N$ are transitive, we have obtained that 
+Since our norm-like functions $\N$ are transitive, we have obtained that 
 \[
-  N_{p^{b}-1/p^a-1}(\alpha_{p^b-1})=\alpha_{p^a-1}
+  \N_{b/a}(\alpha_{p^b-1})=\alpha_{p^a-1}
 \]
 for any $a,b\in D$ such that $a<b$. But we have only constructed algebras of the form
 $A_{p^d-1}$ with $d\in D$, so our lattice has a lot of holes. We can first plug
@@ -161,13 +160,13 @@ D$), by defining
 \]
 and
 \begin{align*}
-  \zeta_{p^n-1}&\eqdef  N_{p^{f_n}-1/p^n-1}(\zeta_{p^{f_n}-1})\\
+  \zeta_{p^n-1}&\eqdef  \N_{f_n/n}(\zeta_{p^{f_n}-1})\\
   \alpha_{p^n-1}&\eqdef
-  N_{p^{f_n}-1/p^n-1}(\alpha_{p^{f_n}-1}).
+  \N_{f_n/n}(\alpha_{p^{f_n}-1}).
 \end{align*}
 Here again, by transitivity of the norms, we obtain that
 \[
-  N_{p^{b}-1/p^a-1}(\alpha_{p^b-1})=\alpha_{p^a-1}
+  \N_{b/a}(\alpha_{p^b-1})=\alpha_{p^a-1}
 \]
 for any $a,b\in\mathbb{N}$ such that $a\,|\,b$.
 
@@ -186,56 +185,74 @@ and
 \]
 If $a=b$ then we have 
 \[
-  \alpha_{\ell}=\alpha_m^{m/\ell},
+  \alpha_{\ell}=(\alpha_m)^{m/\ell},
 \]
 but if $a<b$, we need to take additionnal care of the right part of the tensor,
 the ``scalar'' part. In that case we have
 \[
-  \alpha_\ell=N_{p^b-1/p^a-1}((\alpha_{p^b-1})^{\frac{p^a-1}{\ell}})
+  \alpha_\ell=\N_{b/a}(\alpha_{p^b-1})^{\frac{p^a-1}{\ell}}.
 \]
-and we can also write 
-\begin{align*}
-  (\alpha_{p^b-1})^{\frac{p^a-1}{\ell}}&=(\alpha_{p^b-1})^{\frac{p^b-1}{\ell\cdot\frac{p^b-1}{p^a-1}}}\\
-  &\eqdef \alpha_{\ell v}.
-\end{align*}
-with $v\eqdef\frac{p^b-1}{p^a-1}$.
 
 We see that we have an equality linking $\alpha_\ell$ and
-$\alpha_{\ell v}$, though the natural thing would be an
+$\alpha_{p^b-1}$, though the natural thing would be an
 equality linking $\alpha_\ell$ and $\alpha_m$. Unfortunately the map
-$N_{p^b-1/p^a-1}=N_{m/\ell}$ send $\zeta_{m}$ to
-$\zeta_{m}^{v}$, and this is not necessarily an $\ell$-th primitive root of unity.
-By starting elsewhere in the tower, namely $\alpha_{\ell v}$ instead of
-$\alpha_{\ell \frac{m}{\ell}}$, we ensure that we arrive on the right root of
-unity $\zeta_{\ell}$. Note that we do not necessarily have
-$\frac{m}{\ell}\,|\,v$.
-
+$\N_{b/a}$ sends $\zeta_{m}$ to
+$(\zeta_{m})^{\mu}$, with $\mu\eqdef\frac{p^b-1}{p^a-1}$,
+and this is not necessarily an $\ell$-th primitive root of unity.
 In fact, we do not have to go \emph{that high} in the tower, but we will risk to
 obtain an other primitive $\ell$-th root of unity and we will have to apply
 corrections. Let us write
 \[
-  \ell=\prod_{j\in\mathcal P_\ell}q_j^{\alpha_j}
+  \ell=\prod_{j\in\mathcal P_\ell}q_j^{u_j}
 \]
-the prime decomposition of $\ell$, where $\mathcal P_\ell$ is a set of indices
-and the $q_j$'s are primes. We also write
+the prime decomposition of $\ell$, where $\mathcal P_\ell$ is the set of indices
+such that the $u_j$ are nonzero and the $q_j$'s are primes. We also write
 \[
-  m=\prod_{j\in\mathcal P_m}q_j^{\beta_j}
+  m=\prod_{j\in\mathcal P_m}q_j^{v_j}\phantom{and}
+  \mu=\prod_{j\in\mathcal P_\mu}q_j^{w_j}
 \]
-and it follows that $\mathcal P_\ell\subset\mathcal P_m$ and that for all
-$j\in\mathcal P_\ell$, $\alpha_j\leq\beta_j$. Now denote by $\nu_j(v)$ the
-$q_j$-adic valuation of $v$. Our problem happens when, for $j\in\mathcal
+with the sets $\mathcal P_m$ and $\mathcal P_\mu$ defined in the same fashion as
+$\mathcal P_\ell$. It follows that $\mathcal P_\ell\subset\mathcal P_m$ and that for all
+$j$, $u_j\leq v_j$. The set $\mathcal P_\ell$ is not
+necessarily included in $\mathcal P_\mu$. Our problem happens when, for $j\in\mathcal
 P_\ell$,
 \[
-  \nu_j(v)\neq \beta_j-\alpha_j=\nu_j(m/\ell)
+  w_j\neq v_j-u_j
 \]
 because it eliminates too much (or too little) of the $q_j$ part of the root $\zeta_\ell$. That
 is why we can consider to go only as high as 
 \[
   \eta=\prod_{j\in\mathcal
-  P_\ell}q_j^{\alpha_j+\nu_j(v)}\times\prod_{j\in\mathcal P_m\setminus \mathcal
-  P_\ell}q_j^{\beta_j}.
+  P_\ell}q_j^{u_j+m_j}\times\prod_{j\in\mathcal P_m\setminus \mathcal
+  P_\ell}q_j^{v_j},
 \]
-Indeed, with that choice we elimate just as much of each $q_j$ as we want.
+where $ m_j = \max(w_j, v_j-u_j)$.
+Indeed, with that choice we have that $m\,|\,\eta\,|\,p^b-1$ and, noting
+\[
+  T = \prod_{j\in\mathcal P_m}q_j^{t_j}
+\]
+with $t_j = m_j-w_j = \max(0, (v_j-u_j)-w_j)$, it follows that
+\[
+  \forall j\in\mathcal P_\ell,\, \nu_{j}(\frac{\mu\ell T}{\eta}) = w_j + u_j +
+  t_j - (u_j + m_j) = 0
+\]
+where $\nu_j$ is the $q_j$-adic valuation, and
+\[
+  \forall j\notin \mathcal P_\ell,\,\nu_j(\frac{\mu\ell T}{\eta}) = w_j + 0 +
+  t_j - v_j = \max(w_j-v_j, 0).
+\]
+The integer $\frac{\mu\ell T}{\eta}$ is thus coprime with $\ell$, we denote
+by $\iota$ its inverse modulo $\ell$, and we note $e=T\iota$. It follows that
+\begin{align*}
+  \N_{b/a}(\alpha_\eta^e) &= \N_{b/a}((\alpha_{p^b-1})^{\frac{p^b-1}{\eta}e})\\
+  &= (\alpha_{p^a-1})^{\frac{p^b-1}{\eta}e}\\
+  &= (\alpha_{p^a-1})^{\frac{(p^a-1)(p^b-1)\ell e}{\ell(p^a-1)\eta}}\\
+  &= (\alpha_\ell)^{\frac{\mu\ell e}{\eta}}\\
+  &= (\alpha_\ell)^{\kappa\ell+1}\\
+  &= (a_\ell)^\kappa\alpha_\ell
+\end{align*}
+where $a_\ell\eqdef(\alpha_{\ell})^\ell\in\mathbb{F}_{p^a}$ and $\kappa$ is the
+quotient of the Euclidean division of $\frac{\mu\ell e}{\eta}$ by $\ell$.
 
 \section{Compatibility conditions: how to climb a lattice?}
 \label{sec:climb}
