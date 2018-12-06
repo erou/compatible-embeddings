@@ -10,13 +10,18 @@
 Allombert algorithm}
 \author{}
 
+\addto{\captionsenglish}{\renewcommand{\abstractname}{Warning}}
 \begin{document}
 
 \maketitle
 
-%\begin{abstract}
-
-%\end{abstract}
+\begin{abstract}
+  This document is \emph{not} self-contained. Some facts are probably just
+  stated here, and proved in Allombert's original article or in other documents
+  written before this one\footnote{See
+    \url{https://github.com/erou/compatible-embeddings} to find them.}. Please
+    tell me if some of the missing proofs should be here.
+\end{abstract}
 
 %\tableofcontents
 
@@ -27,7 +32,7 @@ Allombert algorithm}
 
 Our goal is to construct a \emph{lattice of compatibly embedded finite fields},
 meaning that given a collection of finite fields, we want to be able to compute
-embeddings betweem them that are furthermore \emph{compatible}, \ie the diagrams
+embeddings between them that are furthermore \emph{compatible}, \ie the diagrams
 involving morphisms between finite fields should be commutative. Let $p$ be a
 prime number, we denote by $\mathbb{F}_{p^{\ell}}$ the finite field with
 $p^\ell$ elements and we also sometimes use $k=\mathbb{F}_p$. Allombert's algorithm usually asks for an extension of
@@ -36,7 +41,7 @@ scalars because some roots of unity may be missing, so we note
   A_n \eqdef \mathbb{F}_{p^n}\otimes\mathbb{F}_{p}(\zeta_n)
 \]
 where $\zeta_n$ denotes a primitive $n$-th root of unity. We consider all our finite
-fields to be embedding in an algebraic closure, so if we have $\ell\,|\,m$ two
+fields to be embedded in an algebraic closure, so if we have $\ell\,|\,m$ two
 integers, we know that
 \[
   \mathbb{F}_{p^{\ell}}\emb\mathbb{F}_{p^m}
@@ -74,7 +79,98 @@ transitive, \ie $\N_{b/a}\circ \N_{c/b} = \N_{c/a}$.
 \section{Existence of a compatible lattice}
 \label{sec:existence}
 We use the same notations as in the previous sections, in particular the
-definitions of the maps $\Phi$ and $\N$ still hold.
+definition of the map $\N$ still holds. In this section we will investigate the
+existence of a compatible lattice. We first prove the more general result that
+follows.
+\begin{prop}
+  There exists a family of solutions of \eqref{h90}
+  $(\alpha_{p^n-1})_{n\in\mathbb{N}}$, corresponding to the roots of unity
+  $(\zeta_{p^n-1})_{n\in\mathbb{N}}$, such that, for each $a,b\in\mathbb{N}$
+  such that $a\,|\,b$, we have
+  \[
+    \N_{b/a}(\alpha_{p^b-1})=\alpha_{p^a-1}.
+  \]
+\end{prop}
+\begin{proof}
+  We prove the result by induction. First, choose any primitive element
+  $\zeta_{p-1}\in\mathbb{F}_p$, and a solution $\alpha_{p-1}\in
+  A_{p-1}$ of \eqref{h90} for the root $\zeta_{p-1}$. Then, suppose that we have
+  a family of solutions of \eqref{h90} $(\alpha_{p^n-1})_{n\in \left[ d_n
+  \right]}$ for the roots
+  $(\zeta_{p^n-1})_{n\in \left[ d_n \right]}$, where $\left[ d_n \right]$ is
+  the set of all the divisors of some integer $d_n\in\mathbb{N}$, and such that for all $a,
+  b\in \left[ d_n \right]$ such that $a\,|\,b$, we have
+  \[
+    \N_{b/a}(\alpha_{p^b-1})=\alpha_{p^a-1}.
+  \]
+  Let $d_{n+1}\in\mathbb{N}$ such that $d_n\,|\,d_{n+1}$, consider the
+  finite field extension $\mathbb{F}_{p^{d_{n+1}}}/\mathbb{F}_{p^{d_n}}$, and
+  let $N:\mathbb{F}_{p^{d_{n+1}}}\to\mathbb{F}_{p^{d_n}}$ the corresponding
+  norm. Since $N$ is surjective, we note $y\in\mathbb{F}_{p^{d_{n+1}}}$ such
+  that
+  \[
+    N(y) = \zeta_{p^{d_{n}}}.
+  \]
+  Because $N(y)=y^{\frac{p^{d_{n+1}}-1}{p^{d_n}-1}}$, we have that the order of
+  $y$ is $p^{d_{n+1}}-1$, otherwise the order of $N(y)=\zeta_{p^{d_n}}$ could not
+  be $p^{d_n}-1$. Hence we can define a new root $\zeta_{p^{d_{n+1}}-1}=y$, and we
+  have that 
+  \[
+    N(\zeta_{p^{d_{n+1}}-1})=\zeta_{p^{d_n}-1}.
+  \]
+  Furthermore, the map $\N_{d_{n+1}/d_n}$ acts on
+  $1\otimes\mathbb{F}_{p^{d_{n+1}}}$ exactly as $1\otimes N$, so we also have
+  \[
+    \N_{d_{n+1}/d_n}(1\otimes\zeta_{p^{d_{n+1}}-1}) =
+    1\otimes\zeta_{p^{d_{n}}-1}.
+  \]
+Now let
+$\beta\in A_{p^{d_{n+1}}-1}$ be any nonzero solution of \eqref{h90} with the root
+$\zeta_{p^{d_{n+1}}-1}$.
+Then we get
+\begin{align*}
+  (\sigma\otimes1)(\N_{d_{n+1}/d_{n}}(\beta)) &= \N_{d_{n+1}/d_{n}}((\sigma\otimes1)(\beta)) \\
+  &= \N_{d_{n+1}/d_{n}}(1\otimes\zeta_{p^{d_{n+1}}-1}) \N_{d_{n+1}/d_{n}}(\beta) \\
+  &= (1\otimes\zeta_{p^{d_{n}}-1})\N_{d_{n+1}/d_{n}}(\beta),
+\end{align*}
+meaning that we have
+\[
+  \N_{d_{n+1}/d_{n}}(\beta)=(1\otimes\lambda)\alpha_{p^{d_{n}}-1},
+\]
+where $1\otimes\lambda$ is an element in the subfield $1\otimes\mathbb{F}_{p^{d_{n}}}$. Since the map
+$\N_{d_{n+1}/d_{n}}$ acts on $1\otimes\mathbb{F}_{p^{d_{n+1}}}$ as the
+usual norm $N$, we can use
+the surjectivity of the norm to ``correct'' our element $\beta$. In the end we
+obtain an element $\alpha_{p^{d_{n+1}}-1}$ such
+that
+\[
+  \N_{d_{n+1}/d_{n}}(\alpha_{p^{d_{n+1}}-1})=
+  \alpha_{p^{d_{n}}-1}.
+\]
+Since our norm-like functions $\N$ are transitive, we have obtained that 
+\[
+  \N_{b/a}(\alpha_{p^b-1})=\alpha_{p^a-1}
+\]
+for any $a,b\in \left[ d_n \right]\cup\left\{ d_{n+1} \right\}$ such that
+$a\,|\,b$. Additionnaly, for every divisor $d$ of $d_{n+1}$ that is not already in $\left[
+d_n \right]$, we define
+\[
+  \alpha_{p^d-1}\eqdef\N_{d_{n+1}/d}(\alpha_{p^{d_{n+1}}-1}).
+\]
+In the end, for any $a, b\in\left[ d_{n+1} \right]$ such that
+$a\,|\,b$ we have that
+\[
+  \N_{b/a}(\alpha_{p^b-1})=\alpha_{p^a-1}.
+\]
+The result follows by considering any sequence $(d_n)_{n\in\mathbb{N}}$ such
+that for all $\ell\in\mathbb{N}$, there exists $n_\ell\in\mathbb{N}$ with
+$\ell\,|\,d_{n_\ell}$. 
+\end{proof}
+
+\section{Existence of a compatible lattice (outdated)}
+\label{sec:existence-out}
+We use the same notations as in the previous sections, in particular the
+definition of the map $\N$ still holds.
 In this section we will investigate the existence of a compatible lattice. We
 first define a tower of algebras: let $(d_n)_{n\in\mathbb{N}}$ the sequence
 defined by $d_0=1$, $d_1=2$, $d_2=2^2\cdot 3=12$, and more generally
@@ -171,7 +267,7 @@ Here again, by transitivity of the norms, we obtain that
 for any $a,b\in\mathbb{N}$ such that $a\,|\,b$.
 
 
-
+\section{From $p^n-1$ to any integers $\ell$ and $m$}
 Let us now deal with the general case of two integers $\ell\,|\,m$. We define
 $a=\omega_{\mathbb{Z}/\ell\mathbb{Z}}(p)$ (respectively
 $b=\omega_{\mathbb{Z}/m\mathbb{Z}}(p)$) the multiplicative order of $p$ in
