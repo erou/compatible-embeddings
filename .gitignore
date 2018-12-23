@@ -234,4 +234,4 @@ desiderata.tex
 gtbac
 lattices2.ipynb
 top_down.ipynb
-ipynb_*
+.ipynb_checkpoints/*
