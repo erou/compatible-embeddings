@@ -222,9 +222,6 @@ TSWLatexianTemp*
 # experiments file in Julia
 *.jl
 
-# jupyter notebook files
-*.ipynb
-
 # Images
 imgs
 
