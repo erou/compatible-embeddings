@@ -485,4 +485,188 @@ and this concludes the proof.
 
 \end{proof}
 
+\section{Compatibility in pratice}
+\label{sec:practice}
+
+In Section~\ref{sec:existence} we have seen that we can construct a compatible
+lattice by choising a solution of~\eqref{h90} in an algebra of high order and
+deducting the solutions in all the sub-algebras. The cost of this mode of
+operation is too high to use it in practice. Instead, we see how we can
+increment (\ie add embeddings and solutions of~\eqref{h90} in a compatible way.
+Essentially, we have to find a way of telling which solutions of~\eqref{h90} are
+coming from a solution in a bigger\footnote{Should we introduce the notion of 
+\emph{complete} algebra?} algebra. We need a lemma to help us in this task:
+\begin{lm}
+  \label{lm:formula}
+  Let $n\in\mathbb{N}$ be an integer, $\zeta_{p^n-1}\in\mathbb{F}_{p^n}$ a
+  primitive element in $\mathbb{F}_{p^n}$ (\ie a $(p^n-1)$-th primitive root of
+  unity), and 
+  \[
+    A_{p^n-1} = \mathbb{F}_{p^{p^n-1}}\otimes\mathbb{F}_{p^n}.
+  \]
+  Denote by $\alpha_{p^n-1}\in A_{p^{n}-1}$ a solution of~\eqref{h90} for the
+  root $\zeta_{p^n-1}$, then we have that
+  \[
+    a_{p^n-1} = (\alpha_{p^n-1})^{p^n-1} = (1\otimes\zeta_{p^n-1})^n.
+  \]
+\end{lm}
+\begin{proof}
+  Since $\alpha_{p^n-1}$ is a solution of~\eqref{h90} for the root
+  $\zeta_{p^n-1}$, we have that
+  \[
+    (\sigma\otimes 1)(\alpha_{p^n-1}) =
+    (1\otimes\zeta_{p^n-1})\alpha_{p^n-1}.
+  \]
+  It follows that
+  \begin{align*}
+    (1\otimes\zeta_{p^n-1})^n \alpha_{p^n-1} &= (\sigma^n\otimes1)(\alpha_{p^n-1})\\
+    &= (\sigma^n\otimes\sigma^n)(\alpha_{p^n-1})\\
+    &= (\alpha_{p^n-1})^{p^n}\\
+    &= a_{p^n-1}\cdot\alpha_{p^n-1}.
+  \end{align*}
+  Therefore, we have the equality
+  \[
+    ( (1\otimes\zeta_{p^n-1})^n - a_{p^n-1})\alpha_{p^n-1} = 0,
+  \]
+  and since $1\otimes\zeta_{p^n-1}$ and $a_{p^n-1}$ are both elements of the
+  subfield $1\otimes\mathbb{F}_{p^n}$, we conclude that 
+  \[
+    a_{p^n-1} = (1\otimes\zeta_{p^n-1})^n.
+  \]
+\end{proof}
+Lemma~\ref{lm:formula} gives a necessary condition for solutions of~\eqref{h90}
+to be derived from a solution in a bigger algebra. We can see that this condition is in fact
+also sufficient. Thus, in the following, for some given integer
+$\ell\in\mathbb{N}$ and $A_\ell =
+\mathbb{F}_{p^\ell}\otimes\mathbb{F}_{p}(\zeta_\ell) =
+\mathbb{F}_{p^\ell}\otimes\mathbb{F}_{p^a}$, we shall consider solutions of the
+equation
+\begin{equation}
+  \tag{H90$^\star$}
+  (\sigma\otimes1)(x) = (1\otimes\zeta_\ell)x,\,x^\ell =
+  (1\otimes\zeta_{p^a-1})^a
+  \label{h90s}
+\end{equation}
+with $\zeta_\ell=(\zeta_{p^a-1})^{\frac{p^a-1}{\ell}}$.
+
+The solutions of~\eqref{h90s} are defined up to a $\ell$-th root of unity, if 
+\[
+  \alpha_\ell = \sum_{j=0}^{a-1} x_j\otimes \zeta_\ell^j
+\]
+is a solution, the other solutions are then given by 
+\[
+  (1\otimes\zeta_\ell)^u\alpha_\ell = \sum_{j=0}^{a-1} \sigma^u(x_j)\otimes
+  \zeta_{\ell}^j
+\]
+for some integer $u$. Thus we see that taking the first coordinate of a solution
+of~\eqref{h90s} for the root $\zeta_\ell$ in the basis $(1\otimes\zeta_\ell^j)_j$ (as done in Allombert's
+algorithm) defines the same element (up to isomorphism) in
+$\mathbb{F}_{p^\ell}$.
+
+Let us investigate the easiest case of compatibility first. Let
+$\ell\,|\,m\,|\,n$ be three integers such that
+\[
+ a \eqdef \omega_{(\mathbb{Z}/\ell\mathbb{Z})^\times}(p) =
+  \omega_{(\mathbb{Z}/m\mathbb{Z})^\times}(p) =
+  \omega_{(\mathbb{Z}/n\mathbb{Z})^\times}(p).
+\]
+In other words, the right part of the tensor algebras $A_\ell$, $A_m$ and $A_n$
+is $\mathbb{F}_{p^a}$ in the three cases. We assume that we already have a
+primitive element $\zeta_{p^a-1}\in\mathbb{F}_{p^a}$ and we define $\zeta_\ell$
+(resp. $\zeta_m$, $\zeta_n$) by 
+\[
+  \zeta_\ell = (\zeta_{p^a-1})^\frac{p^a-1}{\ell}\text{ (resp. }\zeta_m =
+  (\zeta_{p^a-1})^\frac{p^a-1}{m},\,\zeta_n =
+  (\zeta_{p^a-1})^\frac{p^a-1}{n}  \text{)}.
+\]
+We then also define $\alpha_\ell\in A_\ell$ (resp. $\alpha_m\in A_m$,
+$\alpha_n\in A_n$) a solution
+of~\eqref{h90s} for the root $\zeta_\ell$ (resp. $\zeta_m$, $\zeta_n$).
+We finally define 
+\[
+\begin{array}{cccc}
+  f: & \mathbb{F}_{p^\ell} & \to &\mathbb{F}_{p^m} \\
+  & \lfloor \alpha_{\ell}\rfloor_\ell & \mapsto & \lfloor
+(\alpha_{m})^{m/\ell}\rfloor_\ell
+\end{array}
+\]
+with $\lfloor x \rfloor_\ell$ denoting the first coordinate of $x$ in the basis
+$(1\otimes\zeta_{\ell}^j)_j$, and we similarly define
+\[
+\begin{array}{cccc}
+  g: & \mathbb{F}_{p^m} & \to &\mathbb{F}_{p^n} \\
+  & \lfloor \alpha_{m}\rfloor_m & \mapsto & \lfloor
+(\alpha_{n})^{n/m}\rfloor_m
+\end{array}
+\]
+and
+\[
+\begin{array}{cccc}
+  h: & \mathbb{F}_{p^\ell} & \to &\mathbb{F}_{p^n} \\
+  & \lfloor \alpha_{\ell}\rfloor_\ell & \mapsto & \lfloor
+(\alpha_{m})^{n/\ell}\rfloor_\ell.
+\end{array}
+\]
+\begin{prop}
+  The maps $f$, $g$, and $h$ define embeddings and are compatible, \ie
+  \[
+    g\circ f = h.
+  \]
+\end{prop}
+\begin{proof}
+  Let $\Phi_{A_\ell\emb A_m}' =
+\phi_{\mathbb{F}_{p^\ell}\emb\mathbb{F}_{p^m}}'\otimes\embed{\mathbb{F}_{p}(\zeta_\ell)}{\mathbb{F}_{p}(\zeta_m)}$
+be a morphism of algebra, with $\phi_{\mathbb{F}_{p^\ell}\emb\mathbb{F}_{p^m}}'$
+an unknown morphism and 
+$\embed{\mathbb{F}_{p}(\zeta_\ell)}{\mathbb{F}_{p}(\zeta_m)}$ the morphism
+sending $\zeta_\ell$ to $(\zeta_m)^{m/\ell}$. We know that
+\[
+  (\alpha_m)^{m/\ell} = (1\otimes\lambda)\Phi_{A_\ell\emb A_m}'(\alpha_\ell) 
+\]
+for some $\lambda\in\mathbb{F}_{p^a}$. Moreover we also have 
+\[
+  a_m = \Phi_{A_\ell\emb A_m}'(a_l)
+\]
+so $\lambda^\ell = 1$, and finally we get that
+\begin{align*}
+  (\alpha_m)^{m/\ell} &= \Phi_{A_\ell\emb
+  A_m}'((1\otimes\zeta_\ell^u)\alpha_\ell) \\
+  &= \Phi_{A_\ell\emb
+  A_m}'((\sigma^u\otimes 1)(\alpha_\ell)) \\
+  &= \Phi_{A_\ell\emb A_m}(\alpha_\ell)
+\end{align*}
+for some integer $u$, and with
+\begin{align*}
+ \Phi_{A_\ell\emb A_m} &=
+(\phi_{\mathbb{F}_{p^\ell}\emb\mathbb{F}_{p^m}}'\circ\sigma^u)\otimes\embed{\mathbb{F}_{p}(\zeta_\ell)}{\mathbb{F}_{p}(\zeta_m)}\\
+&\eqdef
+\phi_{\mathbb{F}_{p^\ell}\emb\mathbb{F}_{p^m}}\otimes\embed{\mathbb{F}_{p}(\zeta_\ell)}{\mathbb{F}_{p}(\zeta_m)}.
+\end{align*}
+We similarly define 
+\[
+  \Phi_{A_m\emb
+  A_n}\eqdef\phi_{\mathbb{F}_{p^m}\emb\mathbb{F}_{p^n}}\otimes\embed{\mathbb{F}_{p}(\zeta_m)}{\mathbb{F}_{p}(\zeta_n)}
+\]
+and
+\[
+  \Phi_{A_\ell\emb
+  A_n}\eqdef\phi_{\mathbb{F}_{p^\ell}\emb\mathbb{F}_{p^n}}\otimes\embed{\mathbb{F}_{p}(\zeta_\ell)}{\mathbb{F}_{p}(\zeta_n)}.
+\]
+We finally note that $f = \embed{\mathbb{F}_{p^\ell}}{\mathbb{F}_{p^m}}$, 
+$g = \embed{\mathbb{F}_{p^m}}{\mathbb{F}_{p^n}}$, 
+$h = \embed{\mathbb{F}_{p^\ell}}{\mathbb{F}_{p^n}}$ and
+\[
+(\Phi_{A_m\emb A_n}\circ\Phi_{A_\ell\emb A_m})(\alpha_\ell) = \Phi_{A_\ell\emb
+A_n}(\alpha_\ell),
+\]
+therefore it follows that
+\[
+  g\circ f = h.
+\]
+
+
+
+
+\end{proof}
+
 \end{document}
